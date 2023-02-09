@@ -1,0 +1,23 @@
+{
+  "your_dictionary": "Your dictionary",
+  "learn": "Learn",
+  "dictionary": "Dictionary",
+  "statistics": "Statistic",
+  "settings": "Settings",
+  "choose_words_for_training_with_selection": "Here you can select words for training or edit a word. Use swipe to select a few words.",
+  "choose_words_for_training": "Choose all words for training",
+  "begin_training": "Begin training",
+  "confirm_deletion": "Confirm deletion",
+  "are_you_sure_you_want_to_delete": "Are you sure you want to delete this word?",
+  "yes": "Yes",
+  "no": "No",
+  "words": {
+    "zero":"Слова відсутні",
+    "one": "{} слово",
+    "two": "{} слова",
+    "few": "{} слів",
+    "many": "{} слів",
+    "other": "{} слів"
+  },
+  "choose_lang_direction": "Оберіть напрямок перекладу"
+}
