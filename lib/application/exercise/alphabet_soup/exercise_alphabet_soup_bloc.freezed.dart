@@ -20,7 +20,7 @@ mixin _$ExerciseAlphabetSoupEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() nextWord,
-    required TResult Function(String char) charChosen,
+    required TResult Function(Pair<UniqueId, String> pairChar) charChosen,
     required TResult Function() charRemoved,
   }) =>
       throw _privateConstructorUsedError;
@@ -28,7 +28,7 @@ mixin _$ExerciseAlphabetSoupEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? nextWord,
-    TResult? Function(String char)? charChosen,
+    TResult? Function(Pair<UniqueId, String> pairChar)? charChosen,
     TResult? Function()? charRemoved,
   }) =>
       throw _privateConstructorUsedError;
@@ -36,7 +36,7 @@ mixin _$ExerciseAlphabetSoupEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? nextWord,
-    TResult Function(String char)? charChosen,
+    TResult Function(Pair<UniqueId, String> pairChar)? charChosen,
     TResult Function()? charRemoved,
     required TResult orElse(),
   }) =>
@@ -126,7 +126,7 @@ class _$_Started implements _Started {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() nextWord,
-    required TResult Function(String char) charChosen,
+    required TResult Function(Pair<UniqueId, String> pairChar) charChosen,
     required TResult Function() charRemoved,
   }) {
     return started();
@@ -137,7 +137,7 @@ class _$_Started implements _Started {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? nextWord,
-    TResult? Function(String char)? charChosen,
+    TResult? Function(Pair<UniqueId, String> pairChar)? charChosen,
     TResult? Function()? charRemoved,
   }) {
     return started?.call();
@@ -148,7 +148,7 @@ class _$_Started implements _Started {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? nextWord,
-    TResult Function(String char)? charChosen,
+    TResult Function(Pair<UniqueId, String> pairChar)? charChosen,
     TResult Function()? charRemoved,
     required TResult orElse(),
   }) {
@@ -239,7 +239,7 @@ class _$NextWord implements NextWord {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() nextWord,
-    required TResult Function(String char) charChosen,
+    required TResult Function(Pair<UniqueId, String> pairChar) charChosen,
     required TResult Function() charRemoved,
   }) {
     return nextWord();
@@ -250,7 +250,7 @@ class _$NextWord implements NextWord {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? nextWord,
-    TResult? Function(String char)? charChosen,
+    TResult? Function(Pair<UniqueId, String> pairChar)? charChosen,
     TResult? Function()? charRemoved,
   }) {
     return nextWord?.call();
@@ -261,7 +261,7 @@ class _$NextWord implements NextWord {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? nextWord,
-    TResult Function(String char)? charChosen,
+    TResult Function(Pair<UniqueId, String> pairChar)? charChosen,
     TResult Function()? charRemoved,
     required TResult orElse(),
   }) {
@@ -319,7 +319,7 @@ abstract class _$$CharChosenCopyWith<$Res> {
           _$CharChosen value, $Res Function(_$CharChosen) then) =
       __$$CharChosenCopyWithImpl<$Res>;
   @useResult
-  $Res call({String char});
+  $Res call({Pair<UniqueId, String> pairChar});
 }
 
 /// @nodoc
@@ -333,13 +333,13 @@ class __$$CharChosenCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? char = null,
+    Object? pairChar = null,
   }) {
     return _then(_$CharChosen(
-      null == char
-          ? _value.char
-          : char // ignore: cast_nullable_to_non_nullable
-              as String,
+      null == pairChar
+          ? _value.pairChar
+          : pairChar // ignore: cast_nullable_to_non_nullable
+              as Pair<UniqueId, String>,
     ));
   }
 }
@@ -347,14 +347,14 @@ class __$$CharChosenCopyWithImpl<$Res>
 /// @nodoc
 
 class _$CharChosen implements CharChosen {
-  const _$CharChosen(this.char);
+  const _$CharChosen(this.pairChar);
 
   @override
-  final String char;
+  final Pair<UniqueId, String> pairChar;
 
   @override
   String toString() {
-    return 'ExerciseAlphabetSoupEvent.charChosen(char: $char)';
+    return 'ExerciseAlphabetSoupEvent.charChosen(pairChar: $pairChar)';
   }
 
   @override
@@ -362,11 +362,12 @@ class _$CharChosen implements CharChosen {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CharChosen &&
-            (identical(other.char, char) || other.char == char));
+            (identical(other.pairChar, pairChar) ||
+                other.pairChar == pairChar));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, char);
+  int get hashCode => Object.hash(runtimeType, pairChar);
 
   @JsonKey(ignore: true)
   @override
@@ -379,10 +380,10 @@ class _$CharChosen implements CharChosen {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() nextWord,
-    required TResult Function(String char) charChosen,
+    required TResult Function(Pair<UniqueId, String> pairChar) charChosen,
     required TResult Function() charRemoved,
   }) {
-    return charChosen(char);
+    return charChosen(pairChar);
   }
 
   @override
@@ -390,10 +391,10 @@ class _$CharChosen implements CharChosen {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? nextWord,
-    TResult? Function(String char)? charChosen,
+    TResult? Function(Pair<UniqueId, String> pairChar)? charChosen,
     TResult? Function()? charRemoved,
   }) {
-    return charChosen?.call(char);
+    return charChosen?.call(pairChar);
   }
 
   @override
@@ -401,12 +402,12 @@ class _$CharChosen implements CharChosen {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? nextWord,
-    TResult Function(String char)? charChosen,
+    TResult Function(Pair<UniqueId, String> pairChar)? charChosen,
     TResult Function()? charRemoved,
     required TResult orElse(),
   }) {
     if (charChosen != null) {
-      return charChosen(char);
+      return charChosen(pairChar);
     }
     return orElse();
   }
@@ -450,9 +451,10 @@ class _$CharChosen implements CharChosen {
 }
 
 abstract class CharChosen implements ExerciseAlphabetSoupEvent {
-  const factory CharChosen(final String char) = _$CharChosen;
+  const factory CharChosen(final Pair<UniqueId, String> pairChar) =
+      _$CharChosen;
 
-  String get char;
+  Pair<UniqueId, String> get pairChar;
   @JsonKey(ignore: true)
   _$$CharChosenCopyWith<_$CharChosen> get copyWith =>
       throw _privateConstructorUsedError;
@@ -498,7 +500,7 @@ class _$CharRemoved implements CharRemoved {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() nextWord,
-    required TResult Function(String char) charChosen,
+    required TResult Function(Pair<UniqueId, String> pairChar) charChosen,
     required TResult Function() charRemoved,
   }) {
     return charRemoved();
@@ -509,7 +511,7 @@ class _$CharRemoved implements CharRemoved {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? nextWord,
-    TResult? Function(String char)? charChosen,
+    TResult? Function(Pair<UniqueId, String> pairChar)? charChosen,
     TResult? Function()? charRemoved,
   }) {
     return charRemoved?.call();
@@ -520,7 +522,7 @@ class _$CharRemoved implements CharRemoved {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? nextWord,
-    TResult Function(String char)? charChosen,
+    TResult Function(Pair<UniqueId, String> pairChar)? charChosen,
     TResult Function()? charRemoved,
     required TResult orElse(),
   }) {
@@ -576,9 +578,12 @@ abstract class CharRemoved implements ExerciseAlphabetSoupEvent {
 mixin _$ExerciseAlphabetSoupState {
   bool get isFinished => throw _privateConstructorUsedError;
   bool get showNextButton => throw _privateConstructorUsedError;
+  bool get wordConstructionError => throw _privateConstructorUsedError;
+  bool get wordFinished => throw _privateConstructorUsedError;
   int get position => throw _privateConstructorUsedError;
+  List<UniqueId> get usedChars => throw _privateConstructorUsedError;
   LanguageDirection get languageDirection => throw _privateConstructorUsedError;
-  List<Pair<WordModel, List<String>>> get letters =>
+  List<Pair<WordModel, List<Pair<UniqueId, String>>>> get letters =>
       throw _privateConstructorUsedError;
   String get constructedWord => throw _privateConstructorUsedError;
 
@@ -596,9 +601,12 @@ abstract class $ExerciseAlphabetSoupStateCopyWith<$Res> {
   $Res call(
       {bool isFinished,
       bool showNextButton,
+      bool wordConstructionError,
+      bool wordFinished,
       int position,
+      List<UniqueId> usedChars,
       LanguageDirection languageDirection,
-      List<Pair<WordModel, List<String>>> letters,
+      List<Pair<WordModel, List<Pair<UniqueId, String>>>> letters,
       String constructedWord});
 
   $LanguageDirectionCopyWith<$Res> get languageDirection;
@@ -620,7 +628,10 @@ class _$ExerciseAlphabetSoupStateCopyWithImpl<$Res,
   $Res call({
     Object? isFinished = null,
     Object? showNextButton = null,
+    Object? wordConstructionError = null,
+    Object? wordFinished = null,
     Object? position = null,
+    Object? usedChars = null,
     Object? languageDirection = null,
     Object? letters = null,
     Object? constructedWord = null,
@@ -634,10 +645,22 @@ class _$ExerciseAlphabetSoupStateCopyWithImpl<$Res,
           ? _value.showNextButton
           : showNextButton // ignore: cast_nullable_to_non_nullable
               as bool,
+      wordConstructionError: null == wordConstructionError
+          ? _value.wordConstructionError
+          : wordConstructionError // ignore: cast_nullable_to_non_nullable
+              as bool,
+      wordFinished: null == wordFinished
+          ? _value.wordFinished
+          : wordFinished // ignore: cast_nullable_to_non_nullable
+              as bool,
       position: null == position
           ? _value.position
           : position // ignore: cast_nullable_to_non_nullable
               as int,
+      usedChars: null == usedChars
+          ? _value.usedChars
+          : usedChars // ignore: cast_nullable_to_non_nullable
+              as List<UniqueId>,
       languageDirection: null == languageDirection
           ? _value.languageDirection
           : languageDirection // ignore: cast_nullable_to_non_nullable
@@ -645,7 +668,7 @@ class _$ExerciseAlphabetSoupStateCopyWithImpl<$Res,
       letters: null == letters
           ? _value.letters
           : letters // ignore: cast_nullable_to_non_nullable
-              as List<Pair<WordModel, List<String>>>,
+              as List<Pair<WordModel, List<Pair<UniqueId, String>>>>,
       constructedWord: null == constructedWord
           ? _value.constructedWord
           : constructedWord // ignore: cast_nullable_to_non_nullable
@@ -674,9 +697,12 @@ abstract class _$$_ExerciseAlphabetSoupStateCopyWith<$Res>
   $Res call(
       {bool isFinished,
       bool showNextButton,
+      bool wordConstructionError,
+      bool wordFinished,
       int position,
+      List<UniqueId> usedChars,
       LanguageDirection languageDirection,
-      List<Pair<WordModel, List<String>>> letters,
+      List<Pair<WordModel, List<Pair<UniqueId, String>>>> letters,
       String constructedWord});
 
   @override
@@ -698,7 +724,10 @@ class __$$_ExerciseAlphabetSoupStateCopyWithImpl<$Res>
   $Res call({
     Object? isFinished = null,
     Object? showNextButton = null,
+    Object? wordConstructionError = null,
+    Object? wordFinished = null,
     Object? position = null,
+    Object? usedChars = null,
     Object? languageDirection = null,
     Object? letters = null,
     Object? constructedWord = null,
@@ -712,10 +741,22 @@ class __$$_ExerciseAlphabetSoupStateCopyWithImpl<$Res>
           ? _value.showNextButton
           : showNextButton // ignore: cast_nullable_to_non_nullable
               as bool,
+      wordConstructionError: null == wordConstructionError
+          ? _value.wordConstructionError
+          : wordConstructionError // ignore: cast_nullable_to_non_nullable
+              as bool,
+      wordFinished: null == wordFinished
+          ? _value.wordFinished
+          : wordFinished // ignore: cast_nullable_to_non_nullable
+              as bool,
       position: null == position
           ? _value.position
           : position // ignore: cast_nullable_to_non_nullable
               as int,
+      usedChars: null == usedChars
+          ? _value._usedChars
+          : usedChars // ignore: cast_nullable_to_non_nullable
+              as List<UniqueId>,
       languageDirection: null == languageDirection
           ? _value.languageDirection
           : languageDirection // ignore: cast_nullable_to_non_nullable
@@ -723,7 +764,7 @@ class __$$_ExerciseAlphabetSoupStateCopyWithImpl<$Res>
       letters: null == letters
           ? _value._letters
           : letters // ignore: cast_nullable_to_non_nullable
-              as List<Pair<WordModel, List<String>>>,
+              as List<Pair<WordModel, List<Pair<UniqueId, String>>>>,
       constructedWord: null == constructedWord
           ? _value.constructedWord
           : constructedWord // ignore: cast_nullable_to_non_nullable
@@ -738,11 +779,16 @@ class _$_ExerciseAlphabetSoupState implements _ExerciseAlphabetSoupState {
   _$_ExerciseAlphabetSoupState(
       {this.isFinished = false,
       this.showNextButton = false,
+      this.wordConstructionError = false,
+      this.wordFinished = false,
       this.position = 0,
+      final List<UniqueId> usedChars = const [],
       required this.languageDirection,
-      required final List<Pair<WordModel, List<String>>> letters,
+      required final List<Pair<WordModel, List<Pair<UniqueId, String>>>>
+          letters,
       this.constructedWord = ""})
-      : _letters = letters;
+      : _usedChars = usedChars,
+        _letters = letters;
 
   @override
   @JsonKey()
@@ -752,12 +798,27 @@ class _$_ExerciseAlphabetSoupState implements _ExerciseAlphabetSoupState {
   final bool showNextButton;
   @override
   @JsonKey()
+  final bool wordConstructionError;
+  @override
+  @JsonKey()
+  final bool wordFinished;
+  @override
+  @JsonKey()
   final int position;
+  final List<UniqueId> _usedChars;
+  @override
+  @JsonKey()
+  List<UniqueId> get usedChars {
+    if (_usedChars is EqualUnmodifiableListView) return _usedChars;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_usedChars);
+  }
+
   @override
   final LanguageDirection languageDirection;
-  final List<Pair<WordModel, List<String>>> _letters;
+  final List<Pair<WordModel, List<Pair<UniqueId, String>>>> _letters;
   @override
-  List<Pair<WordModel, List<String>>> get letters {
+  List<Pair<WordModel, List<Pair<UniqueId, String>>>> get letters {
     if (_letters is EqualUnmodifiableListView) return _letters;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_letters);
@@ -769,7 +830,7 @@ class _$_ExerciseAlphabetSoupState implements _ExerciseAlphabetSoupState {
 
   @override
   String toString() {
-    return 'ExerciseAlphabetSoupState(isFinished: $isFinished, showNextButton: $showNextButton, position: $position, languageDirection: $languageDirection, letters: $letters, constructedWord: $constructedWord)';
+    return 'ExerciseAlphabetSoupState(isFinished: $isFinished, showNextButton: $showNextButton, wordConstructionError: $wordConstructionError, wordFinished: $wordFinished, position: $position, usedChars: $usedChars, languageDirection: $languageDirection, letters: $letters, constructedWord: $constructedWord)';
   }
 
   @override
@@ -781,8 +842,14 @@ class _$_ExerciseAlphabetSoupState implements _ExerciseAlphabetSoupState {
                 other.isFinished == isFinished) &&
             (identical(other.showNextButton, showNextButton) ||
                 other.showNextButton == showNextButton) &&
+            (identical(other.wordConstructionError, wordConstructionError) ||
+                other.wordConstructionError == wordConstructionError) &&
+            (identical(other.wordFinished, wordFinished) ||
+                other.wordFinished == wordFinished) &&
             (identical(other.position, position) ||
                 other.position == position) &&
+            const DeepCollectionEquality()
+                .equals(other._usedChars, _usedChars) &&
             (identical(other.languageDirection, languageDirection) ||
                 other.languageDirection == languageDirection) &&
             const DeepCollectionEquality().equals(other._letters, _letters) &&
@@ -795,7 +862,10 @@ class _$_ExerciseAlphabetSoupState implements _ExerciseAlphabetSoupState {
       runtimeType,
       isFinished,
       showNextButton,
+      wordConstructionError,
+      wordFinished,
       position,
+      const DeepCollectionEquality().hash(_usedChars),
       languageDirection,
       const DeepCollectionEquality().hash(_letters),
       constructedWord);
@@ -812,9 +882,13 @@ abstract class _ExerciseAlphabetSoupState implements ExerciseAlphabetSoupState {
   factory _ExerciseAlphabetSoupState(
       {final bool isFinished,
       final bool showNextButton,
+      final bool wordConstructionError,
+      final bool wordFinished,
       final int position,
+      final List<UniqueId> usedChars,
       required final LanguageDirection languageDirection,
-      required final List<Pair<WordModel, List<String>>> letters,
+      required final List<Pair<WordModel, List<Pair<UniqueId, String>>>>
+          letters,
       final String constructedWord}) = _$_ExerciseAlphabetSoupState;
 
   @override
@@ -822,11 +896,17 @@ abstract class _ExerciseAlphabetSoupState implements ExerciseAlphabetSoupState {
   @override
   bool get showNextButton;
   @override
+  bool get wordConstructionError;
+  @override
+  bool get wordFinished;
+  @override
   int get position;
+  @override
+  List<UniqueId> get usedChars;
   @override
   LanguageDirection get languageDirection;
   @override
-  List<Pair<WordModel, List<String>>> get letters;
+  List<Pair<WordModel, List<Pair<UniqueId, String>>>> get letters;
   @override
   String get constructedWord;
   @override

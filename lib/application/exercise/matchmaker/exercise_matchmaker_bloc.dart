@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:bloc/bloc.dart';
 import 'package:dictionary/domain/core/extensions.dart';
 import 'package:flutter/cupertino.dart';
@@ -11,11 +9,11 @@ import '../../../domain/word/word_model.dart';
 import '../../../infrastructure/config/const.dart';
 import '../form/exercise_form_bloc.dart';
 
+part 'exercise_matchmaker_bloc.freezed.dart';
+
 part 'exercise_matchmaker_event.dart';
 
 part 'exercise_matchmaker_state.dart';
-
-part 'exercise_matchmaker_bloc.freezed.dart';
 
 class ExerciseMatchmakerBloc extends Bloc<ExerciseMatchmakerEvent, ExerciseMatchmakerState> {
   final ExerciseFormBloc formBloc;
@@ -43,17 +41,14 @@ class ExerciseMatchmakerBloc extends Bloc<ExerciseMatchmakerEvent, ExerciseMatch
 
         List<WordModel> matchedWordsUpdated = List.from(state.matchedWords);
         if (state.wordChosenFirst == event.wordModel) {
-
           //Should be highlighted as CORRECT answer
-          emit(state.copyWith(highlightColor: exerciseSuccessColor, wordChosenSecond: event.wordModel, secondWordColumn: event.column));
+          emit(state.copyWith(highlightColor: Exercises.exerciseSuccessColor, wordChosenSecond: event.wordModel, secondWordColumn: event.column));
           matchedWordsUpdated.add(state.wordChosenFirst!);
 
           formBloc.add(ProgressChanged(all: initialWords.length, position: matchedWordsUpdated.length - 1));
-
         } else {
-
           //WRONG answer
-          emit(state.copyWith(highlightColor: exerciseErrorColor, wordChosenSecond: event.wordModel, secondWordColumn: event.column));
+          emit(state.copyWith(highlightColor: Exercises.exerciseErrorColor, wordChosenSecond: event.wordModel, secondWordColumn: event.column));
         }
 
         await Future.delayed(const Duration(milliseconds: 700));
@@ -68,7 +63,7 @@ class ExerciseMatchmakerBloc extends Bloc<ExerciseMatchmakerEvent, ExerciseMatch
 
         if (_checkIfExerciseIsFinished()) {
           emit(state.copyWith(isFinished: true));
-        } else if (matchedWordsUpdated.isNotEmpty && matchedWordsUpdated.length % exerciseMatchmakerRowsCount == 0) {
+        } else if (matchedWordsUpdated.isNotEmpty && matchedWordsUpdated.length % Exercises.exerciseMatchmakerRowsCount == 0) {
           emit(state.copyWith(showNextButton: true));
         }
       }
@@ -94,7 +89,7 @@ class ExerciseMatchmakerBloc extends Bloc<ExerciseMatchmakerEvent, ExerciseMatch
   }
 
   Pair<List<WordModel>, List<WordModel>> _takeNewCollection() {
-    var newCollection = initialWords.skip(state.matchedWords.length).take(exerciseMatchmakerRowsCount).toList();
+    var newCollection = initialWords.skip(state.matchedWords.length).take(Exercises.exerciseMatchmakerRowsCount).toList();
     var pair = newCollection.getMatchmakerCollection();
     return pair;
   }
@@ -103,51 +98,3 @@ class ExerciseMatchmakerBloc extends Bloc<ExerciseMatchmakerEvent, ExerciseMatch
     return state.matchedWords.length == initialWords.length;
   }
 }
-
-/*        on<OptionChosen>((event, emit)
-    async {
-      if (state.wordChosenFirst == null) {
-        */ /*
-        Word from the first column was chosen
-        */ /*
-        emit(state.copyWith(wordChosenFirst: event.wordModel));
-      } else if (state.wordChosenSecond == null) {
-        */ /*
-        Word from the second column was chosen
-        */ /*
-        var matchedWordsUpdated = state.matchedWords;
-        if (state.wordChosenFirst?.id == state.wordChosenSecond?.id) {
-          //Should be highlighted as CORRECT answer
-          emit(state.copyWith(highlightColor: exerciseSuccessColor, wordChosenSecond: event.wordModel));
-          matchedWordsUpdated.add(state.wordChosenFirst!);
-        } else {
-          emit(state.copyWith(highlightColor: exerciseErrorColor, wordChosenSecond: event.wordModel));
-        }
-
-        await Future.delayed(const Duration(milliseconds: 300));
-
-        emit(state.copyWith(highlightColor: null, wordChosenSecond: null, wordChosenFirst: null, matchedWords: matchedWordsUpdated));
-      }
-    });
-    on<NextWord>((event, emit) {
-    if (state.matchedWords.length == state.collectionPair.first.length) {
-    emit(state.copyWith(isFinished: true));
-    } else {
-    var newCollectionToDisplayF = state.collectionPair.first.skip(state.matchedWords.length).take(exerciseMatchmakerRowsCount).toList();
-    var newCollectionToDisplayS = state.collectionPair.second.skip(state.matchedWords.length).take(exerciseMatchmakerRowsCount).toList();
-
-    var newState = state.copyWith(
-    page: state.page + 1,
-    showNextButton: false,
-    collectionToDisplay: newCollectionToDisplay,
-    );
-
-    emit(newState);
-
-    formBloc.add(ProgressChanged(all: collection.length, position: state.matchedWords.length));
-    }
-    });*/
-//
-//         });
-//
-// }

@@ -4,6 +4,6 @@ part of 'exercise_alphabet_soup_bloc.dart';
 class ExerciseAlphabetSoupEvent with _$ExerciseAlphabetSoupEvent {
   const factory ExerciseAlphabetSoupEvent.started() = _Started;
   const factory ExerciseAlphabetSoupEvent.nextWord() = NextWord;
-  const factory ExerciseAlphabetSoupEvent.charChosen(String char) = CharChosen;
+  const factory ExerciseAlphabetSoupEvent.charChosen(Pair<UniqueId, String> pairChar) = CharChosen;
   const factory ExerciseAlphabetSoupEvent.charRemoved() = CharRemoved;
 }

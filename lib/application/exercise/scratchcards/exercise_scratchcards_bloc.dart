@@ -12,11 +12,6 @@ part 'exercise_scratchcards_state.dart';
 part 'exercise_scratchcards_bloc.freezed.dart';
 
 class ExerciseScratchcardsBloc extends Bloc<ExerciseScratchcardsEvent, ExerciseScratchcardsState> {
-  final int speed = 250;
-  static double cardSize = 300;
-  static double langImageSize = 35;
-  static double wordFontSize = 35.0;
-
   final ExerciseFormBloc formBloc;
 
   ExerciseScratchcardsBloc({

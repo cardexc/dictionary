@@ -1,11 +1,18 @@
 import 'dart:math';
 
+import 'package:dictionary/domain/core/value_objects.dart';
 import 'package:dictionary/domain/languages.dart';
 import 'package:dictionary/domain/lesson/language_direction.dart';
 import 'package:dictionary/domain/word/word_model.dart';
 import 'package:flutter/material.dart';
 
 import '../pair.dart';
+
+extension EmptyContainerExtension on num {
+  SizedBox get ph => SizedBox(height: toDouble());
+
+  SizedBox get pw => SizedBox(width: toDouble());
+}
 
 extension ListExtension<T> on Iterable<T> {
   List<T> takeExcept(bool Function(T) test) {
@@ -62,15 +69,16 @@ extension ListOfWordModelsExtension<WordModel> on List<WordModel> {
   }
 }
 
-List<Pair<WordModel, List<String>>> getSoupLettersFromWords(List<WordModel> words, LanguageDirection languageDirection) {
-  List<Pair<WordModel, List<String>>> result = [];
+List<Pair<WordModel, List<Pair<UniqueId, String>>>> getSoupLettersFromWords(List<WordModel> words, LanguageDirection languageDirection) {
+  List<Pair<WordModel, List<Pair<UniqueId, String>>>> result = [];
 
   for (WordModel word in words) {
     var translateToString = word.getStringAccordingToLanguageDirection(languageDirection, 1);
     var list = translateToString.characters.toList();
     list.shuffle();
+    var listOfPairs = list.map((e) => Pair(UniqueId(), e)).toList();
 
-    result.add(Pair(word, list));
+    result.add(Pair(word, listOfPairs));
   }
 
   return result;

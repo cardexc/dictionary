@@ -1,3 +1,5 @@
+import 'package:dictionary/domain/speech/i_speech_repository.dart';
+import 'package:dictionary/infrastructure/helpers/asset_helper.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -22,6 +24,9 @@ void main() async {
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(statusBarColor: Colors.transparent));
 
   prepareDeviceInformation();
+
+  await getIt<AssetHelper>().init();
+  getIt<ISpeechRepository>().init();
 
   runApp(
     EasyLocalization(

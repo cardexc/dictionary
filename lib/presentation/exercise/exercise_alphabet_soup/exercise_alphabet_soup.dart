@@ -1,19 +1,22 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:dictionary/application/exercise/alphabet_soup/exercise_alphabet_soup_bloc.dart';
 import 'package:dictionary/domain/core/extensions.dart';
+import 'package:dictionary/domain/core/value_objects.dart';
 import 'package:dictionary/infrastructure/config/const.dart';
-import 'package:flip_card/flip_card.dart';
+import 'package:dictionary/presentation/widgets/buttons/sound_play_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:scratcher/scratcher.dart';
 
 import '../../../../domain/languages.dart';
 import '../../../../domain/lesson/language_direction.dart';
 import '../../../../domain/word/word_model.dart';
 import '../../../../infrastructure/config/app_colors.dart';
 import '../../../application/exercise/form/exercise_form_bloc.dart';
+import '../../../domain/pair.dart';
 import '../../widgets/buttons/yellow_elevated_button.dart';
+import '../../widgets/widgets.dart';
+import 'exercise_alphabetsoup_finish.dart';
 
 class ExerciseAlphabetSoup extends StatelessWidget {
   final LanguageDirection languageDirection;
@@ -48,7 +51,7 @@ class _ExerciseAlphabetSoupBody extends StatelessWidget {
         return state.isFinished;
       },
       builder: (context, isFinished) {
-        return isFinished ? Container() : _buildExercise(context);
+        return isFinished ? const ExerciseAlphabetSoupFinish() : _buildExercise(context);
       },
     );
   }
@@ -59,58 +62,90 @@ class _ExerciseAlphabetSoupBody extends StatelessWidget {
     return Expanded(
       child: Stack(
         children: [
-          Align(
-            alignment: Alignment.topCenter,
-            child: BlocBuilder<ExerciseAlphabetSoupBloc, ExerciseAlphabetSoupState>(
-              builder: (context, state) {
-                var wordPair = state.letters[state.position];
-                var wordModel = wordPair.first;
-                var lettersList = wordPair.second;
-                var languageDirection = state.languageDirection;
-                var languageFromString = wordModel.getStringAccordingToLanguageDirection(languageDirection, 0);
-                var headerWidgetHeight = 100.0;
-                var lettersWidgetHeight = 400.0;
-                var tController = TextEditingController()..text = state.constructedWord;
+          SingleChildScrollView(
+            child: Align(
+              alignment: Alignment.topCenter,
+              child: BlocBuilder<ExerciseAlphabetSoupBloc, ExerciseAlphabetSoupState>(
+                builder: (context, state) {
+                  var wordPair = state.letters[state.position];
+                  var wordModel = wordPair.first;
+                  var listOfPairs = wordPair.second;
+                  var languageDirection = state.languageDirection;
+                  var headerWidgetHeight = 100.0;
+                  var tController = TextEditingController()..text = state.constructedWord;
 
-                return Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: mediumPadding),
-                  child: Column(
-                    children: [
-                      /*
-                      * Header*/
-                      _buildHeaderRow(languageDirection, size, headerWidgetHeight, languageFromString),
+                  BoxDecoration boxDecoration = defaultCupertinoBoxDecoration;
 
-                      /*
-                      * Constructed word*/
-                      const SizedBox(height: largePadding),
-                      CupertinoTextField(
-                        readOnly: true,
-                        enableSuggestions: false,
-                        controller: tController,
-                        padding: const EdgeInsets.all(mediumPadding),
-                        style: Exercises.exerciseAlphabetSoupConstructedWordTextStyle,
-                        clearButtonMode: OverlayVisibilityMode.always,
-                        suffix: IconButton(
-                          icon: const Icon(CupertinoIcons.delete_left),
-                          onPressed: () {
-                            context.read<ExerciseAlphabetSoupBloc>().add(const CharRemoved());
-                          },
+                  if (state.wordFinished && state.wordConstructionError) {
+                    boxDecoration = boxDecoration.copyWith(color: Exercises.exerciseErrorColor);
+                  } else if (state.wordFinished && !state.wordConstructionError) {
+                    boxDecoration = boxDecoration.copyWith(color: Exercises.exerciseSuccessColor);
+                  }
+
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: mediumPadding),
+                    child: Column(
+                      children: [
+                        /*
+                        * Header*/
+
+                        _buildHeader(languageDirection, wordModel, state.showNextButton),
+
+                        /*
+                        * Constructed word*/
+                        const SizedBox(height: largePadding),
+                        CupertinoTextField(
+                          decoration: boxDecoration,
+                          readOnly: true,
+                          enableSuggestions: false,
+                          controller: tController,
+                          padding: const EdgeInsets.all(mediumPadding),
+                          style: Exercises.exerciseAlphabetSoupConstructedWordTextStyle,
+                          suffix: IconButton(
+                            icon: const Icon(CupertinoIcons.delete_left),
+                            onPressed: () {
+                              if (state.usedChars.isNotEmpty && !state.wordFinished) {
+                                context.read<ExerciseAlphabetSoupBloc>().add(const CharRemoved());
+                              }
+                            },
+                          ),
+                          maxLines: 4,
+                          minLines: 1,
                         ),
-                        maxLines: 4,
-                        minLines: 1,
-                      ),
-                      const SizedBox(height: largePadding),
+                        const SizedBox(height: largePadding),
+                        if (state.wordFinished && state.wordConstructionError)
+                          Column(
+                            children: [
+                              AutoSizeText(
+                                wordModel.getStringAccordingToLanguageDirection(languageDirection, 1),
+                                style: TextStyle(
+                                  color: CupertinoColors.label,
+                                  fontSize: Exercises.wordFontSize,
+                                ),
+                                maxLines: 2,
+                              ),
+                              const SizedBox(height: largePadding),
+                            ],
+                          ),
 
-                      /*Letters*/
-                      Wrap(
-                        spacing: smallPadding,
-                        runSpacing: smallPadding,
-                        children: [...lettersList.map((letter) => CharContainer(letter)).toList()],
-                      )
-                    ],
-                  ),
-                );
-              },
+                        /*Letters*/
+                        Wrap(
+                          spacing: smallPadding,
+                          runSpacing: smallPadding,
+                          children: [
+                            ...listOfPairs
+                                .map((pair) => CharContainer(
+                                      pair,
+                                      state.usedChars,
+                                    ))
+                                .toList()
+                          ],
+                        )
+                      ],
+                    ),
+                  );
+                },
+              ),
             ),
           ),
           BlocSelector<ExerciseAlphabetSoupBloc, ExerciseAlphabetSoupState, bool>(
@@ -136,116 +171,72 @@ class _ExerciseAlphabetSoupBody extends StatelessWidget {
     );
   }
 
-  Row _buildHeaderRow(LanguageDirection languageDirection, Size size, double headerWidgetHeight, String languageFromString) {
-    return Row(
-      mainAxisAlignment: languageDirection.languageFrom == Languages.pl ? MainAxisAlignment.spaceBetween : MainAxisAlignment.start,
-      children: [
-        if (!languageDirection.isRu(0))
-          Image(
-            height: Exercises.langImageSize,
-            image: AssetImage(languageDirection.firstAsset),
-          ),
-        const SizedBox(
-          width: mediumPadding,
-        ),
-        SizedBox(
-          width: size.width * 0.6,
-          height: headerWidgetHeight,
-          child: Align(
-            alignment: Alignment.center,
+  Widget _buildHeader(LanguageDirection languageDirection, WordModel wordModel, bool showNextButton) {
+    var headerWidgetHeight = 100.0;
+    var languageFromString = wordModel.getStringAccordingToLanguageDirection(languageDirection, 0);
+
+    return Container(
+      color: Colors.transparent,
+      height: headerWidgetHeight,
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          if (!languageDirection.isRu(0))
+            Image(
+              height: Exercises.langImageSize,
+              image: AssetImage(languageDirection.firstAsset),
+            ),
+          mediumPadding.pw,
+          Expanded(
             child: AutoSizeText(
               languageFromString,
               style: TextStyle(
                 color: CupertinoColors.label,
                 fontSize: Exercises.wordFontSize,
               ),
-              textAlign: languageDirection.languageFrom == Languages.pl ? TextAlign.center : TextAlign.left,
+              textAlign: TextAlign.center,
               maxLines: 4,
             ),
           ),
-        ),
-        const SizedBox(
-          width: mediumPadding,
-        ),
-        if (languageDirection.languageFrom == Languages.pl) const Icon(CupertinoIcons.speaker_1, size: 32, color: AppColors.appGrey),
-      ],
-    );
-  }
-
-/*Widget _buildContainer(BuildContext context, WordModel wordModel, int column, ExerciseMatchmakerState state) {
-    Color borderHighlightColor = Colors.transparent;
-    if (state.wordChosenFirst != null &&
-        state.wordChosenSecond == null &&
-        (column == state.firstWordColumn || column == state.secondWordColumn) &&
-        wordModel == state.wordChosenFirst) {
-      borderHighlightColor = exerciseSuccessColor;
-    }
-
-    Color highlightColor = Colors.transparent;
-    if (state.wordChosenFirst != null &&
-        state.wordChosenSecond != null &&
-        (wordModel == state.wordChosenFirst && column == state.firstWordColumn ||
-            wordModel == state.wordChosenSecond && column == state.secondWordColumn)) {
-      highlightColor = state.highlightColor ?? Colors.transparent;
-    }
-
-    if (state.matchedWords.contains(wordModel)) {
-      highlightColor = AppColors.grey400;
-    }
-    return Card(
-      key: ValueKey(wordModel.id),
-      child: AnimatedContainer(
-        height: rowHeight,
-        duration: animationDuration,
-        decoration: BoxDecoration(
-          color: highlightColor,
-          border: Border.all(color: borderHighlightColor, width: 5),
-          borderRadius: BorderRadius.circular(4),
-        ),
-        child: InkWell(
-          onTap: () {
-            var enabled = true;
-
-            if (state.firstWordColumn != null && state.secondWordColumn == null && state.firstWordColumn == column) {
-              enabled = false;
-            }
-
-            if (enabled && !state.matchedWords.contains(wordModel)) {
-              context.read<ExerciseMatchmakerBloc>().add(OptionChosen(wordModel, column));
-            }
-          },
-          child: Center(
-            child: AutoSizeText(
-              wordModel.getStringAccordingToLanguageDirection(state.languageDirection, column),
-              style: exerciseMatchmakerItemsTextStyle,
-              textAlign: TextAlign.center,
-              maxLines: 5,
-            ),
-          ),
-        ),
+          mediumPadding.pw,
+          showNextButton || languageDirection.languageFrom == Languages.pl
+              ? SoundPlayButton(
+                  wordModel: wordModel,
+                  languageDirection: languageDirection,
+                  highlightBack: false,
+                )
+              : SoundPlayButton.width.pw,
+        ],
       ),
     );
-  }*/
+  }
 }
 
 class CharContainer extends StatelessWidget {
-  final String ch;
+  final Pair<UniqueId, String> pair;
+  final List<UniqueId> usedChars;
 
-  const CharContainer(this.ch, {Key? key}) : super(key: key);
+  const CharContainer(this.pair, this.usedChars, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    var enabled = !usedChars.contains(pair.first);
+
     return SizedBox(
       width: Exercises.letterContainerWidth,
       height: Exercises.letterContainerWidth,
       child: Card(
+        color: enabled ? null : AppColors.grey400,
         child: InkWell(
           onTap: () {
-            context.read<ExerciseAlphabetSoupBloc>().add(CharChosen(ch));
+            if (enabled) {
+              context.read<ExerciseAlphabetSoupBloc>().add(CharChosen(pair));
+            }
           },
           child: Center(
             child: Text(
-              ch,
+              pair.second,
               style: Exercises.exerciseAlphabetSoupCharacterTextStyle,
             ),
           ),

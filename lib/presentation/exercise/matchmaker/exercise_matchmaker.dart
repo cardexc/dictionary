@@ -51,8 +51,6 @@ class _ExerciseMatchmakerBody extends StatelessWidget {
   }
 
   Widget _buildExercise(BuildContext context) {
-    var size = MediaQuery.of(context).size;
-
     return Expanded(
       child: Stack(
         children: [
@@ -61,7 +59,7 @@ class _ExerciseMatchmakerBody extends StatelessWidget {
             child: BlocBuilder<ExerciseMatchmakerBloc, ExerciseMatchmakerState>(
               builder: (context, state) {
                 return Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: mediumPadding),
+                  padding: const EdgeInsets.symmetric(horizontal: mediumPadding, vertical: largePadding),
                   child: Row(
                     children: [
                       Expanded(
@@ -117,7 +115,7 @@ class _ExerciseMatchmakerBody extends StatelessWidget {
         state.wordChosenSecond == null &&
         (column == state.firstWordColumn || column == state.secondWordColumn) &&
         wordModel == state.wordChosenFirst) {
-      borderHighlightColor = exerciseSuccessColor;
+      borderHighlightColor = Exercises.exerciseSuccessColor;
     }
 
     Color highlightColor = Colors.transparent;
@@ -156,7 +154,7 @@ class _ExerciseMatchmakerBody extends StatelessWidget {
           child: Center(
             child: AutoSizeText(
               wordModel.getStringAccordingToLanguageDirection(state.languageDirection, column),
-              style: exerciseMatchmakerItemsTextStyle,
+              style: Exercises.exerciseMatchmakerItemsTextStyle,
               textAlign: TextAlign.center,
               maxLines: 5,
             ),

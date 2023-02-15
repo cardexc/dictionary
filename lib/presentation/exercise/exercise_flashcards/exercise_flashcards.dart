@@ -12,6 +12,7 @@ import '../../../domain/languages.dart';
 import '../../../domain/lesson/language_direction.dart';
 import '../../../domain/word/word_model.dart';
 import '../../../infrastructure/config/app_colors.dart';
+import '../../widgets/buttons/sound_play_button.dart';
 import '../../widgets/buttons/yellow_elevated_button.dart';
 
 class ExerciseFlashcards extends StatelessWidget {
@@ -136,7 +137,10 @@ class _ExerciseFlashcardsBody extends StatelessWidget {
                     image: AssetImage(side == 0 ? languageDirection.firstAsset : languageDirection.secondAsset),
                   ),
                 if ((languageDirection.languageFrom == Languages.pl && side == 0) || (languageDirection.languageTo == Languages.pl && side == 1))
-                  const Icon(CupertinoIcons.speaker_1, size: 32, color: AppColors.appGrey),
+                  SoundPlayButton(
+                    wordModel: wordModel,
+                    languageDirection: languageDirection,
+                  ),
               ],
             ),
             Expanded(

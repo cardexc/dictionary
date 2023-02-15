@@ -7,14 +7,15 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../domain/exercise/exercise_model.dart';
 import '../../../domain/word/word_model.dart';
 import '../../../main.dart';
 import '../../widgets/buttons/yellow_elevated_button.dart';
 import '../../widgets/scaffold_gradient.dart';
+import '../../widgets/widgets.dart';
 
 class ExerciseChoosePage extends StatelessWidget {
   final LanguageDirection languageDirection;

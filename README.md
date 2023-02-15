@@ -1,16 +1,7 @@
-# dictionary
+Welcome to our Language Learning App! We are excited to bring you an innovative and interactive way to learn a new language. With our app, you can master the basics and beyond with a variety of exercises and real-life scenarios.
 
-A new Flutter project.
+Our app features five exercises: Scratchcard, Flashcards, Matchmaker, Multiple Choice, and Alphabet Soup. These exercises are designed to challenge you and help you build your vocabulary and language skills. Plus, with additional exercises and content available for paid subscribers, you can take your language learning to the next level.
 
-## Getting Started
+Whether you're a beginner or an advanced learner, our app is designed to help you achieve your language learning goals. With real-life scenarios, you can practice your language skills in a practical and engaging way. And, with the help of native speakers and personalized feedback, you'll be able to make significant progress in no time.
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+So, join us on this language learning journey and take the first step towards fluency!
