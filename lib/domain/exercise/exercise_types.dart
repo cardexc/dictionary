@@ -4,4 +4,5 @@ enum ExerciseType {
   multipleChoice,
   matchMaker,
   alphabetSoup,
+  writing,
 }

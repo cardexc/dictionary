@@ -15,6 +15,8 @@ import '../../../../domain/word/word_model.dart';
 import '../../../../infrastructure/config/app_colors.dart';
 import '../../widgets/buttons/sound_play_button.dart';
 import '../../widgets/buttons/yellow_elevated_button.dart';
+import '../../widgets/enemy_language_circle.dart';
+import '../../widgets/exercise_header_row.dart';
 
 class ExerciseScratchcards extends StatelessWidget {
   final LanguageDirection languageDirection;
@@ -71,61 +73,52 @@ class _ExerciseScratchcardsBody extends StatelessWidget {
               return Column(
                 children: [
                   /*Header*/
-                  _buildHeader(languageDirection, wordModel),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: mediumPadding),
+                    child: ExerciseHeaderRow(wordModel: wordModel, languageDirection: languageDirection, showSound: state.wasScratched),
+                  ),
 
                   /*Scratcher*/
-                  Scratcher(
-                    key: ValueKey(wordModel.id),
-                    brushSize: 30,
-                    threshold: 50,
-                    color: AppColors.appGrey,
-                    onScratchStart: () => context.read<ExerciseScratchcardsBloc>().add(const ExerciseScratchcardsEvent.cardScratched()),
-                    child: Container(
-                      height: 150,
-                      width: size.width * 0.8,
-                      color: Colors.transparent,
-                      child: Align(
-                        alignment: Alignment.center,
-                        child: AutoSizeText(
-                          languageToString,
-                          style: TextStyle(
-                            color: CupertinoColors.label,
-                            fontSize: Exercises.wordFontSize,
-                          ),
-                          textAlign: TextAlign.center,
-                          maxLines: 4,
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: largePadding),
+                    child: Scratcher(
+                      key: ValueKey(wordModel.id),
+                      brushSize: 30,
+                      threshold: 50,
+                      color: AppColors.appGrey,
+                      onScratchStart: () => context.read<ExerciseScratchcardsBloc>().add(const ExerciseScratchcardsEvent.cardScratched()),
+                      child: Container(
+                        height: 150,
+                        child: Stack(
+                          children: [
+                            Positioned(
+                              left: largePadding,
+                              top: largePadding,
+                              child: languageDirection.isRu(1)
+                                  ? const EnemyLanguageCircle()
+                                  : Image(
+                                      height: Exercises.langImageSize,
+                                      image: AssetImage(languageDirection.secondAsset),
+                                    ),
+                            ),
+                            Align(
+                              alignment: Alignment.center,
+                              child: AutoSizeText(
+                                languageToString,
+                                style: TextStyle(
+                                  color: CupertinoColors.label,
+                                  fontSize: Exercises.wordFontSize,
+                                ),
+                                textAlign: TextAlign.center,
+                                maxLines: 4,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ),
                   ),
                   largePadding.ph,
-                  if (languageDirection.languageTo == Languages.pl)
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Image(
-                          height: Exercises.langImageSize,
-                          image: AssetImage(languageDirection.secondAsset),
-                        ),
-                        mediumPadding.pw,
-                        SoundPlayButton(
-                          wordModel: wordModel,
-                          languageDirection: languageDirection,
-                        ),
-                        mediumPadding.pw,
-                      ],
-                    ),
-                  if (languageDirection.languageTo == Languages.uk)
-                    Padding(
-                      padding: const EdgeInsets.only(right: mediumPadding),
-                      child: Align(
-                        alignment: Alignment.centerRight,
-                        child: Image(
-                          height: Exercises.langImageSize,
-                          image: AssetImage(languageDirection.secondAsset),
-                        ),
-                      ),
-                    )
                 ],
               );
             }),
@@ -148,49 +141,6 @@ class _ExerciseScratchcardsBody extends StatelessWidget {
               );
             },
           ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildHeader(LanguageDirection languageDirection, WordModel wordModel) {
-    var headerWidgetHeight = 100.0;
-    var languageFromString = wordModel.getStringAccordingToLanguageDirection(languageDirection, 0);
-
-    return Container(
-      color: Colors.transparent,
-      height: headerWidgetHeight,
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          mediumPadding.pw,
-          if (!languageDirection.isRu(0))
-            Image(
-              height: Exercises.langImageSize,
-              image: AssetImage(languageDirection.firstAsset),
-            ),
-          mediumPadding.pw,
-          Expanded(
-            child: AutoSizeText(
-              languageFromString,
-              style: TextStyle(
-                color: CupertinoColors.label,
-                fontSize: Exercises.wordFontSize,
-              ),
-              textAlign: TextAlign.center,
-              maxLines: 4,
-            ),
-          ),
-          mediumPadding.pw,
-          languageDirection.languageFrom == Languages.pl
-              ? SoundPlayButton(
-                  wordModel: wordModel,
-                  languageDirection: languageDirection,
-                  highlightBack: false,
-                )
-              : SoundPlayButton.width.pw,
-          mediumPadding.pw,
         ],
       ),
     );

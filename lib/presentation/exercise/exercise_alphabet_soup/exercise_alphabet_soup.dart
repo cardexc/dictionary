@@ -1,20 +1,19 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:dictionary/application/exercise/alphabet_soup/exercise_alphabet_soup_bloc.dart';
 import 'package:dictionary/domain/core/extensions.dart';
 import 'package:dictionary/domain/core/value_objects.dart';
 import 'package:dictionary/infrastructure/config/const.dart';
-import 'package:dictionary/presentation/widgets/buttons/sound_play_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../domain/languages.dart';
 import '../../../../domain/lesson/language_direction.dart';
 import '../../../../domain/word/word_model.dart';
 import '../../../../infrastructure/config/app_colors.dart';
 import '../../../application/exercise/form/exercise_form_bloc.dart';
 import '../../../domain/pair.dart';
 import '../../widgets/buttons/yellow_elevated_button.dart';
+import '../../widgets/exercise_correct_word_widget.dart';
+import '../../widgets/exercise_header_row.dart';
 import '../../widgets/widgets.dart';
 import 'exercise_alphabetsoup_finish.dart';
 
@@ -86,21 +85,17 @@ class _ExerciseAlphabetSoupBody extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: mediumPadding),
                     child: Column(
                       children: [
-                        /*
-                        * Header*/
+                        /*Header*/
+                        ExerciseHeaderRow(wordModel: wordModel, languageDirection: languageDirection, showSound: state.showNextButton),
 
-                        _buildHeader(languageDirection, wordModel, state.showNextButton),
-
-                        /*
-                        * Constructed word*/
-                        const SizedBox(height: largePadding),
+                        /*Constructed word*/
                         CupertinoTextField(
                           decoration: boxDecoration,
                           readOnly: true,
                           enableSuggestions: false,
                           controller: tController,
                           padding: const EdgeInsets.all(mediumPadding),
-                          style: Exercises.exerciseAlphabetSoupConstructedWordTextStyle,
+                          style: Exercises.exerciseConstructedWordTextStyle,
                           suffix: IconButton(
                             icon: const Icon(CupertinoIcons.delete_left),
                             onPressed: () {
@@ -112,35 +107,28 @@ class _ExerciseAlphabetSoupBody extends StatelessWidget {
                           maxLines: 4,
                           minLines: 1,
                         ),
-                        const SizedBox(height: largePadding),
+
+                        /*Space*/
+                        if (!(state.wordFinished && state.wordConstructionError)) largePadding.ph,
+
+                        /*Correct word*/
                         if (state.wordFinished && state.wordConstructionError)
-                          Column(
-                            children: [
-                              AutoSizeText(
-                                wordModel.getStringAccordingToLanguageDirection(languageDirection, 1),
-                                style: TextStyle(
-                                  color: CupertinoColors.label,
-                                  fontSize: Exercises.wordFontSize,
-                                ),
-                                maxLines: 2,
-                              ),
-                              const SizedBox(height: largePadding),
-                            ],
-                          ),
+                          ExerciseCorrectWordWidget(languageDirection: languageDirection, wordModel: wordModel),
 
                         /*Letters*/
-                        Wrap(
-                          spacing: smallPadding,
-                          runSpacing: smallPadding,
-                          children: [
-                            ...listOfPairs
-                                .map((pair) => CharContainer(
-                                      pair,
-                                      state.usedChars,
-                                    ))
-                                .toList()
-                          ],
-                        )
+                        if (!state.wordFinished)
+                          Wrap(
+                            spacing: smallPadding,
+                            runSpacing: smallPadding,
+                            children: [
+                              ...listOfPairs
+                                  .map((pair) => CharContainer(
+                                        pair,
+                                        state.usedChars,
+                                      ))
+                                  .toList()
+                            ],
+                          )
                       ],
                     ),
                   );
@@ -166,47 +154,6 @@ class _ExerciseAlphabetSoupBody extends StatelessWidget {
               );
             },
           ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildHeader(LanguageDirection languageDirection, WordModel wordModel, bool showNextButton) {
-    var headerWidgetHeight = 100.0;
-    var languageFromString = wordModel.getStringAccordingToLanguageDirection(languageDirection, 0);
-
-    return Container(
-      color: Colors.transparent,
-      height: headerWidgetHeight,
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          if (!languageDirection.isRu(0))
-            Image(
-              height: Exercises.langImageSize,
-              image: AssetImage(languageDirection.firstAsset),
-            ),
-          mediumPadding.pw,
-          Expanded(
-            child: AutoSizeText(
-              languageFromString,
-              style: TextStyle(
-                color: CupertinoColors.label,
-                fontSize: Exercises.wordFontSize,
-              ),
-              textAlign: TextAlign.center,
-              maxLines: 4,
-            ),
-          ),
-          mediumPadding.pw,
-          showNextButton || languageDirection.languageFrom == Languages.pl
-              ? SoundPlayButton(
-                  wordModel: wordModel,
-                  languageDirection: languageDirection,
-                  highlightBack: false,
-                )
-              : SoundPlayButton.width.pw,
         ],
       ),
     );

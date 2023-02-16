@@ -13,6 +13,7 @@ import '../../../../infrastructure/config/app_colors.dart';
 import '../../../application/exercise/form/exercise_form_bloc.dart';
 import '../../widgets/buttons/sound_play_button.dart';
 import '../../widgets/buttons/yellow_elevated_button.dart';
+import '../../widgets/exercise_header_row.dart';
 import 'exercise_multiplechoice_finish.dart';
 
 class ExerciseMultipleChoice extends StatelessWidget {
@@ -74,9 +75,13 @@ class _ExerciseMultipleChoiceBody extends StatelessWidget {
                     height: headerWidgetHeight,
                     child:
 
+                    /*Header*/
+                    ExerciseHeaderRow(wordModel: wordModelPair.first, languageDirection: languageDirection, showSound: state.showNextButton),
+
+
                         // Container(),
 
-                        Row(
+                        /*Row(
                       mainAxisAlignment: languageDirection.languageFrom == Languages.pl ? MainAxisAlignment.spaceBetween : MainAxisAlignment.start,
                       children: [
                         !languageDirection.isRu(0)
@@ -106,7 +111,7 @@ class _ExerciseMultipleChoiceBody extends StatelessWidget {
                               )
                             : SoundPlayButton.width.pw,
                       ],
-                    ),
+                    ),*/
                   ),
                   const _ChoiceOptionsWidget(),
                 ],

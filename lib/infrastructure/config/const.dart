@@ -14,14 +14,17 @@ const defaultVoiceIndex = 0;
 
 class Exercises {
   static const langImageSize = 35.0;
-  static double wordFontSize = 35.0;
+  static double wordFontSize = 22.0;
   static double letterContainerWidth = 70.0;
 
   static TextStyle exerciseAlphabetSoupCharacterTextStyle = exerciseCardItemsTextStyle.copyWith(fontWeight: FontWeight.w300);
-  static TextStyle exerciseAlphabetSoupConstructedWordTextStyle =
-      exerciseCardItemsTextStyle.copyWith(fontWeight: FontWeight.w400, letterSpacing: 2, fontSize: 26);
+
+  static TextStyle exerciseConstructedWordTextStyle = exerciseCardItemsTextStyle.copyWith(fontWeight: FontWeight.w300, fontSize: 22);
+
   static const TextStyle exerciseCardItemsTextStyle = TextStyle(fontWeight: FontWeight.w300, fontSize: 19.0);
+
   static const TextStyle exerciseMultipleChoiceItemsTextStyle = exerciseCardItemsTextStyle;
+
   static const TextStyle exerciseMatchmakerItemsTextStyle = exerciseCardItemsTextStyle;
 
   static Color exerciseErrorColor = Colors.red[200]!;

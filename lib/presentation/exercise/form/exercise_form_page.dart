@@ -14,6 +14,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../application/exercise/form/exercise_form_bloc.dart';
 import '../../../domain/exercise/exercise_model.dart';
 import '../../../domain/word/word_model.dart';
+import '../exercise_writing/exercise_writing.dart';
 import '../matchmaker/exercise_matchmaker.dart';
 
 class ExerciseFormPage extends StatelessWidget {
@@ -81,7 +82,9 @@ class _ExerciseFormPagePageBody extends StatelessWidget {
                   if (state.activeExercise.type == ExerciseType.alphabetSoup)
                     ExerciseAlphabetSoup(languageDirection: bloc.languageDirection, words: bloc.words),
 
-
+                  /*Alphabet soup*/
+                  if (state.activeExercise.type == ExerciseType.writing)
+                    ExerciseWriting(languageDirection: bloc.languageDirection, words: bloc.words),
                 ],
               );
             },

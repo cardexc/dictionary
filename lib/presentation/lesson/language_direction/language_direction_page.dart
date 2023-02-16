@@ -12,6 +12,7 @@ import '../../../domain/word/word_model.dart';
 import '../../../infrastructure/config/app_colors.dart';
 import '../../../infrastructure/config/go_router.dart';
 import '../../widgets/buttons/yellow_elevated_button.dart';
+import '../../widgets/enemy_language_circle.dart';
 import '../../widgets/scaffold_gradient.dart';
 
 class LanguageDirectionChoosePage extends StatelessWidget {
@@ -145,7 +146,7 @@ class _LanguageDirectionBlock extends StatelessWidget {
                     SizedBox(
                         // height: size,
                         child: languageDirection.languageFrom == Languages.ru
-                            ? const CircleAvatar(backgroundColor: AppColors.appBlack, child: Text("ru", style: TextStyle(fontSize: 11)))
+                            ? const EnemyLanguageCircle()
                             : Image(
                                 image: AssetImage(languageDirection.firstAsset),
                               )),
@@ -158,7 +159,7 @@ class _LanguageDirectionBlock extends StatelessWidget {
                     SizedBox(
                         // height: size,
                         child: languageDirection.languageTo == Languages.ru
-                            ? const CircleAvatar(backgroundColor: AppColors.appBlack, child: Text("ru", style: TextStyle(fontSize: 11)))
+                            ? const EnemyLanguageCircle()
                             : Image(
                                 image: AssetImage(languageDirection.secondAsset),
                               )),

@@ -37,5 +37,11 @@ abstract class ExerciseModel with _$ExerciseModel {
     @Default(ExerciseType.alphabetSoup) ExerciseType type,
   }) = AlphabetSoup;
 
+  factory ExerciseModel.writing({
+    @Default(CupertinoIcons.pencil_slash) IconData iconData,
+    required String title,
+    @Default(ExerciseType.writing) ExerciseType type,
+  }) = Writing;
+
 
 }
