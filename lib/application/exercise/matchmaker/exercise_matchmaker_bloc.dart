@@ -18,6 +18,7 @@ part 'exercise_matchmaker_state.dart';
 class ExerciseMatchmakerBloc extends Bloc<ExerciseMatchmakerEvent, ExerciseMatchmakerState> {
   final ExerciseFormBloc formBloc;
   final List<WordModel> initialWords;
+  final Set<WordModel> wordsToBeRepeated = {};
 
   ExerciseMatchmakerBloc({
     required this.formBloc,
@@ -42,13 +43,36 @@ class ExerciseMatchmakerBloc extends Bloc<ExerciseMatchmakerEvent, ExerciseMatch
         List<WordModel> matchedWordsUpdated = List.from(state.matchedWords);
         if (state.wordChosenFirst == event.wordModel) {
           //Should be highlighted as CORRECT answer
-          emit(state.copyWith(highlightColor: Exercises.exerciseSuccessColor, wordChosenSecond: event.wordModel, secondWordColumn: event.column));
+
+          emit(state.copyWith(
+            highlightColor: Exercises.exerciseSuccessColor,
+            wordChosenSecond: event.wordModel,
+            secondWordColumn: event.column,
+            correctWords: state.correctWords + 1,
+          ));
+
           matchedWordsUpdated.add(state.wordChosenFirst!);
 
-          formBloc.add(ProgressChanged(all: initialWords.length, position: matchedWordsUpdated.length - 1));
+          formBloc.add(
+            ProgressChanged(all: initialWords.length, position: matchedWordsUpdated.length - 1),
+          );
         } else {
-          //WRONG answer
-          emit(state.copyWith(highlightColor: Exercises.exerciseErrorColor, wordChosenSecond: event.wordModel, secondWordColumn: event.column));
+          /*
+          WRONG answer
+          */
+
+          Set<WordModel> wordsToBeRepeatedNew;
+          if (state.firstWordColumn == 0) {
+            wordsToBeRepeated.add(state.wordChosenFirst!);
+          } else {
+            wordsToBeRepeated.add(event.wordModel);
+          }
+
+          emit(state.copyWith(
+            highlightColor: Exercises.exerciseErrorColor,
+            wordChosenSecond: event.wordModel,
+            secondWordColumn: event.column,
+          ));
         }
 
         await Future.delayed(const Duration(milliseconds: 700));

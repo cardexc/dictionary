@@ -28,5 +28,22 @@ class ExerciseFormBloc extends Bloc<ExerciseFormEvent, ExerciseFormState> {
     on<ProgressChanged>((event, emit) {
       emit(state.copyWith(activeProgressValue: (event.position + 1) / event.all));
     });
+
+    on<NextExercise>((event, emit) {
+      if (isFinish) {
+        emit(state.copyWith(finish: true));
+        return;
+      }
+
+      var nextExercise = exercises[state.exercisePosition + 1];
+      emit(state.copyWith(
+        exercisePosition: state.exercisePosition + 1,
+        activeProgressValue: 0.0,
+        activeExercise: nextExercise,
+        appbarTitle: nextExercise.title,
+      ));
+    });
   }
+
+  bool get isFinish => state.exercisePosition + 1 >= exercises.length;
 }

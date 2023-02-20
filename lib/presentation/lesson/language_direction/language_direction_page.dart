@@ -99,10 +99,10 @@ class _LanguageDirectionRow extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        if (language == Languages.uk) Expanded(child: _LanguageDirectionBlock(languageDirection: LanguageDirection.plToUa())),
         if (language == Languages.uk) Expanded(child: _LanguageDirectionBlock(languageDirection: LanguageDirection.uaToPl())),
-        if (language == Languages.ru) Expanded(child: _LanguageDirectionBlock(languageDirection: LanguageDirection.plToRu())),
+        if (language == Languages.uk) Expanded(child: _LanguageDirectionBlock(languageDirection: LanguageDirection.plToUa())),
         if (language == Languages.ru) Expanded(child: _LanguageDirectionBlock(languageDirection: LanguageDirection.ruToPl())),
+        if (language == Languages.ru) Expanded(child: _LanguageDirectionBlock(languageDirection: LanguageDirection.plToRu())),
       ],
     );
   }

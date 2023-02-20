@@ -7,11 +7,14 @@ import '../../../domain/pair.dart';
 import '../form/exercise_form_bloc.dart';
 
 part 'exercise_multiple_choice_bloc.freezed.dart';
+
 part 'exercise_multiple_choice_event.dart';
+
 part 'exercise_multiple_choice_state.dart';
 
 class ExerciseMultipleChoiceBloc extends Bloc<ExerciseMultipleChoiceEvent, ExerciseMultipleChoiceState> {
   final ExerciseFormBloc formBloc;
+  final Set<WordModel> wordsToBeRepeated = {};
 
   ExerciseMultipleChoiceBloc({
     required this.formBloc,
@@ -21,6 +24,11 @@ class ExerciseMultipleChoiceBloc extends Bloc<ExerciseMultipleChoiceEvent, Exerc
     formBloc.add(ProgressChanged(all: collection.length, position: 0));
 
     on<OptionChosen>((event, emit) {
+      var isError = event.wordModel.id != state.collection[state.position].first.id;
+      if (isError) {
+        wordsToBeRepeated.add(state.collection[state.position].first);
+      }
+
       emit(state.copyWith(
         wordChosen: event.wordModel,
         showNextButton: true,

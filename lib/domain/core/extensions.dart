@@ -33,7 +33,7 @@ extension ListOfWordModelsExtension<WordModel> on List<WordModel> {
     List<Pair<WordModel, List<WordModel>>> result = [];
 
     var random = Random();
-    int n = 4;
+    int n = min(4, length);
 
     for (var originalWord in this) {
       var secondArgumentList = <WordModel>[];

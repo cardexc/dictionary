@@ -8,7 +8,7 @@ part "exercise_model.freezed.dart";
 @freezed
 abstract class ExerciseModel with _$ExerciseModel {
   factory ExerciseModel.flashcards({
-    @Default(CupertinoIcons.headphones) IconData iconData,
+    @Default(CupertinoIcons.arrow_2_circlepath) IconData iconData,
     required String title,
     @Default(ExerciseType.flashcards) ExerciseType type,
   }) = Flashcards;
@@ -42,6 +42,12 @@ abstract class ExerciseModel with _$ExerciseModel {
     required String title,
     @Default(ExerciseType.writing) ExerciseType type,
   }) = Writing;
+
+  factory ExerciseModel.listenType({
+    @Default(CupertinoIcons.headphones) IconData iconData,
+    required String title,
+    @Default(ExerciseType.listenType) ExerciseType type,
+  }) = ListenType;
 
 
 }

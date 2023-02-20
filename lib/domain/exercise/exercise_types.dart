@@ -5,4 +5,5 @@ enum ExerciseType {
   matchMaker,
   alphabetSoup,
   writing,
+  listenType,
 }

@@ -464,6 +464,7 @@ abstract class NextWord implements ExerciseMatchmakerEvent {
 mixin _$ExerciseMatchmakerState {
   bool get isFinished => throw _privateConstructorUsedError;
   bool get showNextButton => throw _privateConstructorUsedError;
+  int get correctWords => throw _privateConstructorUsedError;
   int get page => throw _privateConstructorUsedError;
   Pair<List<WordModel>, List<WordModel>> get collectionToDisplayPair =>
       throw _privateConstructorUsedError;
@@ -489,6 +490,7 @@ abstract class $ExerciseMatchmakerStateCopyWith<$Res> {
   $Res call(
       {bool isFinished,
       bool showNextButton,
+      int correctWords,
       int page,
       Pair<List<WordModel>, List<WordModel>> collectionToDisplayPair,
       LanguageDirection languageDirection,
@@ -520,6 +522,7 @@ class _$ExerciseMatchmakerStateCopyWithImpl<$Res,
   $Res call({
     Object? isFinished = null,
     Object? showNextButton = null,
+    Object? correctWords = null,
     Object? page = null,
     Object? collectionToDisplayPair = null,
     Object? languageDirection = null,
@@ -539,6 +542,10 @@ class _$ExerciseMatchmakerStateCopyWithImpl<$Res,
           ? _value.showNextButton
           : showNextButton // ignore: cast_nullable_to_non_nullable
               as bool,
+      correctWords: null == correctWords
+          ? _value.correctWords
+          : correctWords // ignore: cast_nullable_to_non_nullable
+              as int,
       page: null == page
           ? _value.page
           : page // ignore: cast_nullable_to_non_nullable
@@ -622,6 +629,7 @@ abstract class _$$_ExerciseMatchmakerStateCopyWith<$Res>
   $Res call(
       {bool isFinished,
       bool showNextButton,
+      int correctWords,
       int page,
       Pair<List<WordModel>, List<WordModel>> collectionToDisplayPair,
       LanguageDirection languageDirection,
@@ -654,6 +662,7 @@ class __$$_ExerciseMatchmakerStateCopyWithImpl<$Res>
   $Res call({
     Object? isFinished = null,
     Object? showNextButton = null,
+    Object? correctWords = null,
     Object? page = null,
     Object? collectionToDisplayPair = null,
     Object? languageDirection = null,
@@ -673,6 +682,10 @@ class __$$_ExerciseMatchmakerStateCopyWithImpl<$Res>
           ? _value.showNextButton
           : showNextButton // ignore: cast_nullable_to_non_nullable
               as bool,
+      correctWords: null == correctWords
+          ? _value.correctWords
+          : correctWords // ignore: cast_nullable_to_non_nullable
+              as int,
       page: null == page
           ? _value.page
           : page // ignore: cast_nullable_to_non_nullable
@@ -719,6 +732,7 @@ class _$_ExerciseMatchmakerState implements _ExerciseMatchmakerState {
   _$_ExerciseMatchmakerState(
       {this.isFinished = false,
       this.showNextButton = false,
+      this.correctWords = 0,
       required this.page,
       required this.collectionToDisplayPair,
       required this.languageDirection,
@@ -736,6 +750,9 @@ class _$_ExerciseMatchmakerState implements _ExerciseMatchmakerState {
   @override
   @JsonKey()
   final bool showNextButton;
+  @override
+  @JsonKey()
+  final int correctWords;
   @override
   final int page;
   @override
@@ -763,7 +780,7 @@ class _$_ExerciseMatchmakerState implements _ExerciseMatchmakerState {
 
   @override
   String toString() {
-    return 'ExerciseMatchmakerState(isFinished: $isFinished, showNextButton: $showNextButton, page: $page, collectionToDisplayPair: $collectionToDisplayPair, languageDirection: $languageDirection, matchedWords: $matchedWords, highlightColor: $highlightColor, wordChosenFirst: $wordChosenFirst, wordChosenSecond: $wordChosenSecond, firstWordColumn: $firstWordColumn, secondWordColumn: $secondWordColumn)';
+    return 'ExerciseMatchmakerState(isFinished: $isFinished, showNextButton: $showNextButton, correctWords: $correctWords, page: $page, collectionToDisplayPair: $collectionToDisplayPair, languageDirection: $languageDirection, matchedWords: $matchedWords, highlightColor: $highlightColor, wordChosenFirst: $wordChosenFirst, wordChosenSecond: $wordChosenSecond, firstWordColumn: $firstWordColumn, secondWordColumn: $secondWordColumn)';
   }
 
   @override
@@ -775,6 +792,8 @@ class _$_ExerciseMatchmakerState implements _ExerciseMatchmakerState {
                 other.isFinished == isFinished) &&
             (identical(other.showNextButton, showNextButton) ||
                 other.showNextButton == showNextButton) &&
+            (identical(other.correctWords, correctWords) ||
+                other.correctWords == correctWords) &&
             (identical(other.page, page) || other.page == page) &&
             (identical(
                     other.collectionToDisplayPair, collectionToDisplayPair) ||
@@ -800,6 +819,7 @@ class _$_ExerciseMatchmakerState implements _ExerciseMatchmakerState {
       runtimeType,
       isFinished,
       showNextButton,
+      correctWords,
       page,
       collectionToDisplayPair,
       languageDirection,
@@ -823,6 +843,7 @@ abstract class _ExerciseMatchmakerState implements ExerciseMatchmakerState {
   factory _ExerciseMatchmakerState(
       {final bool isFinished,
       final bool showNextButton,
+      final int correctWords,
       required final int page,
       required final Pair<List<WordModel>, List<WordModel>>
           collectionToDisplayPair,
@@ -838,6 +859,8 @@ abstract class _ExerciseMatchmakerState implements ExerciseMatchmakerState {
   bool get isFinished;
   @override
   bool get showNextButton;
+  @override
+  int get correctWords;
   @override
   int get page;
   @override

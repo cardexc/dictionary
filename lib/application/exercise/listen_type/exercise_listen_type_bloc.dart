@@ -5,22 +5,22 @@ import '../../../domain/lesson/language_direction.dart';
 import '../../../domain/word/word_model.dart';
 import '../form/exercise_form_bloc.dart';
 
-part 'exercise_writing_event.dart';
+part 'exercise_listen_type_event.dart';
 
-part 'exercise_writing_state.dart';
+part 'exercise_listen_type_state.dart';
 
-part 'exercise_writing_bloc.freezed.dart';
+part 'exercise_listen_type_bloc.freezed.dart';
 
-class ExerciseWritingBloc extends Bloc<ExerciseWritingEvent, ExerciseWritingState> {
+class ExerciseListenTypeBloc extends Bloc<ExerciseListenTypeEvent, ExerciseListenTypeState> {
   final ExerciseFormBloc formBloc;
   final List<WordModel> words;
   final Set<WordModel> wordsToBeRepeated = {};
 
-  ExerciseWritingBloc({
+  ExerciseListenTypeBloc({
     required this.formBloc,
     required this.words,
     required LanguageDirection languageDirection,
-  }) : super(ExerciseWritingState.initial(
+  }) : super(ExerciseListenTypeState.initial(
           languageDirection: languageDirection,
           words: words,
         )) {
@@ -28,12 +28,16 @@ class ExerciseWritingBloc extends Bloc<ExerciseWritingEvent, ExerciseWritingStat
 
     on<WordSubmitted>((event, emit) {
       var currentWord = state.words[state.position];
-      var translation = currentWord.getStringAccordingToLanguageDirection(languageDirection, 1).trim().toLowerCase();
-      var valueToCheck = event.value.trim().toLowerCase();
-      if (valueToCheck == translation) {
+
+      /*
+      * In this exercise the only POLISH language is being worked out */
+      var translation = currentWord.pl;
+
+      if (event.value.trim() == translation) {
         emit(state.copyWith(showNextButton: true, wordIsCorrect: true, constructedWord: event.value));
       } else {
         emit(state.copyWith(showNextButton: true, constructedWord: event.value));
+
         wordsToBeRepeated.add(currentWord);
       }
     });

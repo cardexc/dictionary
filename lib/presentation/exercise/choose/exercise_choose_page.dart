@@ -23,10 +23,13 @@ class ExerciseChoosePage extends StatelessWidget {
   final List<ExerciseModel> exercises = [
     ExerciseModel.flashcards(title: "flash_cards".tr()),
     ExerciseModel.scratchcards(title: "scratch_cards".tr()),
+
     ExerciseModel.multipleChoice(title: "multiple_choice".tr()),
     ExerciseModel.matchMaker(title: "matchmaker".tr()),
     ExerciseModel.alphabetSoup(title: "alphabetSoup".tr()),
+    ExerciseModel.listenType(title: "listenType".tr()),
     ExerciseModel.writing(title: "writing".tr()),
+
   ];
 
   ExerciseChoosePage({
@@ -190,6 +193,7 @@ class _LanguageDirectionChoosePageBody extends StatelessWidget {
           _ExerciseRow(exerciseModel: context.read<ExerciseChooseBloc>().exercises[3]),
           _ExerciseRow(exerciseModel: context.read<ExerciseChooseBloc>().exercises[4]),
           _ExerciseRow(exerciseModel: context.read<ExerciseChooseBloc>().exercises[5]),
+          _ExerciseRow(exerciseModel: context.read<ExerciseChooseBloc>().exercises[6]),
         ],
       ),
     );

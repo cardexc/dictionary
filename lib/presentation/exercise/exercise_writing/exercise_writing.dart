@@ -1,22 +1,18 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:dictionary/application/exercise/exercise_writing/exercise_writing_bloc.dart';
-import 'package:dictionary/domain/core/extensions.dart';
 import 'package:dictionary/infrastructure/config/const.dart';
-import 'package:dictionary/presentation/exercise/exercise_writing/exercise_writing_finish.dart';
-import 'package:dictionary/presentation/widgets/enemy_language_circle.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../application/exercise/form/exercise_form_bloc.dart';
-import '../../../../domain/languages.dart';
 import '../../../../domain/lesson/language_direction.dart';
 import '../../../../domain/word/word_model.dart';
-import '../../widgets/buttons/sound_play_button.dart';
+import '../../../domain/exercise/exercise_types.dart';
 import '../../widgets/buttons/yellow_elevated_button.dart';
 import '../../widgets/exercise_correct_word_widget.dart';
 import '../../widgets/exercise_header_row.dart';
 import '../../widgets/widgets.dart';
+import '../exercise_finish_widget.dart';
 
 class ExerciseWriting extends StatelessWidget {
   final LanguageDirection languageDirection;
@@ -42,17 +38,24 @@ class ExerciseWriting extends StatelessWidget {
 }
 
 class _ExerciseWritingBody extends StatelessWidget {
-  final _rowHeight = 75.0;
   final FocusNode _node = FocusNode();
 
   @override
   Widget build(BuildContext context) {
+    var bloc = context.read<ExerciseWritingBloc>();
+
     return BlocSelector<ExerciseWritingBloc, ExerciseWritingState, bool>(
       selector: (state) {
         return state.isFinished;
       },
       builder: (context, isFinished) {
-        return isFinished ? const ExerciseWritingFinish() : _buildExercise(context);
+        return isFinished
+            ? ExerciseFinishWidget(
+                totalWords: bloc.words.length,
+                wordsToBeRepeated: bloc.wordsToBeRepeated.length,
+                type: ExerciseType.writing,
+              )
+            : _buildExercise(context);
       },
     );
   }
@@ -106,7 +109,11 @@ class _ExerciseWritingBody extends StatelessWidget {
                             _node.unfocus();
                           },
                         ),
-                        if (isError) ExerciseCorrectWordWidget(languageDirection: languageDirection, wordModel: wordModel),
+                        if (isError)
+                          ExerciseCorrectWordWidget(
+                            languageDirection: languageDirection,
+                            wordModel: wordModel,
+                          ),
                       ],
                     ),
                   );

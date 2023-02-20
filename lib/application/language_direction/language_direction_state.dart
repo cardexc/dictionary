@@ -6,5 +6,5 @@ class LanguageDirectionState with _$LanguageDirectionState {
     required LanguageDirection direction,
   }) = _LanguageDirectionState;
 
-  factory LanguageDirectionState.initial() => LanguageDirectionState(direction: LanguageDirection.plToUa());
+  factory LanguageDirectionState.initial() => LanguageDirectionState(direction: LanguageDirection.uaToPl());
 }

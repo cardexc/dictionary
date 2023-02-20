@@ -18,7 +18,8 @@ class ExerciseChooseState with _$ExerciseChooseState {
           ExerciseType.multipleChoice: false,
           ExerciseType.matchMaker: false,
           ExerciseType.alphabetSoup: false,
-          ExerciseType.writing: true,
+          ExerciseType.listenType: true,
+          ExerciseType.writing: false,
         },
       );
 }

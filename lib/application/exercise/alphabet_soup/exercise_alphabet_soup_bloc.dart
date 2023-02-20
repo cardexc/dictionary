@@ -1,6 +1,5 @@
 import 'package:bloc/bloc.dart';
 import 'package:dictionary/domain/core/extensions.dart';
-import 'package:dictionary/infrastructure/config/const.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../domain/core/value_objects.dart';
@@ -9,15 +8,14 @@ import '../../../domain/pair.dart';
 import '../../../domain/word/word_model.dart';
 import '../form/exercise_form_bloc.dart';
 
-part 'exercise_alphabet_soup_event.dart';
-
-part 'exercise_alphabet_soup_state.dart';
-
 part 'exercise_alphabet_soup_bloc.freezed.dart';
+part 'exercise_alphabet_soup_event.dart';
+part 'exercise_alphabet_soup_state.dart';
 
 class ExerciseAlphabetSoupBloc extends Bloc<ExerciseAlphabetSoupEvent, ExerciseAlphabetSoupState> {
   final ExerciseFormBloc formBloc;
   final List<WordModel> words;
+  final Set<WordModel> wordsToBeRepeated = {};
 
   ExerciseAlphabetSoupBloc({
     required this.formBloc,
@@ -44,13 +42,19 @@ class ExerciseAlphabetSoupBloc extends Bloc<ExerciseAlphabetSoupEvent, ExerciseA
 
         var languageFromWord = state.letters[state.position].first.getStringAccordingToLanguageDirection(languageDirection, 1);
 
+        var isError = state.constructedWord != languageFromWord;
+
         emit(
           state.copyWith(
             showNextButton: true,
             wordFinished: true,
-            wordConstructionError: state.constructedWord != languageFromWord,
+            wordConstructionError: isError,
           ),
         );
+
+        if (isError) {
+          wordsToBeRepeated.add(state.letters[state.position].first);
+        }
       }
     });
 
@@ -68,8 +72,8 @@ class ExerciseAlphabetSoupBloc extends Bloc<ExerciseAlphabetSoupEvent, ExerciseA
         emit(state.copyWith(
           isFinished: true,
         ));
+        formBloc.add(ProgressChanged(all: state.letters.length, position: state.position + 1));
       } else {
-
         formBloc.add(ProgressChanged(all: state.letters.length, position: state.position));
         emit(state.copyWith(
           constructedWord: "",

@@ -28,6 +28,7 @@ class Exercises {
   static const TextStyle exerciseMatchmakerItemsTextStyle = exerciseCardItemsTextStyle;
 
   static Color exerciseErrorColor = Colors.red[200]!;
+
   static Color exerciseSuccessColor = AppColors.appYellow;
 
   static const exerciseMatchmakerRowsCount = 5;
@@ -39,4 +40,42 @@ const predefinedBackgroundButtonGradient = LinearGradient(
   begin: Alignment.centerLeft,
   end: Alignment.centerRight,
   colors: [AppColors.appYellow, AppColors.isAboutToBeExpiredColor],
+);
+
+const progressIndicatorGradient = LinearGradient(
+  begin: Alignment.centerLeft,
+  end: Alignment.centerRight,
+  colors: [
+    AppColors.appYellow,
+    AppColors.isAboutToBeExpiredColor,
+    AppColors.appYellow,
+  ],
+);
+
+const progressIndicatorGradient3 = LinearGradient(
+  // begin: Alignment.centerLeft,
+  // end: Alignment.centerRight,
+  colors: [
+    AppColors.exerciseProgressColor2,
+    AppColors.exerciseProgressColor2,
+    AppColors.appYellow,
+    AppColors.appYellow,
+    AppColors.isAboutToBeExpiredColor,
+    AppColors.isAboutToBeExpiredColor,
+
+  ],
+);
+
+
+
+const exerciseFinishTextGradient = LinearGradient(
+  begin: Alignment.centerLeft,
+  end: Alignment.centerRight,
+  colors: [
+    AppColors.primaryOld,
+    AppColors.isAboutToBeExpiredColor,
+    AppColors.appYellow2,
+    AppColors.primaryOld,
+    AppColors.isAboutToBeExpiredColor,
+  ],
 );

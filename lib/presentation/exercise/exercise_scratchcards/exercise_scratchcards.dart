@@ -2,21 +2,20 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:dictionary/application/exercise/scratchcards/exercise_scratchcards_bloc.dart';
 import 'package:dictionary/domain/core/extensions.dart';
 import 'package:dictionary/infrastructure/config/const.dart';
-import 'package:dictionary/presentation/exercise/exercise_scratchcards/exercise_scratchcards_finish.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scratcher/scratcher.dart';
 
 import '../../../../application/exercise/form/exercise_form_bloc.dart';
-import '../../../../domain/languages.dart';
 import '../../../../domain/lesson/language_direction.dart';
 import '../../../../domain/word/word_model.dart';
 import '../../../../infrastructure/config/app_colors.dart';
-import '../../widgets/buttons/sound_play_button.dart';
+import '../../../domain/exercise/exercise_types.dart';
 import '../../widgets/buttons/yellow_elevated_button.dart';
 import '../../widgets/enemy_language_circle.dart';
 import '../../widgets/exercise_header_row.dart';
+import '../exercise_finish_widget.dart';
 
 class ExerciseScratchcards extends StatelessWidget {
   final LanguageDirection languageDirection;
@@ -46,12 +45,20 @@ class _ExerciseScratchcardsBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var bloc = context.read<ExerciseScratchcardsBloc>();
+
     return BlocSelector<ExerciseScratchcardsBloc, ExerciseScratchcardsState, bool>(
       selector: (state) {
         return state.isFinished;
       },
       builder: (context, isFinished) {
-        return isFinished ? const ExerciseScratchcardsFinish() : _buildExercise(context);
+        return isFinished
+            ? ExerciseFinishWidget(
+                totalWords: bloc.state.words.length,
+                wordsToBeRepeated: 0,
+                type: ExerciseType.scratchcards,
+              )
+            : _buildExercise(context);
       },
     );
   }
