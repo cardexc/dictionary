@@ -5,7 +5,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../domain/lesson/language_direction.dart';
 import '../../../domain/pair.dart';
-import '../../../domain/word/word_model.dart';
+import '../../../domain/words/word_model.dart';
 import '../../../infrastructure/config/const.dart';
 import '../form/exercise_form_bloc.dart';
 

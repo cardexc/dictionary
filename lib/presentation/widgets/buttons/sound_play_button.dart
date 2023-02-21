@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:audio_session/audio_session.dart';
 import 'package:dictionary/domain/speech/voice_model.dart';
-import 'package:dictionary/domain/word/word_model.dart';
+import 'package:dictionary/domain/words/word_model.dart';
 import 'package:dictionary/infrastructure/config/const.dart';
 import 'package:dictionary/injection.dart';
 import 'package:flutter/cupertino.dart';

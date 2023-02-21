@@ -1,15 +1,16 @@
 import 'package:dictionary/domain/core/extensions.dart';
 import 'package:dictionary/domain/lesson/i_lesson_repository.dart';
 import 'package:dictionary/domain/lesson/lesson_model.dart';
-import 'package:dictionary/domain/word/word_model.dart';
+import 'package:dictionary/domain/words/word_model.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../domain/core/value_objects.dart';
 
 @LazySingleton(as: ILessonRepository)
 class LessonRepositoryImpl extends ILessonRepository {
-  List<LessonModel> testLessons = [
-    LessonModel(
+  List<LessonModel> testLessons = [];
+
+  /*  LessonModel(
         id: UniqueId(),
         title: "Топ 100 помилок",
         words: [
@@ -101,7 +102,7 @@ class LessonRepositoryImpl extends ILessonRepository {
     LessonModel(id: UniqueId(), title: "Навчання", words: [], sortValue: 4),
     LessonModel(id: UniqueId(), title: "Політика", words: [], sortValue: 5),
     LessonModel(id: UniqueId(), title: "Top 100 слів", words: [], sortValue: 6),
-  ];
+  ];*/
 
   @override
   Future<List<LessonModel>> getLessons() {

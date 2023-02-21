@@ -1,5 +1,9 @@
+import 'package:isar/isar.dart';
 import 'package:uuid/uuid.dart';
 
+part "value_objects.g.dart";
+
+@embedded
 class UniqueId {
   final String value;
 

@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../domain/lesson/language_direction.dart';
-import '../../../../domain/word/word_model.dart';
+import '../../../../domain/words/word_model.dart';
 import '../../../../infrastructure/config/app_colors.dart';
 import '../../../application/exercise/form/exercise_form_bloc.dart';
 import '../../../domain/exercise/exercise_types.dart';

@@ -12,6 +12,8 @@ const defaultDatePattern = "dd.MM.yyyy";
 
 const defaultVoiceIndex = 0;
 
+const ukLocale = Locale('uk');
+
 class Exercises {
   static const langImageSize = 35.0;
   static double wordFontSize = 22.0;

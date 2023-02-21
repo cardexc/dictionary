@@ -4,7 +4,7 @@ import 'package:dictionary/domain/exercise/exercise_types.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../domain/lesson/language_direction.dart';
-import '../../../domain/word/word_model.dart';
+import '../../../domain/words/word_model.dart';
 
 part 'exercise_choose_bloc.freezed.dart';
 

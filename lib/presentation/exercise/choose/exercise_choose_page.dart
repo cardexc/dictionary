@@ -11,7 +11,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../domain/exercise/exercise_model.dart';
-import '../../../domain/word/word_model.dart';
+import '../../../domain/words/word_model.dart';
 import '../../../main.dart';
 import '../../widgets/buttons/yellow_elevated_button.dart';
 import '../../widgets/scaffold_gradient.dart';

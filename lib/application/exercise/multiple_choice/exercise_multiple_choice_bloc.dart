@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:dictionary/domain/word/word_model.dart';
+import 'package:dictionary/domain/words/word_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../domain/lesson/language_direction.dart';

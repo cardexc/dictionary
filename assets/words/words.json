@@ -1,0 +1,365 @@
+{
+  "data": [
+    {
+      "title": "Lesson # 1",
+      "words": [
+        {
+          "pl": "podejrzewać",
+          "ru": "подозревать",
+          "uk": "подозревать",
+          "sentence": false
+        },
+        {
+          "pl": "uznawać",
+          "ru": "признать",
+          "uk": "признать",
+          "sentence": false
+        },
+        {
+          "pl": "wątpić",
+          "ru": "сомневаться",
+          "uk": "сомневаться",
+          "sentence": false
+        },
+        {
+          "pl": "gorszy niż",
+          "ru": "хуже",
+          "uk": "хуже",
+          "sentence": false
+        },
+        {
+          "pl": "wyobrażać",
+          "ru": "казаться",
+          "uk": "казаться",
+          "sentence": false
+        },
+        {
+          "pl": "wyższy niż",
+          "ru": "выше",
+          "uk": "выше",
+          "sentence": false
+        },
+        {
+          "pl": "lepszy niż",
+          "ru": "лучше",
+          "uk": "лучше",
+          "sentence": false
+        },
+        {
+          "pl": "zgadzać się",
+          "ru": "быть согласным",
+          "uk": "быть согласным",
+          "sentence": false
+        },
+        {
+          "pl": "popierać",
+          "ru": "быть сторонником",
+          "uk": "быть сторонником",
+          "sentence": false
+        },
+        {
+          "pl": "lepszy niż",
+          "ru": "лучше",
+          "uk": "лучше",
+          "sentence": false
+        },
+        {
+          "pl": "najlepszy",
+          "ru": "самый лучший",
+          "uk": "самый лучший",
+          "sentence": false
+        },
+        {
+          "pl": "wyższy niż",
+          "ru": "выше",
+          "uk": "выше",
+          "sentence": false
+        },
+        {
+          "pl": "najgorszy",
+          "ru": "самый плохой",
+          "uk": "самый плохой",
+          "sentence": false
+        },
+        {
+          "pl": "najwyższy",
+          "ru": "самый высокий",
+          "uk": "самый высокий",
+          "sentence": false
+        }
+      ]
+    },
+    {
+      "title": "Is it correct?",
+      "words": [
+        {
+          "pl": "czy to jest jasne?",
+          "ru": "тебе ясно?",
+          "uk": "тебе ясно?",
+          "sentence": false
+        },
+        {
+          "pl": "czy to ma sens?",
+          "ru": "понятно?",
+          "uk": "понятно?",
+          "sentence": false
+        },
+        {
+          "pl": "czy wyjaśniłem to jasno?",
+          "ru": "я всё понятно объяснил?",
+          "uk": "я всё понятно объяснил?",
+          "sentence": false
+        },
+        {
+          "pl": "zgadza się?",
+          "ru": "правильно?",
+          "uk": "правильно?",
+          "sentence": false
+        },
+        {
+          "pl": "Czy mówisz, że...",
+          "ru": "ты хочешь сказать, что",
+          "uk": "ты хочешь сказать, что",
+          "sentence": false
+        },
+        {
+          "pl": "Nie jestem pewien czy rozumiem",
+          "ru": "я не уверен, что понял",
+          "uk": "я не уверен, что понял",
+          "sentence": false
+        },
+        {
+          "pl": "Nie rozumiem co masz na myśli.",
+          "ru": "Я не понимаю, что ты имеешь в виду.",
+          "uk": "Я не понимаю, что ты имеешь в виду.",
+          "sentence": true
+        },
+        {
+          "pl": "czy wiesz o co mi chodzi?",
+          "ru": "ты следишь за ходом моих мыслей",
+          "uk": "ты следишь за ходом моих мыслей",
+          "sentence": true
+        },
+        {
+          "pl": "Nie rozumiem co masz na myśli.",
+          "ru": "Я, не понимаю, что ты имеешь в виду.",
+          "uk": "Я, не понимаю, что ты имеешь в виду.",
+          "sentence": true
+        }
+      ]
+    },
+    {
+      "title": "Lets get a car",
+      "words": [
+        {
+          "pl": "Uruchomić samochód",
+          "ru": "заводить машину",
+          "uk": "заводить машину",
+          "sentence": false
+        },
+        {
+          "pl": "prowadzić",
+          "ru": "водить",
+          "uk": "водить",
+          "sentence": false
+        },
+        {
+          "pl": "Lubię prowadzić, ale nie w korkach.",
+          "ru": "Мне нравится водить тогда, когда на дорогах нет большого движения.",
+          "uk": "Мне нравится водить тогда, когда на дорогах нет большого движения.",
+          "sentence": true
+        },
+        {
+          "pl": "autostrada",
+          "ru": "автомагистраль",
+          "uk": "автомагистраль",
+          "sentence": false
+        },
+        {
+          "pl": "Na autostradzie trzeba prowadzić ostrożnie.",
+          "ru": "По автомагистрали нужно ехать осторожно.",
+          "uk": "По автомагистрали нужно ехать осторожно.",
+          "sentence": true
+        },
+        {
+          "pl": "ograniczenie prędkości",
+          "ru": "скоростное ограничение",
+          "uk": "скоростное ограничение"
+        },
+        {
+          "pl": "Ograniczenie prędkości na autostradach w Wielkiej Brytanii to 70 mph.",
+          "ru": "В Великобритании скоростное ограничение на автомагистралях - 70 миль в час.",
+          "uk": "В Великобритании скоростное ограничение на автомагистралях - 70 миль в час.",
+          "sentence": true
+        },
+        {
+          "pl": "sygnalizacja świetlna",
+          "ru": "светофор",
+          "uk": "светофор",
+          "sentence": false
+        },
+        {
+          "pl": "Kiedy sygnalizacja wskazuje czerwone światło, musisz się zatrzymać.",
+          "ru": "Когда горит красный свет светофора, нужно остановиться.",
+          "uk": "Когда горит красный свет светофора, нужно остановиться.",
+          "sentence": true
+        },
+        {
+          "pl": "Gdzie mogę zaparkować? Nie ma miejsc.",
+          "ru": "Где мне припарковаться? Здесь нет свободных мест.",
+          "uk": "Где мне припарковаться? Здесь нет свободных мест.",
+          "sentence": true
+        },
+        {
+          "pl": "paliwo",
+          "ru": "бензин",
+          "uk": "бензин",
+          "sentence": false
+        },
+        {
+          "pl": "Zatrzymamy się po paliwo.",
+          "ru": "Мы собираемся остановиться, чтобы заправиться бензином.",
+          "uk": "Мы собираемся остановиться, чтобы заправиться бензином.",
+          "sentence": true
+        },
+        {
+          "pl": "pasażer",
+          "ru": "пассажир",
+          "uk": "пассажир",
+          "sentence": false
+        },
+        {
+          "pl": "Większość samochodów mieści 4 pasażerów i kierowcę.",
+          "ru": "В большинстве автомобилей могут поместиться четыре пассажира и водитель.",
+          "uk": "В большинстве автомобилей могут поместиться четыре пассажира и водитель.",
+          "sentence": true
+        }
+      ]
+    },
+    {
+      "title": "In a hotel",
+      "words": [
+        {
+          "pl": "hotel pięciogwiazdkowy",
+          "ru": "пятизвездочный отель",
+          "uk": "пятизвездочный отель",
+          "sentence": false
+        },
+        {
+          "pl": "Nie możemy sobie pozwolić na hotel pięciogwiazdkowy. Jest zbyt drogi.",
+          "ru": "Мы не можем себе позволить остановиться в пятизвездочном отеле. Это слишком дорого.",
+          "uk": "Мы не можем себе позволить остановиться в пятизвездочном отеле. Это слишком дорого.",
+          "sentence": true
+        },
+        {
+          "pl": "recepcja",
+          "ru": "приёмная",
+          "uk": "приёмная",
+          "sentence": false
+        },
+        {
+          "pl": "Gdzie jest recepcja?",
+          "ru": "Где находится приёмная?",
+          "uk": "Где находится приёмная?",
+          "sentence": true
+        },
+        {
+          "pl": "rezerwować",
+          "ru": "забронировать",
+          "uk": "забронировать",
+          "sentence": false
+        },
+        {
+          "pl": "Dzień dobry, chciałbym zarezerwować pokój.",
+          "ru": "Алло, пожалуйста, я хотел бы забронировать номер.",
+          "uk": "Алло, пожалуйста, я хотел бы забронировать номер.",
+          "sentence": true
+        },
+        {
+          "pl": "całkowicie zarezerwowany",
+          "ru": "полностью забронированный/забронированная",
+          "uk": "полностью забронированный/забронированная",
+          "sentence": false
+        },
+        {
+          "pl": "Obawiam się, że nie mamy wolnych pokoi. Hotel jest całkowicie zarezerwowany.",
+          "ru": "Я боюсь, что не осталось свободных номеров. Отель полностью забронирован.",
+          "uk": "Я боюсь, что не осталось свободных номеров. Отель полностью забронирован.",
+          "sentence": true
+        },
+        {
+          "pl": "sezon",
+          "ru": "высокий сезон",
+          "uk": "высокий сезон",
+          "sentence": false
+        },
+        {
+          "pl": "Hotel jest zawsze zatłoczony w sezonie.",
+          "ru": "В высокий сезон отель всегда переполнен.",
+          "uk": "В высокий сезон отель всегда переполнен.",
+          "sentence": true
+        },
+        {
+          "pl": "poza sezonem",
+          "ru": "низкий сезон",
+          "uk": "низкий сезон",
+          "sentence": false
+        },
+        {
+          "pl": "Ceny są zwykle niższe poza sezonem.",
+          "ru": "В низкий сезон цены обычно дешевле.",
+          "uk": "В низкий сезон цены обычно дешевле.",
+          "sentence": true
+        },
+        {
+          "pl": "niepełne wyżywienie",
+          "ru": "полупансион",
+          "uk": "полупансион",
+          "sentence": false
+        },
+        {
+          "pl": "Nasz hotel zapewnia niepełne wyżywienie, więc dostajemy śniadanie i kolację w cenie.",
+          "ru": "Наш отель с полупансионом, поэтому завтрак и ужин включены в стоимость номера.",
+          "uk": "Наш отель с полупансионом, поэтому завтрак и ужин включены в стоимость номера.",
+          "sentence": true
+        },
+        {
+          "pl": "pełne wyżywienie",
+          "ru": "полный пансион",
+          "uk": "полный пансион",
+          "sentence": false
+        },
+        {
+          "pl": "Wszystkie posiłki są włączone w cenie hotelu z pełnym wyżywieniem.",
+          "ru": "В полный пансион включается трехразовое питание.",
+          "uk": "В полный пансион включается трехразовое питание.",
+          "sentence": true
+        },
+        {
+          "pl": "zameldować się",
+          "ru": "регистрироваться",
+          "uk": "регистрироваться",
+          "sentence": false
+        },
+        {
+          "pl": "Kiedy przybywasz do hotelu, musisz zameldować się na recepcji.",
+          "ru": "По прибытии в отель, нужно зарегистрироваться на стойке регистрации.",
+          "uk": "По прибытии в отель, нужно зарегистрироваться на стойке регистрации.",
+          "sentence": true
+        },
+        {
+          "pl": "wymeldowanie",
+          "ru": "выписаться",
+          "uk": "выписаться",
+          "sentence": false
+        },
+        {
+          "pl": "Przed opuszczeniem hotelu musisz się wymeldować.",
+          "ru": "Перед отъездом из отеля не забудь выписаться.",
+          "uk": "Перед отъездом из отеля не забудь выписаться.",
+          "sentence": true
+        }
+      ]
+    }
+  ]
+}

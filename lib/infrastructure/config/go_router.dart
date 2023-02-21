@@ -1,6 +1,6 @@
 import 'package:dictionary/domain/exercise/exercise_model.dart';
 import 'package:dictionary/domain/lesson/language_direction.dart';
-import 'package:dictionary/domain/word/word_model.dart';
+import 'package:dictionary/domain/words/word_model.dart';
 import 'package:dictionary/presentation/learn_section/learn_section_page.dart';
 import 'package:dictionary/presentation/lesson/language_direction/language_direction_page.dart';
 import 'package:go_router/go_router.dart';

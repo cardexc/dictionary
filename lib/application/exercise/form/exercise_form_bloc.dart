@@ -3,7 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../domain/exercise/exercise_model.dart';
 import '../../../domain/lesson/language_direction.dart';
-import '../../../domain/word/word_model.dart';
+import '../../../domain/words/word_model.dart';
 
 part 'exercise_form_event.dart';
 

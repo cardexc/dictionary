@@ -1,4 +1,5 @@
 import 'package:dictionary/domain/speech/i_speech_repository.dart';
+import 'package:dictionary/infrastructure/database/database_helper.dart';
 import 'package:dictionary/infrastructure/helpers/asset_helper.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
@@ -9,6 +10,7 @@ import 'package:injectable/injectable.dart';
 
 import 'application/main/main_page_cubit.dart';
 import 'infrastructure/config/app_colors.dart';
+import 'infrastructure/config/const.dart';
 import 'infrastructure/config/go_router.dart';
 import 'infrastructure/helpers/utils.dart';
 import 'injection.dart';
@@ -27,13 +29,14 @@ void main() async {
 
   await getIt<AssetHelper>().init();
   getIt<ISpeechRepository>().init();
+  await getIt<DatabaseHelper>().init();
 
   runApp(
     EasyLocalization(
-        supportedLocales: const [Locale('uk'), Locale('en'), Locale('ru')],
+        supportedLocales: const [ukLocale, Locale('en'), Locale('ru')],
         path: 'assets/translations',
-        fallbackLocale: const Locale('uk'),
-        startLocale: const Locale('uk'),
+        fallbackLocale: ukLocale,
+        startLocale: ukLocale,
         child: BlocProvider<MainPageCubit>(
           create: (context) => getIt<MainPageCubit>(),
           child: const MyApp(),

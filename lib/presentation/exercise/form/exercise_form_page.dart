@@ -13,7 +13,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../application/exercise/form/exercise_form_bloc.dart';
 import '../../../domain/exercise/exercise_model.dart';
-import '../../../domain/word/word_model.dart';
+import '../../../domain/words/word_model.dart';
 import '../exercise_listen_type/exercise_listen_type.dart';
 import '../exercise_writing/exercise_writing.dart';
 import '../matchmaker/exercise_matchmaker.dart';

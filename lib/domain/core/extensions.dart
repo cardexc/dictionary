@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:dictionary/domain/core/value_objects.dart';
 import 'package:dictionary/domain/languages.dart';
 import 'package:dictionary/domain/lesson/language_direction.dart';
-import 'package:dictionary/domain/word/word_model.dart';
+import 'package:dictionary/domain/words/word_model.dart';
 import 'package:flutter/material.dart';
 
 import '../pair.dart';

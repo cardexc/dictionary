@@ -5,7 +5,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import '../../../domain/core/value_objects.dart';
 import '../../../domain/lesson/language_direction.dart';
 import '../../../domain/pair.dart';
-import '../../../domain/word/word_model.dart';
+import '../../../domain/words/word_model.dart';
 import '../form/exercise_form_bloc.dart';
 
 part 'exercise_alphabet_soup_bloc.freezed.dart';

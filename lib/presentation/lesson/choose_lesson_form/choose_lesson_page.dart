@@ -1,6 +1,6 @@
 import 'package:dictionary/application/lesson/lesson_choose_form_bloc.dart';
 import 'package:dictionary/domain/lesson/i_lesson_repository.dart';
-import 'package:dictionary/domain/word/word_model.dart';
+import 'package:dictionary/domain/words/word_model.dart';
 import 'package:dictionary/infrastructure/config/app_colors.dart';
 import 'package:dictionary/infrastructure/config/const.dart';
 import 'package:dictionary/injection.dart';

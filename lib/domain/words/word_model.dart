@@ -12,9 +12,12 @@ abstract class WordModel with _$WordModel {
 
   factory WordModel({
     required UniqueId id,
+    required UniqueId lessonId,
+    required int databaseId,
     required String uk,
     required String ru,
     required String pl,
+    required bool sentence,
     @Default(false) bool selected,
   }) = _WordModel;
 

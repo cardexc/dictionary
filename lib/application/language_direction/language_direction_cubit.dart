@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:dictionary/domain/lesson/language_direction.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../domain/word/word_model.dart';
+import '../../domain/words/word_model.dart';
 
 part 'language_direction_state.dart';
 

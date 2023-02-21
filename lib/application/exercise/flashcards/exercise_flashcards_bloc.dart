@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../domain/lesson/language_direction.dart';
-import '../../../domain/word/word_model.dart';
+import '../../../domain/words/word_model.dart';
 import '../form/exercise_form_bloc.dart';
 
 part 'exercise_flashcards_event.dart';

@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../domain/word/word_model.dart';
+import '../../../domain/words/word_model.dart';
 import '../../../infrastructure/config/app_colors.dart';
 import '../../../infrastructure/config/go_router.dart';
 import '../../widgets/buttons/yellow_elevated_button.dart';

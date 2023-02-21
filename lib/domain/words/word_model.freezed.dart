@@ -17,9 +17,12 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$WordModel {
   UniqueId get id => throw _privateConstructorUsedError;
+  UniqueId get lessonId => throw _privateConstructorUsedError;
+  int get databaseId => throw _privateConstructorUsedError;
   String get uk => throw _privateConstructorUsedError;
   String get ru => throw _privateConstructorUsedError;
   String get pl => throw _privateConstructorUsedError;
+  bool get sentence => throw _privateConstructorUsedError;
   bool get selected => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -32,7 +35,15 @@ abstract class $WordModelCopyWith<$Res> {
   factory $WordModelCopyWith(WordModel value, $Res Function(WordModel) then) =
       _$WordModelCopyWithImpl<$Res, WordModel>;
   @useResult
-  $Res call({UniqueId id, String uk, String ru, String pl, bool selected});
+  $Res call(
+      {UniqueId id,
+      UniqueId lessonId,
+      int databaseId,
+      String uk,
+      String ru,
+      String pl,
+      bool sentence,
+      bool selected});
 }
 
 /// @nodoc
@@ -49,9 +60,12 @@ class _$WordModelCopyWithImpl<$Res, $Val extends WordModel>
   @override
   $Res call({
     Object? id = null,
+    Object? lessonId = null,
+    Object? databaseId = null,
     Object? uk = null,
     Object? ru = null,
     Object? pl = null,
+    Object? sentence = null,
     Object? selected = null,
   }) {
     return _then(_value.copyWith(
@@ -59,6 +73,14 @@ class _$WordModelCopyWithImpl<$Res, $Val extends WordModel>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as UniqueId,
+      lessonId: null == lessonId
+          ? _value.lessonId
+          : lessonId // ignore: cast_nullable_to_non_nullable
+              as UniqueId,
+      databaseId: null == databaseId
+          ? _value.databaseId
+          : databaseId // ignore: cast_nullable_to_non_nullable
+              as int,
       uk: null == uk
           ? _value.uk
           : uk // ignore: cast_nullable_to_non_nullable
@@ -71,6 +93,10 @@ class _$WordModelCopyWithImpl<$Res, $Val extends WordModel>
           ? _value.pl
           : pl // ignore: cast_nullable_to_non_nullable
               as String,
+      sentence: null == sentence
+          ? _value.sentence
+          : sentence // ignore: cast_nullable_to_non_nullable
+              as bool,
       selected: null == selected
           ? _value.selected
           : selected // ignore: cast_nullable_to_non_nullable
@@ -86,7 +112,15 @@ abstract class _$$_WordModelCopyWith<$Res> implements $WordModelCopyWith<$Res> {
       __$$_WordModelCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({UniqueId id, String uk, String ru, String pl, bool selected});
+  $Res call(
+      {UniqueId id,
+      UniqueId lessonId,
+      int databaseId,
+      String uk,
+      String ru,
+      String pl,
+      bool sentence,
+      bool selected});
 }
 
 /// @nodoc
@@ -101,9 +135,12 @@ class __$$_WordModelCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
+    Object? lessonId = null,
+    Object? databaseId = null,
     Object? uk = null,
     Object? ru = null,
     Object? pl = null,
+    Object? sentence = null,
     Object? selected = null,
   }) {
     return _then(_$_WordModel(
@@ -111,6 +148,14 @@ class __$$_WordModelCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as UniqueId,
+      lessonId: null == lessonId
+          ? _value.lessonId
+          : lessonId // ignore: cast_nullable_to_non_nullable
+              as UniqueId,
+      databaseId: null == databaseId
+          ? _value.databaseId
+          : databaseId // ignore: cast_nullable_to_non_nullable
+              as int,
       uk: null == uk
           ? _value.uk
           : uk // ignore: cast_nullable_to_non_nullable
@@ -123,6 +168,10 @@ class __$$_WordModelCopyWithImpl<$Res>
           ? _value.pl
           : pl // ignore: cast_nullable_to_non_nullable
               as String,
+      sentence: null == sentence
+          ? _value.sentence
+          : sentence // ignore: cast_nullable_to_non_nullable
+              as bool,
       selected: null == selected
           ? _value.selected
           : selected // ignore: cast_nullable_to_non_nullable
@@ -136,14 +185,21 @@ class __$$_WordModelCopyWithImpl<$Res>
 class _$_WordModel extends _WordModel {
   _$_WordModel(
       {required this.id,
+      required this.lessonId,
+      required this.databaseId,
       required this.uk,
       required this.ru,
       required this.pl,
+      required this.sentence,
       this.selected = false})
       : super._();
 
   @override
   final UniqueId id;
+  @override
+  final UniqueId lessonId;
+  @override
+  final int databaseId;
   @override
   final String uk;
   @override
@@ -151,12 +207,14 @@ class _$_WordModel extends _WordModel {
   @override
   final String pl;
   @override
+  final bool sentence;
+  @override
   @JsonKey()
   final bool selected;
 
   @override
   String toString() {
-    return 'WordModel(id: $id, uk: $uk, ru: $ru, pl: $pl, selected: $selected)';
+    return 'WordModel(id: $id, lessonId: $lessonId, databaseId: $databaseId, uk: $uk, ru: $ru, pl: $pl, sentence: $sentence, selected: $selected)';
   }
 
   @override
@@ -165,15 +223,22 @@ class _$_WordModel extends _WordModel {
         (other.runtimeType == runtimeType &&
             other is _$_WordModel &&
             (identical(other.id, id) || other.id == id) &&
+            (identical(other.lessonId, lessonId) ||
+                other.lessonId == lessonId) &&
+            (identical(other.databaseId, databaseId) ||
+                other.databaseId == databaseId) &&
             (identical(other.uk, uk) || other.uk == uk) &&
             (identical(other.ru, ru) || other.ru == ru) &&
             (identical(other.pl, pl) || other.pl == pl) &&
+            (identical(other.sentence, sentence) ||
+                other.sentence == sentence) &&
             (identical(other.selected, selected) ||
                 other.selected == selected));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, uk, ru, pl, selected);
+  int get hashCode => Object.hash(
+      runtimeType, id, lessonId, databaseId, uk, ru, pl, sentence, selected);
 
   @JsonKey(ignore: true)
   @override
@@ -185,20 +250,29 @@ class _$_WordModel extends _WordModel {
 abstract class _WordModel extends WordModel {
   factory _WordModel(
       {required final UniqueId id,
+      required final UniqueId lessonId,
+      required final int databaseId,
       required final String uk,
       required final String ru,
       required final String pl,
+      required final bool sentence,
       final bool selected}) = _$_WordModel;
   _WordModel._() : super._();
 
   @override
   UniqueId get id;
   @override
+  UniqueId get lessonId;
+  @override
+  int get databaseId;
+  @override
   String get uk;
   @override
   String get ru;
   @override
   String get pl;
+  @override
+  bool get sentence;
   @override
   bool get selected;
   @override
