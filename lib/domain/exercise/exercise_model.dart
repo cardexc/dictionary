@@ -8,46 +8,44 @@ part "exercise_model.freezed.dart";
 @freezed
 abstract class ExerciseModel with _$ExerciseModel {
   factory ExerciseModel.flashcards({
-    @Default(CupertinoIcons.arrow_2_circlepath) IconData iconData,
+    @Default(exerciseTypeFlashcardsIcon) IconData iconData,
     required String title,
     @Default(ExerciseType.flashcards) ExerciseType type,
   }) = Flashcards;
 
   factory ExerciseModel.scratchcards({
-    @Default(CupertinoIcons.hand_draw) IconData iconData,
+    @Default(exerciseTypeScratchcardsIcon) IconData iconData,
     required String title,
     @Default(ExerciseType.scratchcards) ExerciseType type,
   }) = ScratchCards;
 
   factory ExerciseModel.multipleChoice({
-    @Default(CupertinoIcons.square_grid_2x2) IconData iconData,
+    @Default(exerciseTypeMultipleChoiceIcon) IconData iconData,
     required String title,
     @Default(ExerciseType.multipleChoice) ExerciseType type,
   }) = MultipleChoice;
 
   factory ExerciseModel.matchMaker({
-    @Default(CupertinoIcons.arrow_branch) IconData iconData,
+    @Default(exerciseTypeMatchMakerIcon) IconData iconData,
     required String title,
     @Default(ExerciseType.matchMaker) ExerciseType type,
   }) = MatchMaker;
 
   factory ExerciseModel.alphabetSoup({
-    @Default(CupertinoIcons.arrow_swap) IconData iconData,
+    @Default(exerciseTypeAlphabetSoupIcon) IconData iconData,
     required String title,
     @Default(ExerciseType.alphabetSoup) ExerciseType type,
   }) = AlphabetSoup;
 
   factory ExerciseModel.writing({
-    @Default(CupertinoIcons.pencil_slash) IconData iconData,
+    @Default(exerciseTypeWritingIcon) IconData iconData,
     required String title,
     @Default(ExerciseType.writing) ExerciseType type,
   }) = Writing;
 
   factory ExerciseModel.listenType({
-    @Default(CupertinoIcons.headphones) IconData iconData,
+    @Default(exerciseTypeListenTypeIcon) IconData iconData,
     required String title,
     @Default(ExerciseType.listenType) ExerciseType type,
   }) = ListenType;
-
-
 }

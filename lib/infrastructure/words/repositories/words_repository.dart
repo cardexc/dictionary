@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:dictionary/domain/lesson/lesson_model.dart';
 import 'package:dictionary/domain/words/word_model.dart';
 import 'package:injectable/injectable.dart';
 
@@ -19,5 +20,8 @@ class WordsRepository implements IWordsRepository {
     throw UnimplementedError();
   }
 
-
+  @override
+  Future<Either<ValueRetrieveFailure, List<LessonModel>>> getLessons() {
+    return localDataSource.getLessons();
+  }
 }

@@ -19,17 +19,16 @@ class WordsLocalDataSourceImpl extends IWordsLocalDataSource {
   @override
   Future<Either<ValueRetrieveFailure, List<LessonModel>>> getLessons() async {
     try {
+      List<LessonModel> result = [];
+
       var allLessonsDto = await databaseHelper.instance.lessonDtos.where().findAll();
 
       for (var element in allLessonsDto) {
-
-        // await element.words.count();
-
+        await element.words.load();
+        result.add(element.toDomain());
       }
 
-      var allLessonModel = allLessonsDto.map((e) => e.toDomain()).toList();
-
-      return Right(allLessonModel);
+      return Right(result);
     } catch (_) {
       return const Left(ValueRetrieveFailure.unexpectedError());
     }

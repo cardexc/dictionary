@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hive/hive.dart';
 
 import '../../../domain/exercise/exercise_model.dart';
 import '../../../domain/words/word_model.dart';
@@ -23,13 +24,11 @@ class ExerciseChoosePage extends StatelessWidget {
   final List<ExerciseModel> exercises = [
     ExerciseModel.flashcards(title: "flash_cards".tr()),
     ExerciseModel.scratchcards(title: "scratch_cards".tr()),
-
     ExerciseModel.multipleChoice(title: "multiple_choice".tr()),
     ExerciseModel.matchMaker(title: "matchmaker".tr()),
     ExerciseModel.alphabetSoup(title: "alphabetSoup".tr()),
     ExerciseModel.listenType(title: "listenType".tr()),
     ExerciseModel.writing(title: "writing".tr()),
-
   ];
 
   ExerciseChoosePage({
@@ -50,6 +49,7 @@ class ExerciseChoosePage extends StatelessWidget {
             words: words,
             languageDirection: languageDirection,
             exercises: exercises,
+            box: Hive.box(HiveConst.boxName),
           ),
           child: _LanguageDirectionChoosePageBody(),
         ),

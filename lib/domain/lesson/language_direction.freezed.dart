@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$LanguageDirection {
   String get firstAsset => throw _privateConstructorUsedError;
   String get secondAsset => throw _privateConstructorUsedError;
+  String get stringDirection => throw _privateConstructorUsedError;
   Languages get languageFrom => throw _privateConstructorUsedError;
   Languages get languageTo => throw _privateConstructorUsedError;
 
@@ -35,6 +36,7 @@ abstract class $LanguageDirectionCopyWith<$Res> {
   $Res call(
       {String firstAsset,
       String secondAsset,
+      String stringDirection,
       Languages languageFrom,
       Languages languageTo});
 }
@@ -54,6 +56,7 @@ class _$LanguageDirectionCopyWithImpl<$Res, $Val extends LanguageDirection>
   $Res call({
     Object? firstAsset = null,
     Object? secondAsset = null,
+    Object? stringDirection = null,
     Object? languageFrom = null,
     Object? languageTo = null,
   }) {
@@ -65,6 +68,10 @@ class _$LanguageDirectionCopyWithImpl<$Res, $Val extends LanguageDirection>
       secondAsset: null == secondAsset
           ? _value.secondAsset
           : secondAsset // ignore: cast_nullable_to_non_nullable
+              as String,
+      stringDirection: null == stringDirection
+          ? _value.stringDirection
+          : stringDirection // ignore: cast_nullable_to_non_nullable
               as String,
       languageFrom: null == languageFrom
           ? _value.languageFrom
@@ -89,6 +96,7 @@ abstract class _$$_LanguageDirectionCopyWith<$Res>
   $Res call(
       {String firstAsset,
       String secondAsset,
+      String stringDirection,
       Languages languageFrom,
       Languages languageTo});
 }
@@ -106,6 +114,7 @@ class __$$_LanguageDirectionCopyWithImpl<$Res>
   $Res call({
     Object? firstAsset = null,
     Object? secondAsset = null,
+    Object? stringDirection = null,
     Object? languageFrom = null,
     Object? languageTo = null,
   }) {
@@ -117,6 +126,10 @@ class __$$_LanguageDirectionCopyWithImpl<$Res>
       secondAsset: null == secondAsset
           ? _value.secondAsset
           : secondAsset // ignore: cast_nullable_to_non_nullable
+              as String,
+      stringDirection: null == stringDirection
+          ? _value.stringDirection
+          : stringDirection // ignore: cast_nullable_to_non_nullable
               as String,
       languageFrom: null == languageFrom
           ? _value.languageFrom
@@ -136,6 +149,7 @@ class _$_LanguageDirection extends _LanguageDirection {
   _$_LanguageDirection(
       {required this.firstAsset,
       required this.secondAsset,
+      required this.stringDirection,
       required this.languageFrom,
       required this.languageTo})
       : super._();
@@ -145,14 +159,11 @@ class _$_LanguageDirection extends _LanguageDirection {
   @override
   final String secondAsset;
   @override
+  final String stringDirection;
+  @override
   final Languages languageFrom;
   @override
   final Languages languageTo;
-
-  @override
-  String toString() {
-    return 'LanguageDirection(firstAsset: $firstAsset, secondAsset: $secondAsset, languageFrom: $languageFrom, languageTo: $languageTo)';
-  }
 
   @override
   bool operator ==(dynamic other) {
@@ -163,6 +174,8 @@ class _$_LanguageDirection extends _LanguageDirection {
                 other.firstAsset == firstAsset) &&
             (identical(other.secondAsset, secondAsset) ||
                 other.secondAsset == secondAsset) &&
+            (identical(other.stringDirection, stringDirection) ||
+                other.stringDirection == stringDirection) &&
             (identical(other.languageFrom, languageFrom) ||
                 other.languageFrom == languageFrom) &&
             (identical(other.languageTo, languageTo) ||
@@ -170,8 +183,8 @@ class _$_LanguageDirection extends _LanguageDirection {
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, firstAsset, secondAsset, languageFrom, languageTo);
+  int get hashCode => Object.hash(runtimeType, firstAsset, secondAsset,
+      stringDirection, languageFrom, languageTo);
 
   @JsonKey(ignore: true)
   @override
@@ -185,6 +198,7 @@ abstract class _LanguageDirection extends LanguageDirection {
   factory _LanguageDirection(
       {required final String firstAsset,
       required final String secondAsset,
+      required final String stringDirection,
       required final Languages languageFrom,
       required final Languages languageTo}) = _$_LanguageDirection;
   _LanguageDirection._() : super._();
@@ -193,6 +207,8 @@ abstract class _LanguageDirection extends LanguageDirection {
   String get firstAsset;
   @override
   String get secondAsset;
+  @override
+  String get stringDirection;
   @override
   Languages get languageFrom;
   @override

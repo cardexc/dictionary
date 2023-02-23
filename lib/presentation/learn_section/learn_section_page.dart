@@ -1,4 +1,5 @@
 import 'package:dictionary/domain/lesson/i_lesson_repository.dart';
+import 'package:dictionary/domain/words/i_words_repository.dart';
 import 'package:dictionary/infrastructure/config/const.dart';
 import 'package:dictionary/infrastructure/config/go_router.dart';
 import 'package:dictionary/injection.dart';
@@ -17,7 +18,7 @@ class LearnSectionPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<LearnSectionCubit>(
-      create: (context) => LearnSectionCubit(getIt<ILessonRepository>()),
+      create: (context) => LearnSectionCubit(getIt<IWordsRepository>()),
       child: const _LearnSectionPageBody(),
     );
   }

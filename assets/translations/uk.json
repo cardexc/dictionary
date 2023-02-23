@@ -5,6 +5,13 @@
   "statistics": "Статистика",
   "settings": "Налаштування",
   "train": "Тренування",
+  "exercises": "Вправи",
+  "language_direction_default": "Напрямок перекладу за замовчуванням",
+  "ask_language_direction_before_exercise": "Питати напрямок перекладу перед вправами",
+  "use_sentences_in_exercises": "Використовувати речення для вправ",
+
+  "active_exercises_title": "Які вправи активні на початку тренувань?",
+
   "train_your_knowledge": "Тренуй свої знання",
   "begin_training": "Розпочати тренування",
   "choose_words_for_training_with_selection": "Тут можна вибрати окремі слова для тренування або відредагувати слово. Щоб зробити вибір деяких слів використовуйте свайп.",
@@ -82,5 +89,10 @@
   "motivation_suggestion_100_1": "Ви вже дуже добре володієте мовою.",
   "motivation_suggestion_100_2": "Чудово, немає слів.",
   "motivation_suggestion_100_3": "Ви майже все знаєте.",
-  "motivation_suggestion_100_4": "Шикарна робота!"
+  "motivation_suggestion_100_4": "Шикарна робота!",
+
+  "account": "Обліковий запис",
+  "register_sign_in": "Зареєструватися/увійти",
+  "please_choose_ld_to_be_used_as_default": "Будь ласка, оберіть напрямок перекладу, який буде використовуватись за замовчуванням"
+
 }

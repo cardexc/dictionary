@@ -1,3 +1,4 @@
+import 'package:dictionary/domain/settings/settings_model.dart';
 import 'package:dictionary/domain/speech/i_speech_repository.dart';
 import 'package:dictionary/infrastructure/database/database_helper.dart';
 import 'package:dictionary/infrastructure/helpers/asset_helper.dart';
@@ -6,7 +7,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hive/hive.dart';
 import 'package:injectable/injectable.dart';
+import 'package:path_provider/path_provider.dart';
 
 import 'application/main/main_page_cubit.dart';
 import 'infrastructure/config/app_colors.dart';
@@ -18,18 +21,26 @@ import 'injection.dart';
 GlobalKey globalKey = GlobalKey();
 
 void main() async {
+
   configureInjection(Environment.prod);
 
   WidgetsFlutterBinding.ensureInitialized();
+
   await EasyLocalization.ensureInitialized();
 
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(statusBarColor: Colors.transparent));
 
   prepareDeviceInformation();
 
+
   await getIt<AssetHelper>().init();
   getIt<ISpeechRepository>().init();
   await getIt<DatabaseHelper>().init();
+
+
+  var supportDir = await getApplicationSupportDirectory();
+  Hive.init(supportDir.path);
+  Hive.openBox(HiveConst.boxName);
 
   runApp(
     EasyLocalization(
@@ -63,7 +74,7 @@ class MyApp extends StatelessWidget {
       theme: const CupertinoThemeData(
         scaffoldBackgroundColor: AppColors.scaffoldBackgroundColor,
         brightness: Brightness.light,
-        primaryColor: AppColors.appYellow,
+        primaryColor: CupertinoColors.label,
         barBackgroundColor: AppColors.appYellow,
         primaryContrastingColor: AppColors.contrastingColor,
         textTheme: CupertinoTextThemeData(

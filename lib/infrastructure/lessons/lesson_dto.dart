@@ -36,7 +36,7 @@ class LessonDto {
       databaseId: databaseId!,
       title: title ?? "",
       sortValue: 0,
-      words: [],
+      words: words.map((e) => e.toDomain()).toList(),
     );
   }
 }

@@ -24,7 +24,7 @@ abstract class WordModel with _$WordModel {
   /// 0: get string for the source language, 1 - translation
   String getStringAccordingToLanguageDirection(LanguageDirection languageDirection, int position) {
     if (position == 0) {
-      if (languageDirection.languageFrom == Languages.uk) {
+      if (languageDirection.languageFrom == Languages.ua) {
         return uk;
       } else if (languageDirection.languageFrom == Languages.pl) {
         return pl;
@@ -32,7 +32,7 @@ abstract class WordModel with _$WordModel {
         return "ru - $uk";
       }
     } else if (position == 1) {
-      if (languageDirection.languageTo == Languages.uk) {
+      if (languageDirection.languageTo == Languages.ua) {
         return uk;
       } else if (languageDirection.languageTo == Languages.pl) {
         return pl;

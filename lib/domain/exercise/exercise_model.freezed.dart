@@ -211,7 +211,7 @@ class __$$FlashcardsCopyWithImpl<$Res>
 
 class _$Flashcards implements Flashcards {
   _$Flashcards(
-      {this.iconData = CupertinoIcons.arrow_2_circlepath,
+      {this.iconData = exerciseTypeFlashcardsIcon,
       required this.title,
       this.type = ExerciseType.flashcards});
 
@@ -435,7 +435,7 @@ class __$$ScratchCardsCopyWithImpl<$Res>
 
 class _$ScratchCards implements ScratchCards {
   _$ScratchCards(
-      {this.iconData = CupertinoIcons.hand_draw,
+      {this.iconData = exerciseTypeScratchcardsIcon,
       required this.title,
       this.type = ExerciseType.scratchcards});
 
@@ -659,7 +659,7 @@ class __$$MultipleChoiceCopyWithImpl<$Res>
 
 class _$MultipleChoice implements MultipleChoice {
   _$MultipleChoice(
-      {this.iconData = CupertinoIcons.square_grid_2x2,
+      {this.iconData = exerciseTypeMultipleChoiceIcon,
       required this.title,
       this.type = ExerciseType.multipleChoice});
 
@@ -883,7 +883,7 @@ class __$$MatchMakerCopyWithImpl<$Res>
 
 class _$MatchMaker implements MatchMaker {
   _$MatchMaker(
-      {this.iconData = CupertinoIcons.arrow_branch,
+      {this.iconData = exerciseTypeMatchMakerIcon,
       required this.title,
       this.type = ExerciseType.matchMaker});
 
@@ -1107,7 +1107,7 @@ class __$$AlphabetSoupCopyWithImpl<$Res>
 
 class _$AlphabetSoup implements AlphabetSoup {
   _$AlphabetSoup(
-      {this.iconData = CupertinoIcons.arrow_swap,
+      {this.iconData = exerciseTypeAlphabetSoupIcon,
       required this.title,
       this.type = ExerciseType.alphabetSoup});
 
@@ -1329,7 +1329,7 @@ class __$$WritingCopyWithImpl<$Res>
 
 class _$Writing implements Writing {
   _$Writing(
-      {this.iconData = CupertinoIcons.pencil_slash,
+      {this.iconData = exerciseTypeWritingIcon,
       required this.title,
       this.type = ExerciseType.writing});
 
@@ -1553,7 +1553,7 @@ class __$$ListenTypeCopyWithImpl<$Res>
 
 class _$ListenType implements ListenType {
   _$ListenType(
-      {this.iconData = CupertinoIcons.headphones,
+      {this.iconData = exerciseTypeListenTypeIcon,
       required this.title,
       this.type = ExerciseType.listenType});
 

@@ -7,6 +7,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hive/hive.dart';
 
 import '../../../domain/words/word_model.dart';
 import '../../../infrastructure/config/app_colors.dart';
@@ -28,7 +29,10 @@ class LanguageDirectionChoosePage extends StatelessWidget {
       ),
       child: ScaffoldGradient(
         child: BlocProvider<LanguageDirectionCubit>(
-          create: (context) => LanguageDirectionCubit(words: words),
+          create: (context) => LanguageDirectionCubit(
+            words: words,
+            box: Hive.box(HiveConst.boxName),
+          ),
           child: const _LanguageDirectionChoosePageBody(),
         ),
       ),
@@ -49,7 +53,7 @@ class _LanguageDirectionChoosePageBody extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const _LanguageDirectionRow(
-                  language: Languages.uk,
+                  language: Languages.ua,
                 ),
                 const _LanguageDirectionRow(
                   language: Languages.ru,
@@ -59,15 +63,23 @@ class _LanguageDirectionChoosePageBody extends StatelessWidget {
                   child: Row(
                     children: [
                       Checkbox(
-                        value: true,
-                        onChanged: (_) {},
+                        value: state.alwaysUseSelectedDirection,
+                        onChanged: (newValue) {
+                          context.read<LanguageDirectionCubit>().changeAskLanguageDirection(newValue!);
+                        },
                         shape: const CircleBorder(),
                       ),
                       Expanded(
+                        child: GestureDetector(
+                          onTap: () {
+                            context.read<LanguageDirectionCubit>().changeAskLanguageDirection(!state.alwaysUseSelectedDirection);
+                          },
                           child: const Text(
-                        "always_choose_this_language_direction",
-                        maxLines: 5,
-                      ).tr()),
+                            "always_choose_this_language_direction",
+                            maxLines: 5,
+                          ).tr(),
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -76,16 +88,26 @@ class _LanguageDirectionChoosePageBody extends StatelessWidget {
             YellowElevatedButton(
                 titleRes: "next",
                 onPressed: () {
-                  var extraMap = <dynamic, dynamic>{
-                    "words": context.read<LanguageDirectionCubit>().words,
-                    "languageDirection": state.direction,
-                  };
-                  context.pushNamed(exerciseChoosePage, extra: extraMap);
+                  _onNext(context);
                 })
           ],
         );
       },
     );
+  }
+
+  void _onNext(BuildContext context) {
+
+    var cubit = context.read<LanguageDirectionCubit>();
+
+    cubit.writeSettings();
+
+    var extraMap = <dynamic, dynamic>{
+      "words": cubit.words,
+      "languageDirection": cubit.state.direction,
+    };
+
+    context.pushNamed(exerciseChoosePage, extra: extraMap);
   }
 }
 
@@ -99,8 +121,8 @@ class _LanguageDirectionRow extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        if (language == Languages.uk) Expanded(child: _LanguageDirectionBlock(languageDirection: LanguageDirection.uaToPl())),
-        if (language == Languages.uk) Expanded(child: _LanguageDirectionBlock(languageDirection: LanguageDirection.plToUa())),
+        if (language == Languages.ua) Expanded(child: _LanguageDirectionBlock(languageDirection: LanguageDirection.uaToPl())),
+        if (language == Languages.ua) Expanded(child: _LanguageDirectionBlock(languageDirection: LanguageDirection.plToUa())),
         if (language == Languages.ru) Expanded(child: _LanguageDirectionBlock(languageDirection: LanguageDirection.ruToPl())),
         if (language == Languages.ru) Expanded(child: _LanguageDirectionBlock(languageDirection: LanguageDirection.plToRu())),
       ],

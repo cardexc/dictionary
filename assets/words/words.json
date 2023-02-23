@@ -4,6 +4,24 @@
       "title": "Lesson # 1",
       "words": [
         {
+          "pl": "szczupły",
+          "ru": "стройный",
+          "uk": "стройный",
+          "sentence": false
+        },
+        {
+          "pl": "przepis",
+          "ru": "рецепт",
+          "uk": "рецепт",
+          "sentence": false
+        },
+        {
+          "pl": "kroić",
+          "ru": "резать",
+          "uk": "резать",
+          "sentence": false
+        },
+        {
           "pl": "podejrzewać",
           "ru": "подозревать",
           "uk": "подозревать",
