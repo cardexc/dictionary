@@ -9,9 +9,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hive/hive.dart';
 
 import '../../../domain/exercise/exercise_model.dart';
-import '../../../domain/word/word_model.dart';
+import '../../../domain/words/word_model.dart';
 import '../../../main.dart';
 import '../../widgets/buttons/yellow_elevated_button.dart';
 import '../../widgets/scaffold_gradient.dart';
@@ -26,6 +27,7 @@ class ExerciseChoosePage extends StatelessWidget {
     ExerciseModel.multipleChoice(title: "multiple_choice".tr()),
     ExerciseModel.matchMaker(title: "matchmaker".tr()),
     ExerciseModel.alphabetSoup(title: "alphabetSoup".tr()),
+    ExerciseModel.listenType(title: "listenType".tr()),
     ExerciseModel.writing(title: "writing".tr()),
   ];
 
@@ -47,6 +49,7 @@ class ExerciseChoosePage extends StatelessWidget {
             words: words,
             languageDirection: languageDirection,
             exercises: exercises,
+            box: Hive.box(HiveConst.boxName),
           ),
           child: _LanguageDirectionChoosePageBody(),
         ),
@@ -190,6 +193,7 @@ class _LanguageDirectionChoosePageBody extends StatelessWidget {
           _ExerciseRow(exerciseModel: context.read<ExerciseChooseBloc>().exercises[3]),
           _ExerciseRow(exerciseModel: context.read<ExerciseChooseBloc>().exercises[4]),
           _ExerciseRow(exerciseModel: context.read<ExerciseChooseBloc>().exercises[5]),
+          _ExerciseRow(exerciseModel: context.read<ExerciseChooseBloc>().exercises[6]),
         ],
       ),
     );

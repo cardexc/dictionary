@@ -1,4 +1,5 @@
 import 'package:dictionary/application/main/main_page_cubit.dart';
+import 'package:dictionary/domain/section/section_types.dart';
 import 'package:dictionary/infrastructure/config/app_colors.dart';
 import 'package:dictionary/infrastructure/config/go_router.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -41,7 +42,7 @@ class MainPage extends StatelessWidget {
                     height: largePadding,
                   ),
                   Expanded(
-                    child: _MedicationsPageBody(sections: state.sections),
+                    child: _MainPageBody(sections: state.sections),
                   ),
                 ],
               ),
@@ -53,10 +54,10 @@ class MainPage extends StatelessWidget {
   }
 }
 
-class _MedicationsPageBody extends StatelessWidget {
+class _MainPageBody extends StatelessWidget {
   final List<SectionModel> sections;
 
-  _MedicationsPageBody({required this.sections, Key? key}) : super(key: key);
+  _MainPageBody({required this.sections, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -76,7 +77,12 @@ class _MedicationsPageBody extends StatelessWidget {
 
               return GestureDetector(
                 onTap: () {
-                  context.pushNamed(learnSectionPage);
+                  if (section.sectionType == SectionType.settings) {
+                    context.pushNamed(settingsPage);
+                  }
+                  if (section.sectionType == SectionType.learn) {
+                    context.pushNamed(learnSectionPage);
+                  }
                 },
                 child: SizedBox(
                   height: rowHeight,

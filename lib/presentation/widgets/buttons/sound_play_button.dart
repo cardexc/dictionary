@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:audio_session/audio_session.dart';
 import 'package:dictionary/domain/speech/voice_model.dart';
-import 'package:dictionary/domain/word/word_model.dart';
+import 'package:dictionary/domain/words/word_model.dart';
 import 'package:dictionary/infrastructure/config/const.dart';
 import 'package:dictionary/injection.dart';
 import 'package:flutter/cupertino.dart';
@@ -18,9 +18,16 @@ class SoundPlayButton extends StatefulWidget {
   final WordModel wordModel;
   final LanguageDirection languageDirection;
   final bool highlightBack;
+  final bool playOnBuild;
   static double width = 60.0;
 
-  SoundPlayButton({required this.wordModel, required this.languageDirection, this.highlightBack = false, Key? key}) : super(key: key);
+  const SoundPlayButton({
+    required this.wordModel,
+    required this.languageDirection,
+    this.highlightBack = false,
+    this.playOnBuild = false,
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<SoundPlayButton> createState() => _SoundPlayButtonState();
@@ -36,6 +43,8 @@ class _SoundPlayButtonState extends State<SoundPlayButton> with WidgetsBindingOb
   final _player = AudioPlayer();
 
   late final AnimationController _controller;
+
+  Timer? playOnBuildTimer;
 
   Future<void> _init() async {
     // Inform the operating system of our app's audio attributes etc.
@@ -62,6 +71,10 @@ class _SoundPlayButtonState extends State<SoundPlayButton> with WidgetsBindingOb
 
     _controller = AnimationController(vsync: this);
 
+    if (widget.playOnBuild) {
+      synthesizeText();
+    }
+
     super.initState();
   }
 
@@ -72,7 +85,8 @@ class _SoundPlayButtonState extends State<SoundPlayButton> with WidgetsBindingOb
     super.dispose();
   }
 
-  void synthesizeText(String text) async {
+  void synthesizeText() async {
+    var text = widget.wordModel.pl;
     if (_selectedVoice == null) {
       return;
     }
@@ -104,7 +118,7 @@ class _SoundPlayButtonState extends State<SoundPlayButton> with WidgetsBindingOb
     return GestureDetector(
       onTap: () {
         setState(() {
-          synthesizeText(widget.wordModel.pl);
+          synthesizeText();
         });
       },
       child: Container(

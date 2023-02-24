@@ -5,15 +5,16 @@ import 'package:dictionary/presentation/exercise/exercise_flashcards/exercise_fl
 import 'package:dictionary/presentation/exercise/exercise_multichoice/exercise_multiplechoice.dart';
 import 'package:dictionary/presentation/exercise/exercise_progress_widget.dart';
 import 'package:dictionary/presentation/exercise/exercise_scratchcards/exercise_scratchcards.dart';
-import 'package:dictionary/presentation/exercise/matchmaker/exercise_matchmaker_finish.dart';
 import 'package:dictionary/presentation/widgets/scaffold_gradient.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../application/exercise/form/exercise_form_bloc.dart';
 import '../../../domain/exercise/exercise_model.dart';
-import '../../../domain/word/word_model.dart';
+import '../../../domain/words/word_model.dart';
+import '../exercise_listen_type/exercise_listen_type.dart';
 import '../exercise_writing/exercise_writing.dart';
 import '../matchmaker/exercise_matchmaker.dart';
 
@@ -48,7 +49,6 @@ class _ExerciseFormPagePageBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var bloc = context.read<ExerciseFormBloc>();
-    var mediaQ = MediaQuery.of(context);
 
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
@@ -56,7 +56,12 @@ class _ExerciseFormPagePageBody extends StatelessWidget {
       ),
       child: ScaffoldGradient(
         child: SizedBox.expand(
-          child: BlocBuilder<ExerciseFormBloc, ExerciseFormState>(
+          child: BlocConsumer<ExerciseFormBloc, ExerciseFormState>(
+            listener: (context, state) {
+              if (state.finish) {
+                context.pop();
+              }
+            },
             builder: (context, state) {
               return Column(
                 children: [
@@ -82,9 +87,12 @@ class _ExerciseFormPagePageBody extends StatelessWidget {
                   if (state.activeExercise.type == ExerciseType.alphabetSoup)
                     ExerciseAlphabetSoup(languageDirection: bloc.languageDirection, words: bloc.words),
 
-                  /*Alphabet soup*/
+                  /*Writing*/
                   if (state.activeExercise.type == ExerciseType.writing)
                     ExerciseWriting(languageDirection: bloc.languageDirection, words: bloc.words),
+
+                  /*Listen type*/
+                  if (state.activeExercise.type == ExerciseType.listenType) ExerciseListenType(words: bloc.words),
                 ],
               );
             },

@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../domain/lesson/language_direction.dart';
-import '../../../domain/word/word_model.dart';
+import '../../../domain/words/word_model.dart';
 import '../form/exercise_form_bloc.dart';
 
 part 'exercise_writing_event.dart';
@@ -14,6 +14,7 @@ part 'exercise_writing_bloc.freezed.dart';
 class ExerciseWritingBloc extends Bloc<ExerciseWritingEvent, ExerciseWritingState> {
   final ExerciseFormBloc formBloc;
   final List<WordModel> words;
+  final Set<WordModel> wordsToBeRepeated = {};
 
   ExerciseWritingBloc({
     required this.formBloc,
@@ -23,16 +24,17 @@ class ExerciseWritingBloc extends Bloc<ExerciseWritingEvent, ExerciseWritingStat
           languageDirection: languageDirection,
           words: words,
         )) {
-
     formBloc.add(ProgressChanged(all: state.words.length, position: state.position));
 
     on<WordSubmitted>((event, emit) {
       var currentWord = state.words[state.position];
-      var translation = currentWord.getStringAccordingToLanguageDirection(languageDirection, 1);
-      if (event.value == translation) {
+      var translation = currentWord.getStringAccordingToLanguageDirection(languageDirection, 1).trim().toLowerCase();
+      var valueToCheck = event.value.trim().toLowerCase();
+      if (valueToCheck == translation) {
         emit(state.copyWith(showNextButton: true, wordIsCorrect: true, constructedWord: event.value));
       } else {
         emit(state.copyWith(showNextButton: true, constructedWord: event.value));
+        wordsToBeRepeated.add(currentWord);
       }
     });
 

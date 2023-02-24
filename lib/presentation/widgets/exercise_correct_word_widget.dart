@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../domain/lesson/language_direction.dart';
-import '../../domain/word/word_model.dart';
+import '../../domain/words/word_model.dart';
 import '../../infrastructure/config/const.dart';
 import 'buttons/sound_play_button.dart';
 import 'enemy_language_circle.dart';

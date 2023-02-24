@@ -1,16 +1,17 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:dictionary/application/exercise/flashcards/exercise_flashcards_bloc.dart';
 import 'package:dictionary/infrastructure/config/const.dart';
-import 'package:dictionary/presentation/exercise/exercise_flashcards/exercise_flashcards_finish.dart';
+import 'package:dictionary/presentation/exercise/exercise_finish_widget.dart';
 import 'package:flip_card/flip_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../application/exercise/form/exercise_form_bloc.dart';
+import '../../../domain/exercise/exercise_types.dart';
 import '../../../domain/languages.dart';
 import '../../../domain/lesson/language_direction.dart';
-import '../../../domain/word/word_model.dart';
+import '../../../domain/words/word_model.dart';
 import '../../../infrastructure/config/app_colors.dart';
 import '../../widgets/buttons/sound_play_button.dart';
 import '../../widgets/buttons/yellow_elevated_button.dart';
@@ -53,7 +54,13 @@ class _ExerciseFlashcardsBody extends StatelessWidget {
         return state.isFinished;
       },
       builder: (context, isFinished) {
-        return isFinished ? const ExerciseFlashcardsFinish() : _buildExercise(context);
+        return isFinished
+            ? ExerciseFinishWidget(
+                totalWords: context.read<ExerciseFlashcardsBloc>().state.words.length,
+                wordsToBeRepeated: 0,
+                type: ExerciseType.flashcards,
+              )
+            : _buildExercise(context);
       },
     );
   }

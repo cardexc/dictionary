@@ -12,6 +12,8 @@ const defaultDatePattern = "dd.MM.yyyy";
 
 const defaultVoiceIndex = 0;
 
+const ukLocale = Locale('uk');
+
 class Exercises {
   static const langImageSize = 35.0;
   static double wordFontSize = 22.0;
@@ -28,6 +30,7 @@ class Exercises {
   static const TextStyle exerciseMatchmakerItemsTextStyle = exerciseCardItemsTextStyle;
 
   static Color exerciseErrorColor = Colors.red[200]!;
+
   static Color exerciseSuccessColor = AppColors.appYellow;
 
   static const exerciseMatchmakerRowsCount = 5;
@@ -40,3 +43,62 @@ const predefinedBackgroundButtonGradient = LinearGradient(
   end: Alignment.centerRight,
   colors: [AppColors.appYellow, AppColors.isAboutToBeExpiredColor],
 );
+
+const progressIndicatorGradient = LinearGradient(
+  begin: Alignment.centerLeft,
+  end: Alignment.centerRight,
+  colors: [
+    AppColors.appYellow,
+    AppColors.isAboutToBeExpiredColor,
+    AppColors.appYellow,
+  ],
+);
+
+const progressIndicatorGradient3 = LinearGradient(
+  colors: [
+    AppColors.exerciseProgressColor2,
+    AppColors.exerciseProgressColor2,
+    AppColors.appYellow,
+    AppColors.appYellow,
+    AppColors.isAboutToBeExpiredColor,
+    AppColors.isAboutToBeExpiredColor,
+  ],
+);
+
+const exerciseFinishTextGradient = LinearGradient(
+  begin: Alignment.centerLeft,
+  end: Alignment.centerRight,
+  colors: [
+    AppColors.primaryOld,
+    AppColors.isAboutToBeExpiredColor,
+    AppColors.appYellow2,
+    AppColors.primaryOld,
+    AppColors.isAboutToBeExpiredColor,
+  ],
+);
+
+class HiveConst {
+  static String boxName = "settings";
+  static String defaultLanguageDirectionValue = "uaPl";
+  static String defaultLanguageDirectionKey = "defaultLanguageDirection";
+  static String askLanguageDirectionKey = "askLanguageDirection";
+  static String useSentenceInExercisesKey = "useSentenceInExercises";
+  static String exerciseFlashcardDefaultUseKey = "exerciseFlashcardDefaultUse";
+  static String exerciseScratchCardsDefaultUseKey = "exerciseScratchCardsDefaultUse";
+  static String exerciseMultipleChoiceDefaultUseKey = "exerciseMultipleChoiceDefaultUse";
+  static String exerciseMatchMakerDefaultUseKey = "exerciseMatchMakerDefaultUse";
+  static String exerciseAlphabetSoupDefaultUseKey = "exerciseAlphabetSoupDefaultUse";
+  static String exerciseWritingDefaultUseKey = "exerciseWritingDefaultUse";
+  static String exerciseListenTypeDefaultUseKey = "exerciseListenTypeDefaultUse";
+
+  static bool askLanguageDirectionDefaultValue = true;
+  static bool useSentenceInExercisesDefaultValue = true;
+
+  static bool exerciseFlashcardDefaultUseDefaultValue = true;
+  static bool exerciseScratchCardsDefaultUseDefaultValue = false;
+  static bool exerciseMultipleChoiceDefaultUseDefaultValue = true;
+  static bool exerciseMatchMakerDefaultUseDefaultValue = true;
+  static bool exerciseAlphabetSoupDefaultUseDefaultValue = true;
+  static bool exerciseWritingDefaultUseDefaultValue = true;
+  static bool exerciseListenTypeDefaultUseDefaultValue = true;
+}

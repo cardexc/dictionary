@@ -6,6 +6,8 @@ class ExerciseFormState with _$ExerciseFormState {
     required String appbarTitle,
     required ExerciseModel activeExercise,
     @Default(0.0) double activeProgressValue,
+    @Default(0) int exercisePosition,
+    @Default(false) bool finish,
   }) = _ExerciseFormState;
 
   factory ExerciseFormState.initial({

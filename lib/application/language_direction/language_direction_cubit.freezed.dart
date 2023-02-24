@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$LanguageDirectionState {
   LanguageDirection get direction => throw _privateConstructorUsedError;
+  bool get alwaysUseSelectedDirection => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $LanguageDirectionStateCopyWith<LanguageDirectionState> get copyWith =>
@@ -29,7 +30,7 @@ abstract class $LanguageDirectionStateCopyWith<$Res> {
           $Res Function(LanguageDirectionState) then) =
       _$LanguageDirectionStateCopyWithImpl<$Res, LanguageDirectionState>;
   @useResult
-  $Res call({LanguageDirection direction});
+  $Res call({LanguageDirection direction, bool alwaysUseSelectedDirection});
 
   $LanguageDirectionCopyWith<$Res> get direction;
 }
@@ -49,12 +50,17 @@ class _$LanguageDirectionStateCopyWithImpl<$Res,
   @override
   $Res call({
     Object? direction = null,
+    Object? alwaysUseSelectedDirection = null,
   }) {
     return _then(_value.copyWith(
       direction: null == direction
           ? _value.direction
           : direction // ignore: cast_nullable_to_non_nullable
               as LanguageDirection,
+      alwaysUseSelectedDirection: null == alwaysUseSelectedDirection
+          ? _value.alwaysUseSelectedDirection
+          : alwaysUseSelectedDirection // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 
@@ -75,7 +81,7 @@ abstract class _$$_LanguageDirectionStateCopyWith<$Res>
       __$$_LanguageDirectionStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({LanguageDirection direction});
+  $Res call({LanguageDirection direction, bool alwaysUseSelectedDirection});
 
   @override
   $LanguageDirectionCopyWith<$Res> get direction;
@@ -94,12 +100,17 @@ class __$$_LanguageDirectionStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? direction = null,
+    Object? alwaysUseSelectedDirection = null,
   }) {
     return _then(_$_LanguageDirectionState(
       direction: null == direction
           ? _value.direction
           : direction // ignore: cast_nullable_to_non_nullable
               as LanguageDirection,
+      alwaysUseSelectedDirection: null == alwaysUseSelectedDirection
+          ? _value.alwaysUseSelectedDirection
+          : alwaysUseSelectedDirection // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -107,14 +118,17 @@ class __$$_LanguageDirectionStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_LanguageDirectionState implements _LanguageDirectionState {
-  const _$_LanguageDirectionState({required this.direction});
+  const _$_LanguageDirectionState(
+      {required this.direction, required this.alwaysUseSelectedDirection});
 
   @override
   final LanguageDirection direction;
+  @override
+  final bool alwaysUseSelectedDirection;
 
   @override
   String toString() {
-    return 'LanguageDirectionState(direction: $direction)';
+    return 'LanguageDirectionState(direction: $direction, alwaysUseSelectedDirection: $alwaysUseSelectedDirection)';
   }
 
   @override
@@ -123,11 +137,16 @@ class _$_LanguageDirectionState implements _LanguageDirectionState {
         (other.runtimeType == runtimeType &&
             other is _$_LanguageDirectionState &&
             (identical(other.direction, direction) ||
-                other.direction == direction));
+                other.direction == direction) &&
+            (identical(other.alwaysUseSelectedDirection,
+                    alwaysUseSelectedDirection) ||
+                other.alwaysUseSelectedDirection ==
+                    alwaysUseSelectedDirection));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, direction);
+  int get hashCode =>
+      Object.hash(runtimeType, direction, alwaysUseSelectedDirection);
 
   @JsonKey(ignore: true)
   @override
@@ -139,10 +158,14 @@ class _$_LanguageDirectionState implements _LanguageDirectionState {
 
 abstract class _LanguageDirectionState implements LanguageDirectionState {
   const factory _LanguageDirectionState(
-      {required final LanguageDirection direction}) = _$_LanguageDirectionState;
+          {required final LanguageDirection direction,
+          required final bool alwaysUseSelectedDirection}) =
+      _$_LanguageDirectionState;
 
   @override
   LanguageDirection get direction;
+  @override
+  bool get alwaysUseSelectedDirection;
   @override
   @JsonKey(ignore: true)
   _$$_LanguageDirectionStateCopyWith<_$_LanguageDirectionState> get copyWith =>

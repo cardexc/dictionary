@@ -1,6 +1,6 @@
 import 'package:dictionary/application/lesson/lesson_choose_form_bloc.dart';
 import 'package:dictionary/domain/lesson/i_lesson_repository.dart';
-import 'package:dictionary/domain/word/word_model.dart';
+import 'package:dictionary/domain/words/word_model.dart';
 import 'package:dictionary/infrastructure/config/app_colors.dart';
 import 'package:dictionary/infrastructure/config/const.dart';
 import 'package:dictionary/injection.dart';
@@ -9,7 +9,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hive/hive.dart';
 
+import '../../../domain/lesson/language_direction.dart';
 import '../../../domain/lesson/lesson_model.dart';
 import '../../../infrastructure/config/go_router.dart';
 import '../../widgets/buttons/yellow_elevated_button.dart';
@@ -101,8 +103,7 @@ class _LessonSectionPageBody extends StatelessWidget {
                     child: YellowElevatedButton(
                         titleRes: "next",
                         onPressed: () {
-                          context.pushNamed(languageChoosePage,
-                              extra: state.selectionMode ? state.words.where((element) => element.selected).toList() : state.words);
+                          _onNext(context);
                         }),
                   ),
                 )
@@ -112,6 +113,33 @@ class _LessonSectionPageBody extends StatelessWidget {
         );
       },
     );
+  }
+
+  void _onNext(BuildContext context) {
+    var cubit = context.read<LessonChooseFormBloc>();
+
+    var box = Hive.box(HiveConst.boxName);
+    var shouldAsk = box.get(
+      HiveConst.askLanguageDirectionKey,
+      defaultValue: HiveConst.askLanguageDirectionDefaultValue,
+    );
+
+    var words = cubit.state.selectionMode ? cubit.state.words.where((element) => element.selected).toList() : cubit.state.words;
+
+    if (shouldAsk) {
+      context.pushNamed(languageChoosePage, extra: words);
+    } else {
+      var directionByDefault = LanguageDirection.getFromString(box.get(
+        HiveConst.defaultLanguageDirectionKey,
+        defaultValue: HiveConst.defaultLanguageDirectionValue,
+      ) as String);
+
+      var extraMap = <dynamic, dynamic>{
+        "words": words,
+        "languageDirection": directionByDefault,
+      };
+      context.pushNamed(exerciseChoosePage, extra: extraMap);
+    }
   }
 
   Padding _buildSearch(BuildContext context) {

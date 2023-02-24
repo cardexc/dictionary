@@ -16,9 +16,10 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$LessonModel {
-  int get sortValue => throw _privateConstructorUsedError;
   UniqueId get id => throw _privateConstructorUsedError;
+  int? get databaseId => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
+  int get sortValue => throw _privateConstructorUsedError;
   List<WordModel> get words => throw _privateConstructorUsedError;
   set words(List<WordModel> value) => throw _privateConstructorUsedError;
 
@@ -33,7 +34,12 @@ abstract class $LessonModelCopyWith<$Res> {
           LessonModel value, $Res Function(LessonModel) then) =
       _$LessonModelCopyWithImpl<$Res, LessonModel>;
   @useResult
-  $Res call({int sortValue, UniqueId id, String title, List<WordModel> words});
+  $Res call(
+      {UniqueId id,
+      int? databaseId,
+      String title,
+      int sortValue,
+      List<WordModel> words});
 }
 
 /// @nodoc
@@ -49,24 +55,29 @@ class _$LessonModelCopyWithImpl<$Res, $Val extends LessonModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? sortValue = null,
     Object? id = null,
+    Object? databaseId = freezed,
     Object? title = null,
+    Object? sortValue = null,
     Object? words = null,
   }) {
     return _then(_value.copyWith(
-      sortValue: null == sortValue
-          ? _value.sortValue
-          : sortValue // ignore: cast_nullable_to_non_nullable
-              as int,
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as UniqueId,
+      databaseId: freezed == databaseId
+          ? _value.databaseId
+          : databaseId // ignore: cast_nullable_to_non_nullable
+              as int?,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
+      sortValue: null == sortValue
+          ? _value.sortValue
+          : sortValue // ignore: cast_nullable_to_non_nullable
+              as int,
       words: null == words
           ? _value.words
           : words // ignore: cast_nullable_to_non_nullable
@@ -83,7 +94,12 @@ abstract class _$$_LessonModelCopyWith<$Res>
       __$$_LessonModelCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int sortValue, UniqueId id, String title, List<WordModel> words});
+  $Res call(
+      {UniqueId id,
+      int? databaseId,
+      String title,
+      int sortValue,
+      List<WordModel> words});
 }
 
 /// @nodoc
@@ -97,24 +113,29 @@ class __$$_LessonModelCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? sortValue = null,
     Object? id = null,
+    Object? databaseId = freezed,
     Object? title = null,
+    Object? sortValue = null,
     Object? words = null,
   }) {
     return _then(_$_LessonModel(
-      sortValue: null == sortValue
-          ? _value.sortValue
-          : sortValue // ignore: cast_nullable_to_non_nullable
-              as int,
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as UniqueId,
+      databaseId: freezed == databaseId
+          ? _value.databaseId
+          : databaseId // ignore: cast_nullable_to_non_nullable
+              as int?,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
+      sortValue: null == sortValue
+          ? _value.sortValue
+          : sortValue // ignore: cast_nullable_to_non_nullable
+              as int,
       words: null == words
           ? _value.words
           : words // ignore: cast_nullable_to_non_nullable
@@ -127,23 +148,26 @@ class __$$_LessonModelCopyWithImpl<$Res>
 
 class _$_LessonModel implements _LessonModel {
   _$_LessonModel(
-      {required this.sortValue,
-      required this.id,
+      {required this.id,
+      required this.databaseId,
       required this.title,
+      required this.sortValue,
       required this.words});
 
   @override
-  final int sortValue;
-  @override
   final UniqueId id;
   @override
+  final int? databaseId;
+  @override
   final String title;
+  @override
+  final int sortValue;
   @override
   List<WordModel> words;
 
   @override
   String toString() {
-    return 'LessonModel(sortValue: $sortValue, id: $id, title: $title, words: $words)';
+    return 'LessonModel(id: $id, databaseId: $databaseId, title: $title, sortValue: $sortValue, words: $words)';
   }
 
   @JsonKey(ignore: true)
@@ -155,17 +179,20 @@ class _$_LessonModel implements _LessonModel {
 
 abstract class _LessonModel implements LessonModel {
   factory _LessonModel(
-      {required final int sortValue,
-      required final UniqueId id,
+      {required final UniqueId id,
+      required final int? databaseId,
       required final String title,
+      required final int sortValue,
       required List<WordModel> words}) = _$_LessonModel;
 
   @override
-  int get sortValue;
-  @override
   UniqueId get id;
   @override
+  int? get databaseId;
+  @override
   String get title;
+  @override
+  int get sortValue;
   @override
   List<WordModel> get words;
   set words(List<WordModel> value);

@@ -5,6 +5,7 @@ class ExerciseMatchmakerState with _$ExerciseMatchmakerState {
   factory ExerciseMatchmakerState({
     @Default(false) bool isFinished,
     @Default(false) bool showNextButton,
+    @Default(0) int correctWords,
     required int page,
     required Pair<List<WordModel>, List<WordModel>> collectionToDisplayPair,
     required LanguageDirection languageDirection,
@@ -27,5 +28,4 @@ class ExerciseMatchmakerState with _$ExerciseMatchmakerState {
       matchedWords: [],
     );
   }
-
 }

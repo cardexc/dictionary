@@ -19,37 +19,43 @@ mixin _$ExerciseFormEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function() nextExercise,
     required TResult Function(int all, int position) progressChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function()? nextExercise,
     TResult? Function(int all, int position)? progressChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function()? nextExercise,
     TResult Function(int all, int position)? progressChanged,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(Started value) started,
+    required TResult Function(NextExercise value) nextExercise,
     required TResult Function(ProgressChanged value) progressChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
+    TResult? Function(Started value)? started,
+    TResult? Function(NextExercise value)? nextExercise,
     TResult? Function(ProgressChanged value)? progressChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(Started value)? started,
+    TResult Function(NextExercise value)? nextExercise,
     TResult Function(ProgressChanged value)? progressChanged,
     required TResult orElse(),
   }) =>
@@ -75,24 +81,23 @@ class _$ExerciseFormEventCopyWithImpl<$Res, $Val extends ExerciseFormEvent>
 }
 
 /// @nodoc
-abstract class _$$_StartedCopyWith<$Res> {
-  factory _$$_StartedCopyWith(
-          _$_Started value, $Res Function(_$_Started) then) =
-      __$$_StartedCopyWithImpl<$Res>;
+abstract class _$$StartedCopyWith<$Res> {
+  factory _$$StartedCopyWith(_$Started value, $Res Function(_$Started) then) =
+      __$$StartedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_StartedCopyWithImpl<$Res>
-    extends _$ExerciseFormEventCopyWithImpl<$Res, _$_Started>
-    implements _$$_StartedCopyWith<$Res> {
-  __$$_StartedCopyWithImpl(_$_Started _value, $Res Function(_$_Started) _then)
+class __$$StartedCopyWithImpl<$Res>
+    extends _$ExerciseFormEventCopyWithImpl<$Res, _$Started>
+    implements _$$StartedCopyWith<$Res> {
+  __$$StartedCopyWithImpl(_$Started _value, $Res Function(_$Started) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Started implements _Started {
-  const _$_Started();
+class _$Started implements Started {
+  const _$Started();
 
   @override
   String toString() {
@@ -102,7 +107,7 @@ class _$_Started implements _Started {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Started);
+        (other.runtimeType == runtimeType && other is _$Started);
   }
 
   @override
@@ -112,6 +117,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function() nextExercise,
     required TResult Function(int all, int position) progressChanged,
   }) {
     return started();
@@ -121,6 +127,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function()? nextExercise,
     TResult? Function(int all, int position)? progressChanged,
   }) {
     return started?.call();
@@ -130,6 +137,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function()? nextExercise,
     TResult Function(int all, int position)? progressChanged,
     required TResult orElse(),
   }) {
@@ -142,7 +150,8 @@ class _$_Started implements _Started {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(Started value) started,
+    required TResult Function(NextExercise value) nextExercise,
     required TResult Function(ProgressChanged value) progressChanged,
   }) {
     return started(this);
@@ -151,7 +160,8 @@ class _$_Started implements _Started {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
+    TResult? Function(Started value)? started,
+    TResult? Function(NextExercise value)? nextExercise,
     TResult? Function(ProgressChanged value)? progressChanged,
   }) {
     return started?.call(this);
@@ -160,7 +170,8 @@ class _$_Started implements _Started {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(Started value)? started,
+    TResult Function(NextExercise value)? nextExercise,
     TResult Function(ProgressChanged value)? progressChanged,
     required TResult orElse(),
   }) {
@@ -171,8 +182,116 @@ class _$_Started implements _Started {
   }
 }
 
-abstract class _Started implements ExerciseFormEvent {
-  const factory _Started() = _$_Started;
+abstract class Started implements ExerciseFormEvent {
+  const factory Started() = _$Started;
+}
+
+/// @nodoc
+abstract class _$$NextExerciseCopyWith<$Res> {
+  factory _$$NextExerciseCopyWith(
+          _$NextExercise value, $Res Function(_$NextExercise) then) =
+      __$$NextExerciseCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$NextExerciseCopyWithImpl<$Res>
+    extends _$ExerciseFormEventCopyWithImpl<$Res, _$NextExercise>
+    implements _$$NextExerciseCopyWith<$Res> {
+  __$$NextExerciseCopyWithImpl(
+      _$NextExercise _value, $Res Function(_$NextExercise) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$NextExercise implements NextExercise {
+  const _$NextExercise();
+
+  @override
+  String toString() {
+    return 'ExerciseFormEvent.nextExercise()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$NextExercise);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() nextExercise,
+    required TResult Function(int all, int position) progressChanged,
+  }) {
+    return nextExercise();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function()? nextExercise,
+    TResult? Function(int all, int position)? progressChanged,
+  }) {
+    return nextExercise?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? nextExercise,
+    TResult Function(int all, int position)? progressChanged,
+    required TResult orElse(),
+  }) {
+    if (nextExercise != null) {
+      return nextExercise();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Started value) started,
+    required TResult Function(NextExercise value) nextExercise,
+    required TResult Function(ProgressChanged value) progressChanged,
+  }) {
+    return nextExercise(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Started value)? started,
+    TResult? Function(NextExercise value)? nextExercise,
+    TResult? Function(ProgressChanged value)? progressChanged,
+  }) {
+    return nextExercise?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Started value)? started,
+    TResult Function(NextExercise value)? nextExercise,
+    TResult Function(ProgressChanged value)? progressChanged,
+    required TResult orElse(),
+  }) {
+    if (nextExercise != null) {
+      return nextExercise(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class NextExercise implements ExerciseFormEvent {
+  const factory NextExercise() = _$NextExercise;
 }
 
 /// @nodoc
@@ -249,6 +368,7 @@ class _$ProgressChanged implements ProgressChanged {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function() nextExercise,
     required TResult Function(int all, int position) progressChanged,
   }) {
     return progressChanged(all, position);
@@ -258,6 +378,7 @@ class _$ProgressChanged implements ProgressChanged {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function()? nextExercise,
     TResult? Function(int all, int position)? progressChanged,
   }) {
     return progressChanged?.call(all, position);
@@ -267,6 +388,7 @@ class _$ProgressChanged implements ProgressChanged {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function()? nextExercise,
     TResult Function(int all, int position)? progressChanged,
     required TResult orElse(),
   }) {
@@ -279,7 +401,8 @@ class _$ProgressChanged implements ProgressChanged {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(Started value) started,
+    required TResult Function(NextExercise value) nextExercise,
     required TResult Function(ProgressChanged value) progressChanged,
   }) {
     return progressChanged(this);
@@ -288,7 +411,8 @@ class _$ProgressChanged implements ProgressChanged {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
+    TResult? Function(Started value)? started,
+    TResult? Function(NextExercise value)? nextExercise,
     TResult? Function(ProgressChanged value)? progressChanged,
   }) {
     return progressChanged?.call(this);
@@ -297,7 +421,8 @@ class _$ProgressChanged implements ProgressChanged {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(Started value)? started,
+    TResult Function(NextExercise value)? nextExercise,
     TResult Function(ProgressChanged value)? progressChanged,
     required TResult orElse(),
   }) {
@@ -325,6 +450,8 @@ mixin _$ExerciseFormState {
   String get appbarTitle => throw _privateConstructorUsedError;
   ExerciseModel get activeExercise => throw _privateConstructorUsedError;
   double get activeProgressValue => throw _privateConstructorUsedError;
+  int get exercisePosition => throw _privateConstructorUsedError;
+  bool get finish => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ExerciseFormStateCopyWith<ExerciseFormState> get copyWith =>
@@ -340,7 +467,9 @@ abstract class $ExerciseFormStateCopyWith<$Res> {
   $Res call(
       {String appbarTitle,
       ExerciseModel activeExercise,
-      double activeProgressValue});
+      double activeProgressValue,
+      int exercisePosition,
+      bool finish});
 
   $ExerciseModelCopyWith<$Res> get activeExercise;
 }
@@ -361,6 +490,8 @@ class _$ExerciseFormStateCopyWithImpl<$Res, $Val extends ExerciseFormState>
     Object? appbarTitle = null,
     Object? activeExercise = null,
     Object? activeProgressValue = null,
+    Object? exercisePosition = null,
+    Object? finish = null,
   }) {
     return _then(_value.copyWith(
       appbarTitle: null == appbarTitle
@@ -375,6 +506,14 @@ class _$ExerciseFormStateCopyWithImpl<$Res, $Val extends ExerciseFormState>
           ? _value.activeProgressValue
           : activeProgressValue // ignore: cast_nullable_to_non_nullable
               as double,
+      exercisePosition: null == exercisePosition
+          ? _value.exercisePosition
+          : exercisePosition // ignore: cast_nullable_to_non_nullable
+              as int,
+      finish: null == finish
+          ? _value.finish
+          : finish // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 
@@ -398,7 +537,9 @@ abstract class _$$_ExerciseFormStateCopyWith<$Res>
   $Res call(
       {String appbarTitle,
       ExerciseModel activeExercise,
-      double activeProgressValue});
+      double activeProgressValue,
+      int exercisePosition,
+      bool finish});
 
   @override
   $ExerciseModelCopyWith<$Res> get activeExercise;
@@ -418,6 +559,8 @@ class __$$_ExerciseFormStateCopyWithImpl<$Res>
     Object? appbarTitle = null,
     Object? activeExercise = null,
     Object? activeProgressValue = null,
+    Object? exercisePosition = null,
+    Object? finish = null,
   }) {
     return _then(_$_ExerciseFormState(
       appbarTitle: null == appbarTitle
@@ -432,6 +575,14 @@ class __$$_ExerciseFormStateCopyWithImpl<$Res>
           ? _value.activeProgressValue
           : activeProgressValue // ignore: cast_nullable_to_non_nullable
               as double,
+      exercisePosition: null == exercisePosition
+          ? _value.exercisePosition
+          : exercisePosition // ignore: cast_nullable_to_non_nullable
+              as int,
+      finish: null == finish
+          ? _value.finish
+          : finish // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -442,7 +593,9 @@ class _$_ExerciseFormState implements _ExerciseFormState {
   const _$_ExerciseFormState(
       {required this.appbarTitle,
       required this.activeExercise,
-      this.activeProgressValue = 0.0});
+      this.activeProgressValue = 0.0,
+      this.exercisePosition = 0,
+      this.finish = false});
 
   @override
   final String appbarTitle;
@@ -451,10 +604,16 @@ class _$_ExerciseFormState implements _ExerciseFormState {
   @override
   @JsonKey()
   final double activeProgressValue;
+  @override
+  @JsonKey()
+  final int exercisePosition;
+  @override
+  @JsonKey()
+  final bool finish;
 
   @override
   String toString() {
-    return 'ExerciseFormState(appbarTitle: $appbarTitle, activeExercise: $activeExercise, activeProgressValue: $activeProgressValue)';
+    return 'ExerciseFormState(appbarTitle: $appbarTitle, activeExercise: $activeExercise, activeProgressValue: $activeProgressValue, exercisePosition: $exercisePosition, finish: $finish)';
   }
 
   @override
@@ -467,12 +626,15 @@ class _$_ExerciseFormState implements _ExerciseFormState {
             (identical(other.activeExercise, activeExercise) ||
                 other.activeExercise == activeExercise) &&
             (identical(other.activeProgressValue, activeProgressValue) ||
-                other.activeProgressValue == activeProgressValue));
+                other.activeProgressValue == activeProgressValue) &&
+            (identical(other.exercisePosition, exercisePosition) ||
+                other.exercisePosition == exercisePosition) &&
+            (identical(other.finish, finish) || other.finish == finish));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, appbarTitle, activeExercise, activeProgressValue);
+  int get hashCode => Object.hash(runtimeType, appbarTitle, activeExercise,
+      activeProgressValue, exercisePosition, finish);
 
   @JsonKey(ignore: true)
   @override
@@ -486,7 +648,9 @@ abstract class _ExerciseFormState implements ExerciseFormState {
   const factory _ExerciseFormState(
       {required final String appbarTitle,
       required final ExerciseModel activeExercise,
-      final double activeProgressValue}) = _$_ExerciseFormState;
+      final double activeProgressValue,
+      final int exercisePosition,
+      final bool finish}) = _$_ExerciseFormState;
 
   @override
   String get appbarTitle;
@@ -494,6 +658,10 @@ abstract class _ExerciseFormState implements ExerciseFormState {
   ExerciseModel get activeExercise;
   @override
   double get activeProgressValue;
+  @override
+  int get exercisePosition;
+  @override
+  bool get finish;
   @override
   @JsonKey(ignore: true)
   _$$_ExerciseFormStateCopyWith<_$_ExerciseFormState> get copyWith =>

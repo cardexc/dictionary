@@ -1,8 +1,9 @@
 import 'package:dictionary/domain/exercise/exercise_model.dart';
 import 'package:dictionary/domain/lesson/language_direction.dart';
-import 'package:dictionary/domain/word/word_model.dart';
+import 'package:dictionary/domain/words/word_model.dart';
 import 'package:dictionary/presentation/learn_section/learn_section_page.dart';
 import 'package:dictionary/presentation/lesson/language_direction/language_direction_page.dart';
+import 'package:dictionary/presentation/settings/settings_page.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../domain/lesson/lesson_model.dart';
@@ -16,6 +17,7 @@ const String lessonPage = "/lesson";
 const String languageChoosePage = "/language_choose";
 const String exerciseChoosePage = "/exerciseChoosePage";
 const String exerciseFormPage = "/exerciseFormPage";
+const String settingsPage = "/settingsPage";
 
 final router = GoRouter(
   debugLogDiagnostics: true,
@@ -69,6 +71,13 @@ final router = GoRouter(
           languageDirection: languageDirection,
           exercises: exercises,
         );
+      },
+    ),
+    GoRoute(
+      path: settingsPage,
+      name: settingsPage,
+      builder: (context, state) {
+        return const SettingsPage();
       },
     ),
   ],

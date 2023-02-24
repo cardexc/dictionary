@@ -3,7 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../domain/exercise/exercise_model.dart';
 import '../../../domain/lesson/language_direction.dart';
-import '../../../domain/word/word_model.dart';
+import '../../../domain/words/word_model.dart';
 
 part 'exercise_form_event.dart';
 
@@ -28,5 +28,22 @@ class ExerciseFormBloc extends Bloc<ExerciseFormEvent, ExerciseFormState> {
     on<ProgressChanged>((event, emit) {
       emit(state.copyWith(activeProgressValue: (event.position + 1) / event.all));
     });
+
+    on<NextExercise>((event, emit) {
+      if (isFinish) {
+        emit(state.copyWith(finish: true));
+        return;
+      }
+
+      var nextExercise = exercises[state.exercisePosition + 1];
+      emit(state.copyWith(
+        exercisePosition: state.exercisePosition + 1,
+        activeProgressValue: 0.0,
+        activeExercise: nextExercise,
+        appbarTitle: nextExercise.title,
+      ));
+    });
   }
+
+  bool get isFinish => state.exercisePosition + 1 >= exercises.length;
 }

@@ -10,6 +10,7 @@ class AppColors {
   static const Color appGrey = Color(0xFF707070);
 
   static const Color appProgressBorder = Color(0xFF305F97);
+  static const Color appProgressBorder2 = Color(0x33305F97);
 
   static const Color mainBg = Color(0xFF023047);
   static const Color grey400 = Color(0xFFBDBDBD);
@@ -43,4 +44,12 @@ class AppColors {
   static const Color iconColor = Color(0xFF305F97);
   static const Color iconColor50 = Color(0x80305F97);
   static const Color iconColor25 = Color(0x40305F97);
+
+
+  static const Color exerciseProgressColor1 = Color(0xFFFF4E00);
+  static const Color exerciseProgressColor2 = Color(0xFF2DBB00);
+
+  static const Color exerciseFinishPercentColor1 = Color(0xFF9C0000);
+  static const Color exerciseFinishPercentColor2 = appYellow;
+  static const Color exerciseFinishPercentColor3 = Color(0xFF08700C);
 }

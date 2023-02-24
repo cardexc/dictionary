@@ -7,15 +7,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../domain/lesson/language_direction.dart';
-import '../../../../domain/word/word_model.dart';
+import '../../../../domain/words/word_model.dart';
 import '../../../../infrastructure/config/app_colors.dart';
 import '../../../application/exercise/form/exercise_form_bloc.dart';
+import '../../../domain/exercise/exercise_types.dart';
 import '../../../domain/pair.dart';
 import '../../widgets/buttons/yellow_elevated_button.dart';
 import '../../widgets/exercise_correct_word_widget.dart';
 import '../../widgets/exercise_header_row.dart';
 import '../../widgets/widgets.dart';
-import 'exercise_alphabetsoup_finish.dart';
+import '../exercise_finish_widget.dart';
 
 class ExerciseAlphabetSoup extends StatelessWidget {
   final LanguageDirection languageDirection;
@@ -45,12 +46,20 @@ class _ExerciseAlphabetSoupBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var bloc = context.read<ExerciseAlphabetSoupBloc>();
+
     return BlocSelector<ExerciseAlphabetSoupBloc, ExerciseAlphabetSoupState, bool>(
       selector: (state) {
         return state.isFinished;
       },
       builder: (context, isFinished) {
-        return isFinished ? const ExerciseAlphabetSoupFinish() : _buildExercise(context);
+        return isFinished
+            ? ExerciseFinishWidget(
+                totalWords: bloc.words.length,
+                wordsToBeRepeated: bloc.wordsToBeRepeated.length,
+                type: ExerciseType.alphabetSoup,
+              )
+            : _buildExercise(context);
       },
     );
   }
@@ -113,7 +122,10 @@ class _ExerciseAlphabetSoupBody extends StatelessWidget {
 
                         /*Correct word*/
                         if (state.wordFinished && state.wordConstructionError)
-                          ExerciseCorrectWordWidget(languageDirection: languageDirection, wordModel: wordModel),
+                          ExerciseCorrectWordWidget(
+                            languageDirection: languageDirection,
+                            wordModel: wordModel,
+                          ),
 
                         /*Letters*/
                         if (!state.wordFinished)

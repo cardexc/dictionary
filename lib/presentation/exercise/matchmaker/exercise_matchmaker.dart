@@ -6,11 +6,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../domain/lesson/language_direction.dart';
-import '../../../../domain/word/word_model.dart';
+import '../../../../domain/words/word_model.dart';
 import '../../../../infrastructure/config/app_colors.dart';
 import '../../../application/exercise/form/exercise_form_bloc.dart';
+import '../../../domain/exercise/exercise_types.dart';
 import '../../widgets/buttons/yellow_elevated_button.dart';
-import 'exercise_matchmaker_finish.dart';
+import '../exercise_finish_widget.dart';
 
 class ExerciseMatchmaker extends StatelessWidget {
   final LanguageDirection languageDirection;
@@ -40,12 +41,20 @@ class _ExerciseMatchmakerBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var bloc = context.read<ExerciseMatchmakerBloc>();
+
     return BlocSelector<ExerciseMatchmakerBloc, ExerciseMatchmakerState, bool>(
       selector: (state) {
         return state.isFinished;
       },
       builder: (context, isFinished) {
-        return isFinished ? const ExerciseMatchMakerFinish() : _buildExercise(context);
+        return isFinished
+            ? ExerciseFinishWidget(
+                totalWords: bloc.initialWords.length,
+                wordsToBeRepeated: bloc.wordsToBeRepeated.length,
+                type: ExerciseType.matchMaker,
+              )
+            : _buildExercise(context);
       },
     );
   }

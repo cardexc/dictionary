@@ -39,6 +39,9 @@ mixin _$ExerciseModel {
     required TResult Function(
             IconData iconData, String title, ExerciseType type)
         writing,
+    required TResult Function(
+            IconData iconData, String title, ExerciseType type)
+        listenType,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -55,6 +58,8 @@ mixin _$ExerciseModel {
         alphabetSoup,
     TResult? Function(IconData iconData, String title, ExerciseType type)?
         writing,
+    TResult? Function(IconData iconData, String title, ExerciseType type)?
+        listenType,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -71,6 +76,8 @@ mixin _$ExerciseModel {
         alphabetSoup,
     TResult Function(IconData iconData, String title, ExerciseType type)?
         writing,
+    TResult Function(IconData iconData, String title, ExerciseType type)?
+        listenType,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -82,6 +89,7 @@ mixin _$ExerciseModel {
     required TResult Function(MatchMaker value) matchMaker,
     required TResult Function(AlphabetSoup value) alphabetSoup,
     required TResult Function(Writing value) writing,
+    required TResult Function(ListenType value) listenType,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -92,6 +100,7 @@ mixin _$ExerciseModel {
     TResult? Function(MatchMaker value)? matchMaker,
     TResult? Function(AlphabetSoup value)? alphabetSoup,
     TResult? Function(Writing value)? writing,
+    TResult? Function(ListenType value)? listenType,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -102,6 +111,7 @@ mixin _$ExerciseModel {
     TResult Function(MatchMaker value)? matchMaker,
     TResult Function(AlphabetSoup value)? alphabetSoup,
     TResult Function(Writing value)? writing,
+    TResult Function(ListenType value)? listenType,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -201,7 +211,7 @@ class __$$FlashcardsCopyWithImpl<$Res>
 
 class _$Flashcards implements Flashcards {
   _$Flashcards(
-      {this.iconData = CupertinoIcons.headphones,
+      {this.iconData = exerciseTypeFlashcardsIcon,
       required this.title,
       this.type = ExerciseType.flashcards});
 
@@ -260,6 +270,9 @@ class _$Flashcards implements Flashcards {
     required TResult Function(
             IconData iconData, String title, ExerciseType type)
         writing,
+    required TResult Function(
+            IconData iconData, String title, ExerciseType type)
+        listenType,
   }) {
     return flashcards(iconData, title, type);
   }
@@ -279,6 +292,8 @@ class _$Flashcards implements Flashcards {
         alphabetSoup,
     TResult? Function(IconData iconData, String title, ExerciseType type)?
         writing,
+    TResult? Function(IconData iconData, String title, ExerciseType type)?
+        listenType,
   }) {
     return flashcards?.call(iconData, title, type);
   }
@@ -298,6 +313,8 @@ class _$Flashcards implements Flashcards {
         alphabetSoup,
     TResult Function(IconData iconData, String title, ExerciseType type)?
         writing,
+    TResult Function(IconData iconData, String title, ExerciseType type)?
+        listenType,
     required TResult orElse(),
   }) {
     if (flashcards != null) {
@@ -315,6 +332,7 @@ class _$Flashcards implements Flashcards {
     required TResult Function(MatchMaker value) matchMaker,
     required TResult Function(AlphabetSoup value) alphabetSoup,
     required TResult Function(Writing value) writing,
+    required TResult Function(ListenType value) listenType,
   }) {
     return flashcards(this);
   }
@@ -328,6 +346,7 @@ class _$Flashcards implements Flashcards {
     TResult? Function(MatchMaker value)? matchMaker,
     TResult? Function(AlphabetSoup value)? alphabetSoup,
     TResult? Function(Writing value)? writing,
+    TResult? Function(ListenType value)? listenType,
   }) {
     return flashcards?.call(this);
   }
@@ -341,6 +360,7 @@ class _$Flashcards implements Flashcards {
     TResult Function(MatchMaker value)? matchMaker,
     TResult Function(AlphabetSoup value)? alphabetSoup,
     TResult Function(Writing value)? writing,
+    TResult Function(ListenType value)? listenType,
     required TResult orElse(),
   }) {
     if (flashcards != null) {
@@ -415,7 +435,7 @@ class __$$ScratchCardsCopyWithImpl<$Res>
 
 class _$ScratchCards implements ScratchCards {
   _$ScratchCards(
-      {this.iconData = CupertinoIcons.hand_draw,
+      {this.iconData = exerciseTypeScratchcardsIcon,
       required this.title,
       this.type = ExerciseType.scratchcards});
 
@@ -474,6 +494,9 @@ class _$ScratchCards implements ScratchCards {
     required TResult Function(
             IconData iconData, String title, ExerciseType type)
         writing,
+    required TResult Function(
+            IconData iconData, String title, ExerciseType type)
+        listenType,
   }) {
     return scratchcards(iconData, title, type);
   }
@@ -493,6 +516,8 @@ class _$ScratchCards implements ScratchCards {
         alphabetSoup,
     TResult? Function(IconData iconData, String title, ExerciseType type)?
         writing,
+    TResult? Function(IconData iconData, String title, ExerciseType type)?
+        listenType,
   }) {
     return scratchcards?.call(iconData, title, type);
   }
@@ -512,6 +537,8 @@ class _$ScratchCards implements ScratchCards {
         alphabetSoup,
     TResult Function(IconData iconData, String title, ExerciseType type)?
         writing,
+    TResult Function(IconData iconData, String title, ExerciseType type)?
+        listenType,
     required TResult orElse(),
   }) {
     if (scratchcards != null) {
@@ -529,6 +556,7 @@ class _$ScratchCards implements ScratchCards {
     required TResult Function(MatchMaker value) matchMaker,
     required TResult Function(AlphabetSoup value) alphabetSoup,
     required TResult Function(Writing value) writing,
+    required TResult Function(ListenType value) listenType,
   }) {
     return scratchcards(this);
   }
@@ -542,6 +570,7 @@ class _$ScratchCards implements ScratchCards {
     TResult? Function(MatchMaker value)? matchMaker,
     TResult? Function(AlphabetSoup value)? alphabetSoup,
     TResult? Function(Writing value)? writing,
+    TResult? Function(ListenType value)? listenType,
   }) {
     return scratchcards?.call(this);
   }
@@ -555,6 +584,7 @@ class _$ScratchCards implements ScratchCards {
     TResult Function(MatchMaker value)? matchMaker,
     TResult Function(AlphabetSoup value)? alphabetSoup,
     TResult Function(Writing value)? writing,
+    TResult Function(ListenType value)? listenType,
     required TResult orElse(),
   }) {
     if (scratchcards != null) {
@@ -629,7 +659,7 @@ class __$$MultipleChoiceCopyWithImpl<$Res>
 
 class _$MultipleChoice implements MultipleChoice {
   _$MultipleChoice(
-      {this.iconData = CupertinoIcons.square_grid_2x2,
+      {this.iconData = exerciseTypeMultipleChoiceIcon,
       required this.title,
       this.type = ExerciseType.multipleChoice});
 
@@ -688,6 +718,9 @@ class _$MultipleChoice implements MultipleChoice {
     required TResult Function(
             IconData iconData, String title, ExerciseType type)
         writing,
+    required TResult Function(
+            IconData iconData, String title, ExerciseType type)
+        listenType,
   }) {
     return multipleChoice(iconData, title, type);
   }
@@ -707,6 +740,8 @@ class _$MultipleChoice implements MultipleChoice {
         alphabetSoup,
     TResult? Function(IconData iconData, String title, ExerciseType type)?
         writing,
+    TResult? Function(IconData iconData, String title, ExerciseType type)?
+        listenType,
   }) {
     return multipleChoice?.call(iconData, title, type);
   }
@@ -726,6 +761,8 @@ class _$MultipleChoice implements MultipleChoice {
         alphabetSoup,
     TResult Function(IconData iconData, String title, ExerciseType type)?
         writing,
+    TResult Function(IconData iconData, String title, ExerciseType type)?
+        listenType,
     required TResult orElse(),
   }) {
     if (multipleChoice != null) {
@@ -743,6 +780,7 @@ class _$MultipleChoice implements MultipleChoice {
     required TResult Function(MatchMaker value) matchMaker,
     required TResult Function(AlphabetSoup value) alphabetSoup,
     required TResult Function(Writing value) writing,
+    required TResult Function(ListenType value) listenType,
   }) {
     return multipleChoice(this);
   }
@@ -756,6 +794,7 @@ class _$MultipleChoice implements MultipleChoice {
     TResult? Function(MatchMaker value)? matchMaker,
     TResult? Function(AlphabetSoup value)? alphabetSoup,
     TResult? Function(Writing value)? writing,
+    TResult? Function(ListenType value)? listenType,
   }) {
     return multipleChoice?.call(this);
   }
@@ -769,6 +808,7 @@ class _$MultipleChoice implements MultipleChoice {
     TResult Function(MatchMaker value)? matchMaker,
     TResult Function(AlphabetSoup value)? alphabetSoup,
     TResult Function(Writing value)? writing,
+    TResult Function(ListenType value)? listenType,
     required TResult orElse(),
   }) {
     if (multipleChoice != null) {
@@ -843,7 +883,7 @@ class __$$MatchMakerCopyWithImpl<$Res>
 
 class _$MatchMaker implements MatchMaker {
   _$MatchMaker(
-      {this.iconData = CupertinoIcons.arrow_branch,
+      {this.iconData = exerciseTypeMatchMakerIcon,
       required this.title,
       this.type = ExerciseType.matchMaker});
 
@@ -902,6 +942,9 @@ class _$MatchMaker implements MatchMaker {
     required TResult Function(
             IconData iconData, String title, ExerciseType type)
         writing,
+    required TResult Function(
+            IconData iconData, String title, ExerciseType type)
+        listenType,
   }) {
     return matchMaker(iconData, title, type);
   }
@@ -921,6 +964,8 @@ class _$MatchMaker implements MatchMaker {
         alphabetSoup,
     TResult? Function(IconData iconData, String title, ExerciseType type)?
         writing,
+    TResult? Function(IconData iconData, String title, ExerciseType type)?
+        listenType,
   }) {
     return matchMaker?.call(iconData, title, type);
   }
@@ -940,6 +985,8 @@ class _$MatchMaker implements MatchMaker {
         alphabetSoup,
     TResult Function(IconData iconData, String title, ExerciseType type)?
         writing,
+    TResult Function(IconData iconData, String title, ExerciseType type)?
+        listenType,
     required TResult orElse(),
   }) {
     if (matchMaker != null) {
@@ -957,6 +1004,7 @@ class _$MatchMaker implements MatchMaker {
     required TResult Function(MatchMaker value) matchMaker,
     required TResult Function(AlphabetSoup value) alphabetSoup,
     required TResult Function(Writing value) writing,
+    required TResult Function(ListenType value) listenType,
   }) {
     return matchMaker(this);
   }
@@ -970,6 +1018,7 @@ class _$MatchMaker implements MatchMaker {
     TResult? Function(MatchMaker value)? matchMaker,
     TResult? Function(AlphabetSoup value)? alphabetSoup,
     TResult? Function(Writing value)? writing,
+    TResult? Function(ListenType value)? listenType,
   }) {
     return matchMaker?.call(this);
   }
@@ -983,6 +1032,7 @@ class _$MatchMaker implements MatchMaker {
     TResult Function(MatchMaker value)? matchMaker,
     TResult Function(AlphabetSoup value)? alphabetSoup,
     TResult Function(Writing value)? writing,
+    TResult Function(ListenType value)? listenType,
     required TResult orElse(),
   }) {
     if (matchMaker != null) {
@@ -1057,7 +1107,7 @@ class __$$AlphabetSoupCopyWithImpl<$Res>
 
 class _$AlphabetSoup implements AlphabetSoup {
   _$AlphabetSoup(
-      {this.iconData = CupertinoIcons.arrow_swap,
+      {this.iconData = exerciseTypeAlphabetSoupIcon,
       required this.title,
       this.type = ExerciseType.alphabetSoup});
 
@@ -1116,6 +1166,9 @@ class _$AlphabetSoup implements AlphabetSoup {
     required TResult Function(
             IconData iconData, String title, ExerciseType type)
         writing,
+    required TResult Function(
+            IconData iconData, String title, ExerciseType type)
+        listenType,
   }) {
     return alphabetSoup(iconData, title, type);
   }
@@ -1135,6 +1188,8 @@ class _$AlphabetSoup implements AlphabetSoup {
         alphabetSoup,
     TResult? Function(IconData iconData, String title, ExerciseType type)?
         writing,
+    TResult? Function(IconData iconData, String title, ExerciseType type)?
+        listenType,
   }) {
     return alphabetSoup?.call(iconData, title, type);
   }
@@ -1154,6 +1209,8 @@ class _$AlphabetSoup implements AlphabetSoup {
         alphabetSoup,
     TResult Function(IconData iconData, String title, ExerciseType type)?
         writing,
+    TResult Function(IconData iconData, String title, ExerciseType type)?
+        listenType,
     required TResult orElse(),
   }) {
     if (alphabetSoup != null) {
@@ -1171,6 +1228,7 @@ class _$AlphabetSoup implements AlphabetSoup {
     required TResult Function(MatchMaker value) matchMaker,
     required TResult Function(AlphabetSoup value) alphabetSoup,
     required TResult Function(Writing value) writing,
+    required TResult Function(ListenType value) listenType,
   }) {
     return alphabetSoup(this);
   }
@@ -1184,6 +1242,7 @@ class _$AlphabetSoup implements AlphabetSoup {
     TResult? Function(MatchMaker value)? matchMaker,
     TResult? Function(AlphabetSoup value)? alphabetSoup,
     TResult? Function(Writing value)? writing,
+    TResult? Function(ListenType value)? listenType,
   }) {
     return alphabetSoup?.call(this);
   }
@@ -1197,6 +1256,7 @@ class _$AlphabetSoup implements AlphabetSoup {
     TResult Function(MatchMaker value)? matchMaker,
     TResult Function(AlphabetSoup value)? alphabetSoup,
     TResult Function(Writing value)? writing,
+    TResult Function(ListenType value)? listenType,
     required TResult orElse(),
   }) {
     if (alphabetSoup != null) {
@@ -1269,7 +1329,7 @@ class __$$WritingCopyWithImpl<$Res>
 
 class _$Writing implements Writing {
   _$Writing(
-      {this.iconData = CupertinoIcons.pencil_slash,
+      {this.iconData = exerciseTypeWritingIcon,
       required this.title,
       this.type = ExerciseType.writing});
 
@@ -1328,6 +1388,9 @@ class _$Writing implements Writing {
     required TResult Function(
             IconData iconData, String title, ExerciseType type)
         writing,
+    required TResult Function(
+            IconData iconData, String title, ExerciseType type)
+        listenType,
   }) {
     return writing(iconData, title, type);
   }
@@ -1347,6 +1410,8 @@ class _$Writing implements Writing {
         alphabetSoup,
     TResult? Function(IconData iconData, String title, ExerciseType type)?
         writing,
+    TResult? Function(IconData iconData, String title, ExerciseType type)?
+        listenType,
   }) {
     return writing?.call(iconData, title, type);
   }
@@ -1366,6 +1431,8 @@ class _$Writing implements Writing {
         alphabetSoup,
     TResult Function(IconData iconData, String title, ExerciseType type)?
         writing,
+    TResult Function(IconData iconData, String title, ExerciseType type)?
+        listenType,
     required TResult orElse(),
   }) {
     if (writing != null) {
@@ -1383,6 +1450,7 @@ class _$Writing implements Writing {
     required TResult Function(MatchMaker value) matchMaker,
     required TResult Function(AlphabetSoup value) alphabetSoup,
     required TResult Function(Writing value) writing,
+    required TResult Function(ListenType value) listenType,
   }) {
     return writing(this);
   }
@@ -1396,6 +1464,7 @@ class _$Writing implements Writing {
     TResult? Function(MatchMaker value)? matchMaker,
     TResult? Function(AlphabetSoup value)? alphabetSoup,
     TResult? Function(Writing value)? writing,
+    TResult? Function(ListenType value)? listenType,
   }) {
     return writing?.call(this);
   }
@@ -1409,6 +1478,7 @@ class _$Writing implements Writing {
     TResult Function(MatchMaker value)? matchMaker,
     TResult Function(AlphabetSoup value)? alphabetSoup,
     TResult Function(Writing value)? writing,
+    TResult Function(ListenType value)? listenType,
     required TResult orElse(),
   }) {
     if (writing != null) {
@@ -1433,5 +1503,229 @@ abstract class Writing implements ExerciseModel {
   @override
   @JsonKey(ignore: true)
   _$$WritingCopyWith<_$Writing> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ListenTypeCopyWith<$Res>
+    implements $ExerciseModelCopyWith<$Res> {
+  factory _$$ListenTypeCopyWith(
+          _$ListenType value, $Res Function(_$ListenType) then) =
+      __$$ListenTypeCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({IconData iconData, String title, ExerciseType type});
+}
+
+/// @nodoc
+class __$$ListenTypeCopyWithImpl<$Res>
+    extends _$ExerciseModelCopyWithImpl<$Res, _$ListenType>
+    implements _$$ListenTypeCopyWith<$Res> {
+  __$$ListenTypeCopyWithImpl(
+      _$ListenType _value, $Res Function(_$ListenType) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? iconData = null,
+    Object? title = null,
+    Object? type = null,
+  }) {
+    return _then(_$ListenType(
+      iconData: null == iconData
+          ? _value.iconData
+          : iconData // ignore: cast_nullable_to_non_nullable
+              as IconData,
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as ExerciseType,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ListenType implements ListenType {
+  _$ListenType(
+      {this.iconData = exerciseTypeListenTypeIcon,
+      required this.title,
+      this.type = ExerciseType.listenType});
+
+  @override
+  @JsonKey()
+  final IconData iconData;
+  @override
+  final String title;
+  @override
+  @JsonKey()
+  final ExerciseType type;
+
+  @override
+  String toString() {
+    return 'ExerciseModel.listenType(iconData: $iconData, title: $title, type: $type)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ListenType &&
+            (identical(other.iconData, iconData) ||
+                other.iconData == iconData) &&
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.type, type) || other.type == type));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, iconData, title, type);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ListenTypeCopyWith<_$ListenType> get copyWith =>
+      __$$ListenTypeCopyWithImpl<_$ListenType>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            IconData iconData, String title, ExerciseType type)
+        flashcards,
+    required TResult Function(
+            IconData iconData, String title, ExerciseType type)
+        scratchcards,
+    required TResult Function(
+            IconData iconData, String title, ExerciseType type)
+        multipleChoice,
+    required TResult Function(
+            IconData iconData, String title, ExerciseType type)
+        matchMaker,
+    required TResult Function(
+            IconData iconData, String title, ExerciseType type)
+        alphabetSoup,
+    required TResult Function(
+            IconData iconData, String title, ExerciseType type)
+        writing,
+    required TResult Function(
+            IconData iconData, String title, ExerciseType type)
+        listenType,
+  }) {
+    return listenType(iconData, title, type);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(IconData iconData, String title, ExerciseType type)?
+        flashcards,
+    TResult? Function(IconData iconData, String title, ExerciseType type)?
+        scratchcards,
+    TResult? Function(IconData iconData, String title, ExerciseType type)?
+        multipleChoice,
+    TResult? Function(IconData iconData, String title, ExerciseType type)?
+        matchMaker,
+    TResult? Function(IconData iconData, String title, ExerciseType type)?
+        alphabetSoup,
+    TResult? Function(IconData iconData, String title, ExerciseType type)?
+        writing,
+    TResult? Function(IconData iconData, String title, ExerciseType type)?
+        listenType,
+  }) {
+    return listenType?.call(iconData, title, type);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(IconData iconData, String title, ExerciseType type)?
+        flashcards,
+    TResult Function(IconData iconData, String title, ExerciseType type)?
+        scratchcards,
+    TResult Function(IconData iconData, String title, ExerciseType type)?
+        multipleChoice,
+    TResult Function(IconData iconData, String title, ExerciseType type)?
+        matchMaker,
+    TResult Function(IconData iconData, String title, ExerciseType type)?
+        alphabetSoup,
+    TResult Function(IconData iconData, String title, ExerciseType type)?
+        writing,
+    TResult Function(IconData iconData, String title, ExerciseType type)?
+        listenType,
+    required TResult orElse(),
+  }) {
+    if (listenType != null) {
+      return listenType(iconData, title, type);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Flashcards value) flashcards,
+    required TResult Function(ScratchCards value) scratchcards,
+    required TResult Function(MultipleChoice value) multipleChoice,
+    required TResult Function(MatchMaker value) matchMaker,
+    required TResult Function(AlphabetSoup value) alphabetSoup,
+    required TResult Function(Writing value) writing,
+    required TResult Function(ListenType value) listenType,
+  }) {
+    return listenType(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Flashcards value)? flashcards,
+    TResult? Function(ScratchCards value)? scratchcards,
+    TResult? Function(MultipleChoice value)? multipleChoice,
+    TResult? Function(MatchMaker value)? matchMaker,
+    TResult? Function(AlphabetSoup value)? alphabetSoup,
+    TResult? Function(Writing value)? writing,
+    TResult? Function(ListenType value)? listenType,
+  }) {
+    return listenType?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Flashcards value)? flashcards,
+    TResult Function(ScratchCards value)? scratchcards,
+    TResult Function(MultipleChoice value)? multipleChoice,
+    TResult Function(MatchMaker value)? matchMaker,
+    TResult Function(AlphabetSoup value)? alphabetSoup,
+    TResult Function(Writing value)? writing,
+    TResult Function(ListenType value)? listenType,
+    required TResult orElse(),
+  }) {
+    if (listenType != null) {
+      return listenType(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ListenType implements ExerciseModel {
+  factory ListenType(
+      {final IconData iconData,
+      required final String title,
+      final ExerciseType type}) = _$ListenType;
+
+  @override
+  IconData get iconData;
+  @override
+  String get title;
+  @override
+  ExerciseType get type;
+  @override
+  @JsonKey(ignore: true)
+  _$$ListenTypeCopyWith<_$ListenType> get copyWith =>
       throw _privateConstructorUsedError;
 }
