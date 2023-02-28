@@ -18,6 +18,9 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$SettingsState {
   String get defaultLanguageDirection => throw _privateConstructorUsedError;
   int get languageChooseDialogShown => throw _privateConstructorUsedError;
+  bool get isAuthed => throw _privateConstructorUsedError;
+  String get userName => throw _privateConstructorUsedError;
+  LoggedThrough get loggedThrough => throw _privateConstructorUsedError;
   Map<String, bool> get boolMap => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -34,6 +37,9 @@ abstract class $SettingsStateCopyWith<$Res> {
   $Res call(
       {String defaultLanguageDirection,
       int languageChooseDialogShown,
+      bool isAuthed,
+      String userName,
+      LoggedThrough loggedThrough,
       Map<String, bool> boolMap});
 }
 
@@ -52,6 +58,9 @@ class _$SettingsStateCopyWithImpl<$Res, $Val extends SettingsState>
   $Res call({
     Object? defaultLanguageDirection = null,
     Object? languageChooseDialogShown = null,
+    Object? isAuthed = null,
+    Object? userName = null,
+    Object? loggedThrough = null,
     Object? boolMap = null,
   }) {
     return _then(_value.copyWith(
@@ -63,6 +72,18 @@ class _$SettingsStateCopyWithImpl<$Res, $Val extends SettingsState>
           ? _value.languageChooseDialogShown
           : languageChooseDialogShown // ignore: cast_nullable_to_non_nullable
               as int,
+      isAuthed: null == isAuthed
+          ? _value.isAuthed
+          : isAuthed // ignore: cast_nullable_to_non_nullable
+              as bool,
+      userName: null == userName
+          ? _value.userName
+          : userName // ignore: cast_nullable_to_non_nullable
+              as String,
+      loggedThrough: null == loggedThrough
+          ? _value.loggedThrough
+          : loggedThrough // ignore: cast_nullable_to_non_nullable
+              as LoggedThrough,
       boolMap: null == boolMap
           ? _value.boolMap
           : boolMap // ignore: cast_nullable_to_non_nullable
@@ -82,6 +103,9 @@ abstract class _$$_SettingsStateCopyWith<$Res>
   $Res call(
       {String defaultLanguageDirection,
       int languageChooseDialogShown,
+      bool isAuthed,
+      String userName,
+      LoggedThrough loggedThrough,
       Map<String, bool> boolMap});
 }
 
@@ -98,6 +122,9 @@ class __$$_SettingsStateCopyWithImpl<$Res>
   $Res call({
     Object? defaultLanguageDirection = null,
     Object? languageChooseDialogShown = null,
+    Object? isAuthed = null,
+    Object? userName = null,
+    Object? loggedThrough = null,
     Object? boolMap = null,
   }) {
     return _then(_$_SettingsState(
@@ -109,6 +136,18 @@ class __$$_SettingsStateCopyWithImpl<$Res>
           ? _value.languageChooseDialogShown
           : languageChooseDialogShown // ignore: cast_nullable_to_non_nullable
               as int,
+      isAuthed: null == isAuthed
+          ? _value.isAuthed
+          : isAuthed // ignore: cast_nullable_to_non_nullable
+              as bool,
+      userName: null == userName
+          ? _value.userName
+          : userName // ignore: cast_nullable_to_non_nullable
+              as String,
+      loggedThrough: null == loggedThrough
+          ? _value.loggedThrough
+          : loggedThrough // ignore: cast_nullable_to_non_nullable
+              as LoggedThrough,
       boolMap: null == boolMap
           ? _value._boolMap
           : boolMap // ignore: cast_nullable_to_non_nullable
@@ -123,6 +162,9 @@ class _$_SettingsState implements _SettingsState {
   const _$_SettingsState(
       {required this.defaultLanguageDirection,
       this.languageChooseDialogShown = 0,
+      this.isAuthed = false,
+      this.userName = "",
+      this.loggedThrough = LoggedThrough.empty,
       required final Map<String, bool> boolMap})
       : _boolMap = boolMap;
 
@@ -131,6 +173,15 @@ class _$_SettingsState implements _SettingsState {
   @override
   @JsonKey()
   final int languageChooseDialogShown;
+  @override
+  @JsonKey()
+  final bool isAuthed;
+  @override
+  @JsonKey()
+  final String userName;
+  @override
+  @JsonKey()
+  final LoggedThrough loggedThrough;
   final Map<String, bool> _boolMap;
   @override
   Map<String, bool> get boolMap {
@@ -141,7 +192,7 @@ class _$_SettingsState implements _SettingsState {
 
   @override
   String toString() {
-    return 'SettingsState(defaultLanguageDirection: $defaultLanguageDirection, languageChooseDialogShown: $languageChooseDialogShown, boolMap: $boolMap)';
+    return 'SettingsState(defaultLanguageDirection: $defaultLanguageDirection, languageChooseDialogShown: $languageChooseDialogShown, isAuthed: $isAuthed, userName: $userName, loggedThrough: $loggedThrough, boolMap: $boolMap)';
   }
 
   @override
@@ -155,12 +206,24 @@ class _$_SettingsState implements _SettingsState {
             (identical(other.languageChooseDialogShown,
                     languageChooseDialogShown) ||
                 other.languageChooseDialogShown == languageChooseDialogShown) &&
+            (identical(other.isAuthed, isAuthed) ||
+                other.isAuthed == isAuthed) &&
+            (identical(other.userName, userName) ||
+                other.userName == userName) &&
+            (identical(other.loggedThrough, loggedThrough) ||
+                other.loggedThrough == loggedThrough) &&
             const DeepCollectionEquality().equals(other._boolMap, _boolMap));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, defaultLanguageDirection,
-      languageChooseDialogShown, const DeepCollectionEquality().hash(_boolMap));
+  int get hashCode => Object.hash(
+      runtimeType,
+      defaultLanguageDirection,
+      languageChooseDialogShown,
+      isAuthed,
+      userName,
+      loggedThrough,
+      const DeepCollectionEquality().hash(_boolMap));
 
   @JsonKey(ignore: true)
   @override
@@ -173,12 +236,21 @@ abstract class _SettingsState implements SettingsState {
   const factory _SettingsState(
       {required final String defaultLanguageDirection,
       final int languageChooseDialogShown,
+      final bool isAuthed,
+      final String userName,
+      final LoggedThrough loggedThrough,
       required final Map<String, bool> boolMap}) = _$_SettingsState;
 
   @override
   String get defaultLanguageDirection;
   @override
   int get languageChooseDialogShown;
+  @override
+  bool get isAuthed;
+  @override
+  String get userName;
+  @override
+  LoggedThrough get loggedThrough;
   @override
   Map<String, bool> get boolMap;
   @override

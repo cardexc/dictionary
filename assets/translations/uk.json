@@ -9,9 +9,7 @@
   "language_direction_default": "Напрямок перекладу за замовчуванням",
   "ask_language_direction_before_exercise": "Питати напрямок перекладу перед вправами",
   "use_sentences_in_exercises": "Використовувати речення для вправ",
-
   "active_exercises_title": "Які вправи активні на початку тренувань?",
-
   "train_your_knowledge": "Тренуй свої знання",
   "begin_training": "Розпочати тренування",
   "choose_words_for_training_with_selection": "Тут можна вибрати окремі слова для тренування або відредагувати слово. Щоб зробити вибір деяких слів використовуйте свайп.",
@@ -53,6 +51,9 @@
   },
   "lets_move_on": "Рухаємось далі",
   "finish": "Завершити",
+  "sync_data": "Синхронізувати дані",
+  "log_out": "Вийти",
+
   "listen_type_exercise_description": "Вправа працює тільки як PL -> UA аудіювання",
   "motivation_suggestion_0": "Фантастично!",
   "motivation_suggestion_1": "Мої вітання! Так тримати!",
@@ -90,9 +91,13 @@
   "motivation_suggestion_100_2": "Чудово, немає слів.",
   "motivation_suggestion_100_3": "Ви майже все знаєте.",
   "motivation_suggestion_100_4": "Шикарна робота!",
-
   "account": "Обліковий запис",
   "register_sign_in": "Зареєструватися/увійти",
-  "please_choose_ld_to_be_used_as_default": "Будь ласка, оберіть напрямок перекладу, який буде використовуватись за замовчуванням"
+  "please_choose_ld_to_be_used_as_default": "Будь ласка, оберіть напрямок перекладу, який буде використовуватись за замовчуванням",
 
+  "cancelledByUser": "Скасовано користувачем",
+  "invalidEmailAndPassword": "Невірний логін або пароль",
+  "emailAlreadyInUse": "Користувач з такою поштою вже існує",
+  "serverError": "Помилка серверу",
+  "weakPassword": "Пароль занадто короткий"
 }

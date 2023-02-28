@@ -1,14 +1,19 @@
 import 'package:dictionary/application/settings/settings_cubit.dart';
+import 'package:dictionary/domain/auth/logged_through.dart';
 import 'package:dictionary/domain/lesson/language_direction.dart';
+import 'package:dictionary/injection.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hive/hive.dart';
 import 'package:settings_ui/settings_ui.dart';
 
 import '../../domain/exercise/exercise_types.dart';
 import '../../infrastructure/config/const.dart';
+import '../../infrastructure/config/go_router.dart';
 import '../widgets/scaffold_gradient.dart';
 
 class SettingsPage extends StatelessWidget {
@@ -27,11 +32,18 @@ class SettingsPage extends StatelessWidget {
               height: largePadding,
             ),
             Expanded(
-              child: BlocProvider<SettingsCubit>(
-                create: (context) => SettingsCubit(
-                  Hive.box(HiveConst.boxName),
-                ),
-                child: _SettingPageBody(),
+              child: FutureBuilder(
+                future: getIt.getAsync<SettingsCubit>(),
+                builder: (BuildContext context, AsyncSnapshot<SettingsCubit> snapshot) {
+                  if (snapshot.hasData) {
+                    return BlocProvider<SettingsCubit>(
+                      create: (_) => snapshot.data!,
+                      child: _SettingPageBody(),
+                    );
+                  } else {
+                    return Container();
+                  }
+                },
               ),
             ),
           ],
@@ -45,6 +57,27 @@ class _SettingPageBody extends StatelessWidget {
   int languageChooseDialogShown = 0;
 
   _SettingPageBody({Key? key}) : super(key: key);
+
+  Widget _retrieveIconForProvider(LoggedThrough loggedThrough) {
+    switch (loggedThrough) {
+      case LoggedThrough.empty:
+        {
+          return const Icon(FontAwesomeIcons.childReaching, size: 22);
+        }
+      case LoggedThrough.apple:
+        {
+          return const Icon(FontAwesomeIcons.apple, size: 26);
+        }
+      case LoggedThrough.google:
+        {
+          return const Icon(FontAwesomeIcons.google, size: 22);
+        }
+      case LoggedThrough.mail:
+        {
+          return const Icon(FontAwesomeIcons.envelope, size: 21);
+        }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -66,19 +99,47 @@ class _SettingPageBody extends StatelessWidget {
             settingsListBackground: Colors.transparent,
           ),
           sections: [
+
+
             SettingsSection(
               title: const Text(
                 'account',
                 style: TextStyle(color: CupertinoColors.label),
               ).tr(),
               tiles: <SettingsTile>[
-                SettingsTile.navigation(
-                  leading: const Icon(CupertinoIcons.group),
-                  title: const Text('register_sign_in').tr(),
-                  value: const Text(''),
-                ),
+                /*
+                * NOT AUTHED*/
+                if (!state.isAuthed)
+                  SettingsTile.navigation(
+                    leading: const Icon(CupertinoIcons.group),
+                    title: const Text('register_sign_in').tr(),
+                    onPressed: (_) {
+                      context.pushNamed(signInPage);
+                    },
+                  ),
+
+                /*
+                 AUTHED*/
+                if (state.isAuthed)
+                  SettingsTile.navigation(
+                    // leading: const Icon(CupertinoIcons.group),
+                    leading: _retrieveIconForProvider(state.loggedThrough),
+                    title: Text(state.userName).tr(),
+                    onPressed: (_) {
+                      context.pushNamed(userAccountPage);
+                    },
+                  ),
+                if (state.isAuthed)
+                  SettingsTile.navigation(
+                    leading: const Icon(CupertinoIcons.arrow_2_circlepath),
+                    title: const Text('sync_data').tr(),
+                    onPressed: (_) {},
+                  ),
               ],
             ),
+
+
+
             SettingsSection(
               title: const Text(
                 'exercises',

@@ -10,7 +10,7 @@ enum ExerciseType {
   listenType,
 }
 
-const exerciseTypeFlashcardsIcon = CupertinoIcons.arrow_2_circlepath;
+const exerciseTypeFlashcardsIcon = CupertinoIcons.arrow_2_squarepath;
 const exerciseTypeScratchcardsIcon = CupertinoIcons.hand_draw;
 const exerciseTypeMultipleChoiceIcon = CupertinoIcons.square_grid_2x2;
 const exerciseTypeMatchMakerIcon = CupertinoIcons.arrow_branch;

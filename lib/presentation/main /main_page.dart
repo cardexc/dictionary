@@ -21,7 +21,7 @@ class MainPage extends StatelessWidget {
     return BlocBuilder<MainPageCubit, MainPageState>(
       builder: (context, state) {
         return CupertinoPageScaffold(
-          key: globalKey,
+          // key: globalKey,
           navigationBar: CupertinoNavigationBar(
             middle: Column(
               children: [

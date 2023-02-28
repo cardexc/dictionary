@@ -59,12 +59,7 @@ class ExerciseChoosePage extends StatelessWidget {
 }
 
 class _LanguageDirectionChoosePageBody extends StatelessWidget {
-  _LanguageDirectionChoosePageBody({Key? key}) : super(key: key) {
-    fToast = FToast();
-    fToast.init(globalKey.currentState!.context);
-  }
-
-  late FToast fToast;
+  _LanguageDirectionChoosePageBody({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -98,11 +93,6 @@ class _LanguageDirectionChoosePageBody extends StatelessWidget {
                   var exercises = bloc.exercises.where((element) => state.exercisesStates[element.type] == true).toList();
 
                   if (exercises.isEmpty) {
-                    fToast.showToast(
-                      child: getErrorToast("error_at_least_one_exercise_must_be_chosen".tr(), context),
-                      gravity: ToastGravity.BOTTOM,
-                      toastDuration: const Duration(seconds: 4),
-                    );
                     return;
                   }
 

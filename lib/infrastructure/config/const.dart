@@ -93,7 +93,6 @@ class HiveConst {
 
   static bool askLanguageDirectionDefaultValue = true;
   static bool useSentenceInExercisesDefaultValue = true;
-
   static bool exerciseFlashcardDefaultUseDefaultValue = true;
   static bool exerciseScratchCardsDefaultUseDefaultValue = false;
   static bool exerciseMultipleChoiceDefaultUseDefaultValue = true;
@@ -101,4 +100,12 @@ class HiveConst {
   static bool exerciseAlphabetSoupDefaultUseDefaultValue = true;
   static bool exerciseWritingDefaultUseDefaultValue = true;
   static bool exerciseListenTypeDefaultUseDefaultValue = true;
+
+  static String firstUseKey = "firstUse";
+  static bool firstUseDefaultValue = true;
+
+  static String loggedThroughKey = "loggedThroughKey";
+  static String loggedThroughGoogle = "loggedThroughGoogle";
+  static String loggedThroughApple = "loggedThroughApple";
+  static String loggedThroughMail = "loggedThroughMail";
 }

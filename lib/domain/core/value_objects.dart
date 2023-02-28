@@ -1,3 +1,4 @@
+import 'package:dartz/dartz.dart';
 import 'package:isar/isar.dart';
 import 'package:uuid/uuid.dart';
 

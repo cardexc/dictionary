@@ -1,0 +1,8 @@
+/* 
+  InfoPlist.strings
+  Runner
+
+  Created by Yerokhin Volodymyr on 27.02.2023.
+  
+*/
+NSMicrophoneUsageDescription = "The microphone is used for a text recognition feature";
